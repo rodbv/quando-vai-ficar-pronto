@@ -37,18 +37,27 @@ def load_data() -> pd.DataFrame:
     )
     df["finished_at"] = pd.to_datetime(df["finished_at"])
     df["started_at"] = pd.to_datetime(df["started_at"])
-    df = df[df["cycle_time_days"] > 0]  # remove anomalias (cycle time negativo)
+    # Remove apenas registros impossíveis; não remove outliers válidos do fluxo.
+    df = df[df["cycle_time_days"] > 0]
     return df
+
+
+def weekly_throughput(df: pd.DataFrame) -> pd.Series:
+    """Return weekly throughput including explicit zero-throughput weeks."""
+    semana = df["finished_at"].dt.to_period("W")
+    semanas = pd.period_range(semana.min(), semana.max(), freq="W")
+    return semana.value_counts().sort_index().reindex(semanas, fill_value=0)
 
 
 def print_stats(df: pd.DataFrame) -> None:
     ct = df["cycle_time_days"]
-    df["semana"] = df["finished_at"].dt.to_period("W")
-    throughput = df.groupby("semana").size()
+    throughput = weekly_throughput(df)
 
     print(f"\n{'=' * 52}")
     print(f"Total de tasks:  {len(df)}")
-    print(f"Período:         {df['finished_at'].min().date()} → {df['finished_at'].max().date()}")
+    print(
+        f"Período:         {df['finished_at'].min().date()} → {df['finished_at'].max().date()}"
+    )
     print(f"\nCycle Time (dias):")
     print(f"  Média:   {ct.mean():.1f}")
     print(f"  P50:     {ct.quantile(0.50):.0f}")
@@ -79,8 +88,13 @@ def fig_cycle_time_histogram(df: pd.DataFrame) -> None:
         (0.95, RED, "P95"),
     ]:
         val = ct.quantile(pct)
-        ax.axvline(val, color=color, linewidth=2, linestyle="--",
-                   label=f"{label}: {val:.0f} dias")
+        ax.axvline(
+            val,
+            color=color,
+            linewidth=2,
+            linestyle="--",
+            label=f"{label}: {val:.0f} dias",
+        )
 
     ax.set_title("Distribuição do Cycle Time", color=TEXT, fontsize=14, pad=12)
     ax.set_xlabel("Dias", color=TEXT_MUTED)
@@ -98,16 +112,22 @@ def fig_cycle_time_histogram(df: pd.DataFrame) -> None:
 
 
 def fig_throughput_weekly(df: pd.DataFrame) -> None:
-    df["semana"] = df["finished_at"].dt.to_period("W")
-    throughput = df.groupby("semana").size()
+    throughput = weekly_throughput(df)
 
     fig, ax = plt.subplots(figsize=(13, 4), facecolor=BG)
     ax.set_facecolor(BG)
 
-    ax.bar(range(len(throughput)), throughput.values, color=GREEN, alpha=0.8, edgecolor=BG)
+    ax.bar(
+        range(len(throughput)), throughput.values, color=GREEN, alpha=0.8, edgecolor=BG
+    )
     media = throughput.mean()
-    ax.axhline(media, color=AMBER, linewidth=2, linestyle="--",
-               label=f"Média: {media:.1f} tasks/semana")
+    ax.axhline(
+        media,
+        color=AMBER,
+        linewidth=2,
+        linestyle="--",
+        label=f"Média: {media:.1f} tasks/semana",
+    )
 
     ax.set_title("Throughput Semanal", color=TEXT, fontsize=14, pad=12)
     ax.set_xlabel("Semanas (mais antigas → mais recentes)", color=TEXT_MUTED)
@@ -143,7 +163,9 @@ def fig_cycle_time_scatterplot(df: pd.DataFrame) -> None:
         (0.95, RED, f"P95 / SLE 95%: {ct.quantile(0.95):.0f} dias"),
     ]:
         val = ct.quantile(pct)
-        ax.axhline(val, color=color, linewidth=1.5, linestyle="--", label=label, alpha=0.9)
+        ax.axhline(
+            val, color=color, linewidth=1.5, linestyle="--", label=label, alpha=0.9
+        )
 
     ax.set_title("Cycle Time Scatterplot", color=TEXT, fontsize=14, pad=12)
     ax.set_xlabel("Data de entrega", color=TEXT_MUTED)
@@ -182,8 +204,7 @@ def monte_carlo_quando(
 
 
 def fig_monte_carlo(df: pd.DataFrame, n_items: int = 20) -> tuple[float, float, float]:
-    df["semana"] = df["finished_at"].dt.to_period("W")
-    throughput = df.groupby("semana").size().values
+    throughput = weekly_throughput(df).values
 
     simulacao = monte_carlo_quando(throughput, n_items)
 
@@ -197,15 +218,22 @@ def fig_monte_carlo(df: pd.DataFrame, n_items: int = 20) -> tuple[float, float, 
     bins = range(int(simulacao.min()), int(simulacao.max()) + 2)
     ax.hist(simulacao, bins=bins, color=GREEN, edgecolor=BG, alpha=0.85, align="left")
 
-    ax.axvline(p50, color=BLUE, linewidth=2, linestyle="--",
-               label=f"P50: {p50:.0f} semanas")
-    ax.axvline(p85, color=AMBER, linewidth=2.5,
-               label=f"P85: {p85:.0f} semanas  ← use este")
-    ax.axvline(p95, color=RED, linewidth=2, linestyle="--",
-               label=f"P95: {p95:.0f} semanas")
+    ax.axvline(
+        p50, color=BLUE, linewidth=2, linestyle="--", label=f"P50: {p50:.0f} semanas"
+    )
+    ax.axvline(
+        p85, color=AMBER, linewidth=2.5, label=f"P85: {p85:.0f} semanas  ← use este"
+    )
+    ax.axvline(
+        p95, color=RED, linewidth=2, linestyle="--", label=f"P95: {p95:.0f} semanas"
+    )
 
-    ax.set_title(f"Monte Carlo: quando entregamos {n_items} features?",
-                 color=TEXT, fontsize=14, pad=12)
+    ax.set_title(
+        f"Monte Carlo: quando entregamos {n_items} features?",
+        color=TEXT,
+        fontsize=14,
+        pad=12,
+    )
     ax.set_xlabel("Semanas", color=TEXT_MUTED)
     ax.set_ylabel("Frequência (10.000 simulações)", color=TEXT_MUTED)
     ax.xaxis.set_major_locator(mticker.MaxNLocator(integer=True))

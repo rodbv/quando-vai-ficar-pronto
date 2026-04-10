@@ -26,8 +26,9 @@ Respondendo a pergunta mais difícil do seu cliente **com dados**
 </div>
 
 <!--
-Boas-vindas. Pergunta retórica pra começar: quantas vezes essa semana alguém te perguntou isso?
-Deixar a pergunta no ar por dois ou três segundos antes de continuar.
+Boas-vindas rápidas e diretas.
+Pergunta de abertura: "Quem aqui ouviu essa pergunta esta semana?".
+Conta até dois antes de seguir.
 -->
 
 ---
@@ -41,19 +42,16 @@ class: text-center
 
 </div>
 
-<v-click>
-
 <div class="mt-8 text-2xl" style="color: var(--brand-text-muted)">
 
 A pergunta que paralisa qualquer dev
 
 </div>
 
-</v-click>
 
 <!--
-Pausa. Deixar a plateia reconhecer o sentimento.
-Pergunta pra plateia: quem ouviu isso essa semana? Levanta a mão.
+Pausa curta para a plateia se reconhecer na cena.
+Peça mão levantada para engajar logo no começo.
 -->
 
 ---
@@ -64,20 +62,40 @@ Pergunta pra plateia: quem ouviu isso essa semana? Levanta a mão.
   <p>"Essas 15 features que a gente pediu... quando ficam prontas?"</p>
 </div>
 
-<v-clicks>
 
-- Silêncio constrangedor 🫠
-- Alguém abre o Jira
-- *"Bom... temos umas 40 story points ainda..."*
-- *"Considerando a velocidade do time... talvez 3 semanas?"*
+- Silêncio constrangedor
+- "Temos 40 story points, talvez 3 semanas?"
 - Cliente: **"Então 3 semanas. Tô anotando."**
-- Você: 😬
 
-</v-clicks>
 
 <!--
-Contar isso com energia. Pausa dramática antes de "Então 3 semanas. Tô anotando."
-Todo mundo já viveu exatamente esse momento. É quase um trauma coletivo.
+Conta quase como uma cena de standup: ritmo e pausa no final.
+Segura 1 segundo antes de "Tô anotando" para gerar desconforto proposital.
+-->
+
+---
+
+# Roteiro de hoje
+
+
+Problema com médias e story points
+
+Estimativa vs Forecast
+
+QFP visual para 1 item + QFP probabilístico para backlog
+
+
+
+<div class="tip-box mt-6">
+
+O fio condutor é simples: para 1 item, olhe **tempo por item**. Para vários itens, olhe **itens por tempo**.
+
+</div>
+
+
+<!--
+Mostre o mapa da conversa em 10 segundos.
+Isso reduz ansiedade de quem não é técnico e prepara a transição para estatística.
 -->
 
 ---
@@ -86,17 +104,12 @@ Todo mundo já viveu exatamente esse momento. É quase um trauma coletivo.
 
 Story Points medem **complexidade relativa**, não **tempo**
 
-<v-clicks>
 
-- Servem pra **planejar o sprint** — pra isso são ótimos
-- Mas não pra prever datas de entrega
-- Velocidade muda semana a semana
-- Cada time calibra diferente
-- Converter pra horas? Só multiplica o erro
+- Servem para **planejar sprint**, não para prever data de entrega
+- Velocidade muda semana a semana e entre times
+- Converter points para horas só multiplica erro
 
-</v-clicks>
 
-<v-click>
 
 <div class="tip-box mt-6">
 
@@ -104,11 +117,10 @@ Story Points medem **complexidade relativa**, não **tempo**
 
 </div>
 
-</v-click>
 
 <!--
-Importante: não tô falando pra jogar story points fora do planning.
-Eles continuam sendo úteis. O ponto é que eles não foram feitos pra responder essa pergunta específica.
+Frase-chave: "Não é anti-story-points; é anti-uso indevido".
+Reforce que a crítica é sobre previsão de data, não sobre planejamento de sprint.
 -->
 
 ---
@@ -117,32 +129,27 @@ Eles continuam sendo úteis. O ponto é que eles não foram feitos pra responder
 
 Velocity é uma média — e médias mentem com dados assim
 
-<v-clicks>
 
-- Se Bill Gates entra num bar, **na média todo mundo ali é milionário**
-- Usar velocity × story points = prever com a **média do cycle time**
-- Pela definição de média: **você vai errar em ~50% dos casos**
-- E como a distribuição de cycle time tem cauda longa, a média fica pra direita da mediana
-- Resultado: você erra **mais de 50%** das vezes, sempre subestimando
+- Média não representa bem distribuições com cauda longa
+- Velocity × story points vira previsão pela média do cycle time
+- Resultado prático: erro frequente e viés de subestimativa
 
-</v-clicks>
 
-<v-click>
+<img src="/cycle_time_histogram.png" class="chart-img" />
+
+
 
 <div class="tip-box mt-4">
 
-Vacanti: *"Using averages for forecasting means you are wrong by definition half the time — and with skewed distributions, worse than half."*
+Em dados com cauda longa, prever por média erra muito e tende a subestimar prazo.
 
 </div>
 
-</v-click>
 
 <!--
-Esse é o segundo nível do problema.
-Não é só que story points medem complexidade — é que mesmo convertendo velocity pra dias, você usa a média.
-E a média em distribuições com cauda longa não representa a maioria dos casos.
-Quando o histograma aparecer, vai ficar visual: a média fica bem à direita de onde a maioria das tasks termina.
-A analogia do Bill Gates é do próprio Vacanti e é ótima pra fixar o conceito.
+Fale "essa é a armadilha da média" e aponte a cauda longa no gráfico.
+Evite debate teórico longo: o ponto prático é viés de subestimativa.
+Resumo oral: média em cauda longa parece precisa, mas gera promessa otimista.
 -->
 
 ---
@@ -171,13 +178,12 @@ A analogia do Bill Gates é do próprio Vacanti e é ótima pra fixar o conceito
 
 **Previsão**
 
-"baseado nos últimos 3 meses, há 85% de chance de levar até 16 dias"
+"baseado nos últimos 3 meses, há 85% de chance de levar até 14 dias"
 
 </div>
 
 </div>
 
-<v-click>
 
 <div class="mt-8 text-center" style="color: var(--brand-text-muted)">
 
@@ -185,11 +191,10 @@ A boa notícia? Você já tem os dados. Só não tá usando ainda.
 
 </div>
 
-</v-click>
 
 <!--
-Esse é o ponto central da talk. A previsão não elimina a incerteza — ela a quantifica honestamente.
-Guardem isso: estimativa é chute, previsão é probabilidade.
+Ponto central da talk: não removemos incerteza; damos nome e faixa para ela.
+Repita devagar: "estimativa é palpite, forecast é probabilidade".
 -->
 
 ---
@@ -205,7 +210,7 @@ Guardem isso: estimativa é chute, previsão é probabilidade.
 *Actionable Agile Metrics for Predictability* (2015)
 *When Will It Be Done?* (2018)
 
-Métricas de fluxo, Little's Law, SLE
+Métricas de fluxo, SLE e previsibilidade
 
 </div>
 
@@ -222,7 +227,6 @@ duas perguntas de forecasting
 
 </div>
 
-<v-click>
 
 <div class="mt-6 text-center" style="color: var(--brand-text-muted)">
 
@@ -230,12 +234,10 @@ Esta talk aplica o trabalho deles em Python com dados reais
 
 </div>
 
-</v-click>
 
 <!--
-Dar crédito explícito. Vacanti é A referência em métricas de fluxo para software.
-Magennis popularizou o Monte Carlo baseado em throughput pra times ágeis.
-O que a gente vai ver aqui é a aplicação prática do trabalho deles.
+Dê crédito em 15 segundos e siga.
+Use esta ponte: "vamos pegar essa base e transformar em algo que você roda hoje".
 -->
 
 ---
@@ -288,55 +290,16 @@ Work In Progress — quantas tarefas estão ativas ao mesmo tempo
 
 </div>
 
-<v-click>
 
 <div class="mt-6 text-center" style="color: var(--brand-text-muted)">
 
-Esses três pilares se conectam por uma lei fundamental
+Esses três pilares ajudam a enxergar gargalos e melhorar previsibilidade
 
 </div>
 
-</v-click>
 
 <!--
-Vacanti usa esses três como o triângulo de métricas de fluxo.
-WIP é especialmente importante: alto WIP = cycle time longo (vai ficar claro no próximo slide).
-O triângulo é: se você controla dois, o terceiro é calculável.
--->
-
----
-
-# Little's Law
-
-<div class="text-center my-10">
-<div style="font-size: 2.8rem; font-weight: 700; font-family: 'JetBrains Mono', monospace">
-  CT = WIP / Throughput
-</div>
-</div>
-
-<v-clicks>
-
-- **WIP alto + throughput constante** → cycle time sobe
-- **Quer entregar mais rápido?** Reduza o WIP — não acelere o time
-- É uma lei matemática, não uma sugestão
-- Funciona pra fila de banco, restaurante, e squad de desenvolvimento
-
-</v-clicks>
-
-<v-click>
-
-<div class="tip-box mt-4">
-
-*"Stop starting, start finishing"* — o slogan do Kanban tem base matemática
-
-</div>
-
-</v-click>
-
-<!--
-Little's Law foi provada em 1961 por John Little. Vale pra qualquer sistema de fila.
-Implicação prática: puxar mais tasks em paralelo não acelera entrega — aumenta cycle time.
-Isso é contra-intuitivo pra muita gente. Deixar a afirmação pousar antes de continuar.
+Nesta versão da talk, manter o foco prático nas métricas e no forecasting.
 -->
 
 ---
@@ -359,38 +322,23 @@ print(f"{len(df)} tasks entregues")
 print(f"Cycle time médio: {df['cycle_time_days'].mean():.1f} dias")
 ```
 
-<v-click>
 
 ```
 494 tasks entregues
 Cycle time médio: 10.2 dias
 ```
 
-</v-click>
 
 <!--
-Simples assim. Você exporta os dados, carrega no pandas, tem o número em 5 linhas.
-Mas a média sozinha está escondendo uma coisa importante — vamos ver o quê.
+Mostre que a barreira técnica é baixa.
+Gancho para o próximo slide: "agora vem a parte que a média esconde".
 -->
 
 ---
 
-# A distribuição importa mais que a média
+# QFP de 1 item: Scatterplot (visual)
 
-<img src="/cycle_time_histogram.png" class="chart-img" />
-
-<!--
-Apontar a cauda longa no histograma.
-A maioria das tasks termina em 1-7 dias, mas outliers puxam a média pra cima.
-"Média de 10.2 dias" — lembra do Bill Gates? É exatamente isso acontecendo aqui.
-A linha azul (P50) fica bem à esquerda da média. Quem prevê com a média sempre subestima.
--->
-
----
-
-# Cycle Time Scatterplot
-
-Vacanti prefere esse gráfico: cada ponto é uma tarefa real
+Pergunta: "Se eu começar um item hoje, quando ele tende a terminar?"
 
 <img src="/cycle_time_scatterplot.png" class="chart-img" />
 
@@ -403,7 +351,7 @@ As linhas horizontais são os percentis — elas mostram o SLE visualmente.
 
 ---
 
-# SLE — Service Level Expectation
+# Transformando visual em forecast de 1 item (SLE)
 
 Termo de Vacanti: uma promessa baseada em percentil histórico
 
@@ -414,7 +362,6 @@ for p in [50, 70, 85, 95]:
     print(f"  SLE {p}%: ≤ {ct.quantile(p / 100):.0f} dias")
 ```
 
-<v-click>
 
 ```
   SLE 50%: ≤ 5 dias
@@ -423,9 +370,7 @@ for p in [50, 70, 85, 95]:
   SLE 95%: ≤ 31 dias
 ```
 
-</v-click>
 
-<v-click>
 
 <div class="tip-box mt-4">
 
@@ -433,13 +378,10 @@ for p in [50, 70, 85, 95]:
 
 </div>
 
-</v-click>
 
 <!--
-SLE = Service Level Expectation, conceito de Vacanti.
-É a resposta padrão que você dá quando alguém pergunta "quanto tempo leva uma task?"
-"Nossa SLE é 14 dias no P85" — qualquer PO ou cliente entende.
-A diferença pro SLA tradicional: você não promete que TODO item vai caber, você define a probabilidade.
+Frase de bolso para levar para o trabalho: "Nossa SLE atual é 14 dias no P85".
+Reforce: SLE não é garantia, é expectativa probabilística explícita.
 -->
 
 ---
@@ -448,16 +390,12 @@ A diferença pro SLA tradicional: você não promete que TODO item vai caber, vo
 
 Outro conceito de Vacanti — para gerenciar itens **em andamento**
 
-<v-clicks>
 
 - Cycle Time mede tarefas **concluídas**
-- **Item Age** mede tarefas em andamento: há quantos dias essa task começou?
-- Item com age acima do P50 da SLE? Atenção redobrada — risco aumentando
-- Item com age acima do P85? Já está na cauda longa — precisa de intervenção
+- **Item Age** mede há quantos dias um item em andamento existe
+- Passou do P85 da SLE: tratar como risco e intervir
 
-</v-clicks>
 
-<v-click>
 
 <div class="tip-box mt-4">
 
@@ -465,13 +403,11 @@ Outro conceito de Vacanti — para gerenciar itens **em andamento**
 
 </div>
 
-</v-click>
 
 <!--
-Item Age é a aplicação proativa do Cycle Time.
-Em vez de esperar o item terminar pra ver que demorou muito, você monitora enquanto ainda dá pra agir.
-Exemplo: "essa task está há 18 dias em andamento, nossa SLE é 14 dias no P85 — o que está travando?"
-Isso é o que Vacanti chama de gerenciar pelo processo, não pelo resultado.
+Este é um slide de gestão diária, não de estatística.
+Faça a pergunta em voz alta: "qual item está velho demais e por quê?".
+Feche com ação: identificar bloqueio e reduzir risco antes do atraso virar fato.
 -->
 
 ---
@@ -486,7 +422,6 @@ Isso é o que Vacanti chama de gerenciar pelo processo, não pelo resultado.
 
 </div>
 
-<v-click>
 
 <div class="text-2xl font-semibold" style="color: var(--brand-green)">
 
@@ -494,11 +429,9 @@ Isso é o que Vacanti chama de gerenciar pelo processo, não pelo resultado.
 
 </div>
 
-</v-click>
 
 </div>
 
-<v-click>
 
 <div class="text-center" style="color: var(--brand-text-muted)">
 
@@ -506,7 +439,6 @@ Mesma incerteza. Comunicação muito mais honesta — e rastreável.
 
 </div>
 
-</v-click>
 
 <!--
 A mudança de linguagem importa.
@@ -521,15 +453,14 @@ E é rastreável: depois você pode medir se a SLE foi cumprida — o que alimen
 ```python
 df["finished_at"] = pd.to_datetime(df["finished_at"])
 df["semana"] = df["finished_at"].dt.to_period("W")
-
-throughput = df.groupby("semana").size()
+semanas = pd.period_range(df["semana"].min(), df["semana"].max(), freq="W")
+throughput = df.groupby("semana").size().reindex(semanas, fill_value=0)
 
 print(f"Médio: {throughput.mean():.1f} tasks/semana")
 print(f"Mín:   {throughput.min()} tasks/semana")
 print(f"Máx:   {throughput.max()} tasks/semana")
 ```
 
-<v-click>
 
 ```
 Médio: 14.1 tasks/semana
@@ -537,14 +468,35 @@ Mín:   4 tasks/semana
 Máx:   27 tasks/semana
 ```
 
-</v-click>
 
 <!--
 A variação é real: mín 4, máx 27. Quase 7x de diferença.
 Feriados, bugs críticos, onboarding, dívida técnica...
 O time não é uma máquina constante — e é exatamente por isso que simulação funciona melhor que fórmula.
-Magennis recomenda pelo menos 10-15 semanas de dados pro Monte Carlo ser confiável.
-Com 34 semanas aqui, estamos bem.
+Com 3 meses (~12 semanas) já dá para começar com um forecast útil.
+-->
+
+---
+
+# Para muitos itens: cycle time ou throughput?
+
+
+- Para **1 item**, use distribuição de cycle time
+- Para **N itens em paralelo**, o sinal de capacidade está no **throughput por período**
+- Monte Carlo para backlog usa throughput semanal (ou diário)
+
+
+
+<div class="tip-box mt-6">
+
+Crítica importante: se o tamanho do time mudou muito, o throughput histórico antigo pode não representar o futuro. Nesses casos, use janela recente, segmente por fase ou normalize por FTE.
+
+</div>
+
+
+<!--
+Mensagem curta e firme: 1 item = cycle time; muitos itens = throughput.
+Ressalva honesta: se o sistema mudou muito, recorte uma janela mais recente.
 -->
 
 ---
@@ -563,18 +515,12 @@ A linha tracejada é a média — mas repara que quase nenhuma semana bate exata
 
 # Por que isso é melhor que story points
 
-<v-clicks>
 
-- Story Points dependem de **calibração subjetiva** do time
-- Cycle Time é **objetivo**: data de início → data de fim
-- Story Points **variam** entre sprints e entre times
-- Throughput captura o ritmo **real**, incluindo interrupções
-- Story points → conversão pra horas → estimativa
-- Dados históricos → simulação → **probabilidade**
+- Story Points dependem de calibração subjetiva
+- Cycle Time e Throughput são dados objetivos do fluxo real
+- Dados históricos + simulação geram probabilidade, não chute
 
-</v-clicks>
 
-<v-click>
 
 <div class="tip-box mt-4">
 
@@ -582,12 +528,10 @@ Não é que story points são ruins. É que eles não foram feitos pra isso.
 
 </div>
 
-</v-click>
 
 <!--
-Reforçar: não é anti-ágil, é pró-dados.
-Story points continuam úteis pro planejamento de sprint.
-Mas pra perguntas de data de entrega, precisamos de outra ferramenta.
+Evite polarização.
+Frase útil: "story points para conversa de esforço; throughput/cycle time para conversa de prazo".
 -->
 
 ---
@@ -620,7 +564,6 @@ Quantas features cabem?
 
 </div>
 
-<v-click>
 
 <div class="tip-box mt-6">
 
@@ -628,7 +571,6 @@ Mesma base de dados, mesma simulação — pergunta diferente. Nesta talk: foco 
 
 </div>
 
-</v-click>
 
 <!--
 Troy Magennis deixa claro que são duas perguntas distintas com respostas distintas.
@@ -643,10 +585,10 @@ layout: section
 
 # Simulação de Monte Carlo
 
-Do passado pro futuro em 50 linhas de Python
+QFP de muitos itens com distribuição de throughput
 
 <!--
-Seção 3. Apresentar como as duas métricas anteriores se combinam numa simulação.
+Abra esta seção com: "agora junta tudo em um algoritmo simples".
 -->
 
 ---
@@ -655,7 +597,6 @@ layout: center
 
 # "Monte Carlo... parece coisa de físico nuclear"
 
-<v-click>
 
 <div class="text-2xl mt-6" style="color: var(--brand-text-muted)">
 
@@ -663,7 +604,6 @@ Na verdade é só sortear muito
 
 </div>
 
-</v-click>
 
 <!--
 Quebrar o gelo. Monte Carlo tem nome grandioso mas a ideia é simples demais.
@@ -675,17 +615,12 @@ Quebrar o gelo. Monte Carlo tem nome grandioso mas a ideia é simples demais.
 
 Você quer saber: **quando 40 features novas ficam prontas?**
 
-<v-clicks>
 
-- Você tem o histórico de **centenas de semanas** reais de entrega
-- Sorteia aleatoriamente o throughput de cada semana
-- Conta quantas semanas até completar 40 tarefas
-- Repete isso **10.000 vezes**
-- Olha a distribuição dos resultados
+- Sorteia aleatoriamente o throughput das semanas históricas
+- Acumula semanas até completar as 40 tarefas
+- Repete 10.000 vezes e observa a distribuição
 
-</v-clicks>
 
-<v-click>
 
 <div class="tip-box mt-4">
 
@@ -693,7 +628,6 @@ Você quer saber: **quando 40 features novas ficam prontas?**
 
 </div>
 
-</v-click>
 
 <!--
 Ponto-chave: não inventamos nada. Só reamostramos do que JÁ aconteceu.
@@ -705,10 +639,10 @@ Se o time teve semanas de 4 e semanas de 42, a simulação vai refletir isso.
 # Setup: o que você precisa
 
 ```bash
-pip install pandas numpy matplotlib
+uv sync
+# ou: uv add pandas numpy matplotlib
 ```
 
-<v-click>
 
 <div class="mt-10 text-center text-xl" style="color: var(--brand-text-muted)">
 
@@ -716,7 +650,6 @@ Só isso. Sem ML, sem modelo complexo, sem dependência de nuvem.
 
 </div>
 
-</v-click>
 
 <!--
 Intencionalmente simples.
@@ -739,16 +672,25 @@ df = pd.read_csv(
     names=["started_at", "finished_at", "cycle_time_days"],
 )
 df["finished_at"] = pd.to_datetime(df["finished_at"])
-df = df[df["cycle_time_days"] > 0]  # remove anomalias de dados
+df = df[df["cycle_time_days"] > 0]  # remove somente registros inválidos
 
 # Throughput por semana — base da simulação
 df["semana"] = df["finished_at"].dt.to_period("W")
-throughput_historico = df.groupby("semana").size().values
+semanas = pd.period_range(df["semana"].min(), df["semana"].max(), freq="W")
+throughput_historico = df.groupby("semana").size().reindex(semanas, fill_value=0).values
 ```
 
+<div class="tip-box mt-4">
+
+Não "higienize" a variabilidade real: doença, férias, incidentes e itens muito longos também fazem parte do futuro. Limpe apenas erro de dado (ex.: data inválida), não eventos reais do sistema.
+Se houve semana com zero entrega, mantenha zero no histórico (não remova da série).
+
+</div>
+
 <!--
-Destacar que adaptar pra outros sistemas é trivial — só mudar os nomes das colunas.
-O filtro cycle_time > 0 é importante: dados reais têm sujeira (tasks reabertas, etc).
+Detalhe importante: este preparo de dados já evita um erro comum de forecast otimista.
+Não apague semanas ruins nem outliers reais do processo.
+Limpeza é só para erro de registro, não para "embelezar" histórico.
 -->
 
 ---
@@ -781,8 +723,9 @@ simulacao = monte_carlo_quando(throughput_historico, n_items=40)
 <!--
 Ir linha a linha.
 O loop é o coração: sorteia uma semana, acumula entregas, conta semanas.
-10.000 execuções rodam em menos de 1 segundo no laptop de qualquer um.
+Em geral, 10.000 execuções rodam rapidamente em máquina comum (normalmente em segundos).
 seed=42 garante resultados reproduzíveis entre apresentações.
+Essa reamostragem preserva eventos raros (atrasos longos, semanas ruins), que são parte real do risco.
 -->
 
 ---
@@ -800,7 +743,6 @@ print(f"  85% dos cenários:   {p85:.0f} semanas  ← use esse")
 print(f"  95% dos cenários:   {p95:.0f} semanas")
 ```
 
-<v-click>
 
 ```
 40 features entregues em:
@@ -809,7 +751,6 @@ print(f"  95% dos cenários:   {p95:.0f} semanas")
   95% dos cenários:   5 semanas
 ```
 
-</v-click>
 
 <!--
 Por que 85% e não 100%? Porque 100% incluiria o pior cenário absoluto — seria excessivamente conservador.
@@ -825,9 +766,8 @@ Pra projetos críticos ou contratos com multa, use 95%.
 
 <!--
 Deixar o chart falar por si só por alguns segundos.
-Apontar: a distribuição não é uma curva normal — tem cauda à direita.
-Isso é característico de projetos de software.
-A linha laranja (P85) é onde você committa com o cliente.
+Apontar: a distribuição não é normal; cauda à direita é esperada em software.
+A linha laranja (P85) é o compromisso padrão para conversa externa.
 -->
 
 ---
@@ -860,7 +800,7 @@ layout: two-cols
 
 <div class="after-card">
 
-"Rodei uma simulação com os últimos 8 meses de dados reais. Com 85% de confiança, essas 40 features ficam prontas em 4 semanas. Se quiser 95%, são 5 semanas."
+"Rodei uma simulação com os últimos 3 meses de dados reais. Com 85% de confiança, essas 40 features ficam prontas em 4 semanas. Se quiser 95%, são 5 semanas."
 
 </div>
 
@@ -874,19 +814,15 @@ Não é arrogância — é profissionalismo com dados.
 
 # O que muda na conversa
 
-<v-clicks>
 
-- Você para de **adivinhar** e começa a apresentar **opções com probabilidade**
-- O cliente entende que existe **incerteza natural** — e isso é normal em software
-- Vocês podem **negociar com dados**: "quer 95%? Reduz o escopo em 3 features"
-- O histórico de entregas vira **ativo da relação**, não arquivo morto no Jira
+- Você troca chute por opções com probabilidade
+- O cliente entende incerteza como parte normal de software
+- A negociação vira escopo vs prazo com dados
 
-</v-clicks>
 
 <!--
-Ponto-chave: você não elimina incerteza, você a quantifica.
-Isso abre espaço pra negociações baseadas em dados, não em intuição.
-"Quer mais confiança? O preço é escopo ou prazo" — essa conversa fica muito mais fácil.
+Use esta frase para negociação: "mais confiança custa escopo ou prazo".
+O objetivo não é vencer discussão; é tornar trade-off explícito.
 -->
 
 ---
@@ -937,16 +873,12 @@ Dá ao cliente a opção de escolher o nível de risco que quer assumir.
 
 # E quando você erra?
 
-<v-clicks>
 
-- E vai acontecer — isso é esperado. P85 significa 15% de erro.
-- Quando você erra, você **já tem os dados pra explicar por quê**
-- "O throughput caiu pra 4 essa semana por um bug crítico, o histórico é 19"
-- E você pode **atualizar a simulação** com os dados novos
+- Vai acontecer: P85 ainda implica 15% de chance de erro
+- Quando errar, use os dados para explicar a causa
+- Atualize a simulação com dados novos e recalcule o forecast
 
-</v-clicks>
 
-<v-click>
 
 <div class="tip-box mt-6">
 
@@ -954,12 +886,10 @@ A confiança do cliente não vem de nunca errar. Vem de ser transparente quando 
 
 </div>
 
-</v-click>
 
 <!--
-Esse ponto é especialmente importante pra gestores na plateia.
-Monte Carlo não é uma promessa — é uma comunicação honesta de probabilidades.
-E quando você erra com dados, você tem a narrativa, não só o resultado.
+Aqui vale desacelerar: erro não invalida o método; erro é parte da distribuição.
+Mostre maturidade: explique causa, atualize dados, publique novo forecast.
 -->
 
 ---
@@ -1015,7 +945,6 @@ layout: section
 
 # 3 passos pra começar hoje
 
-<v-clicks>
 
 **1. Exporte os dados**
 
@@ -1029,7 +958,6 @@ São 10 linhas de Python. Você já viu aqui.
 
 Use o código desta talk como template. Adapte pro seu CSV.
 
-</v-clicks>
 
 <!--
 Intencionalmente simples. Três passos, qualquer um consegue hoje.
@@ -1058,7 +986,7 @@ No Jira: Reports > Cycle Time. No ClickUp: export de tasks com datas de status.
 **Leitura obrigatória:**
 
 - **Daniel Vacanti** — *Actionable Agile Metrics for Predictability* e *When Will It Be Done?*
-  (flow metrics, SLE, Little's Law)
+  (flow metrics, SLE, forecasting)
 
 - **Troy Magennis** — focusedobjective.com
   (simuladores Excel/Sheets gratuitos, sem código)
@@ -1080,7 +1008,6 @@ class: text-center
 
 # Resumindo
 
-<v-clicks>
 
 **Registre datas de início e fim** de cada tarefa — esse é o único dado que você precisa
 
@@ -1092,11 +1019,10 @@ Monte Carlo **é sorteio em escala** — 50 linhas de Python, sem ML
 
 Falar em **percentis** é mais honesto do que "acho que"
 
-</v-clicks>
 
 <!--
-Recap rápido. Cada ponto deve ressoar com algo que foi visto na talk.
-Dar tempo pra cada ponto aparecer e processar antes de avançar.
+Recap em ritmo mais lento, como fechamento de história.
+Cada linha deve soar como "takeaway" que a pessoa leva para segunda-feira.
 -->
 
 ---
@@ -1106,7 +1032,6 @@ class: text-center
 
 # Quando vai ficar pronto?
 
-<v-click>
 
 <div class="text-3xl mt-8 font-semibold" style="color: var(--brand-green)">
 
@@ -1114,9 +1039,7 @@ class: text-center
 
 </div>
 
-</v-click>
 
-<v-click>
 
 <div class="mt-12" style="color: var(--brand-text-muted)">
 
@@ -1126,7 +1049,6 @@ Obrigado!
 
 </div>
 
-</v-click>
 
 <!--
 Encerrar com a resposta pra pergunta do título.
