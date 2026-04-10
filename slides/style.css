@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap');
+
+/* Brand palette — dark only */
+:root {
+  --brand-bg:          #0d1117;
+  --brand-bg-2:        #161b22;
+  --brand-surface:     #21262d;
+  --brand-border:      #30363d;
+  --brand-text:        #e6edf3;
+  --brand-text-muted:  #8b949e;
+  --brand-green:       #3fb950;
+  --brand-green-dim:   rgba(63, 185, 80, 0.15);
+  --brand-amber:       #e3b341;
+  --brand-amber-dim:   rgba(227, 179, 65, 0.15);
+  --brand-blue:        #58a6ff;
+  --brand-blue-dim:    rgba(88, 166, 255, 0.15);
+  --brand-red:         #f85149;
+  --brand-red-dim:     rgba(248, 81, 73, 0.15);
+  --brand-heading:     #ffffff;
+  --brand-heading-sub: var(--brand-green);
+}
+
+/* Force dark backgrounds everywhere */
+html,
+body,
+#app,
+#slidev,
+.slidev,
+#slide-container,
+#slide-content {
+  background-color: var(--brand-bg) !important;
+}
+
+.slidev-layout {
+  background-color: var(--brand-bg) !important;
+  color: var(--brand-text) !important;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+}
+
+/* Typography */
+.slidev-layout h1,
+.slidev-layout h2 {
+  font-family: 'Manrope', 'Inter', system-ui, sans-serif !important;
+  color: var(--brand-heading) !important;
+  font-weight: 800;
+}
+
+.slidev-layout h3,
+.slidev-layout h4 {
+  font-family: 'Manrope', 'Inter', system-ui, sans-serif !important;
+  color: var(--brand-green) !important;
+  font-weight: 700;
+}
+
+.slidev-layout h2,
+.slidev-layout h3,
+.slidev-layout h4 {
+  margin-top: 1.5rem !important;
+  margin-bottom: 1rem !important;
+}
+
+.slidev-layout p,
+.slidev-layout li {
+  color: var(--brand-text);
+}
+
+.slidev-layout a,
+.slidev-layout strong {
+  color: var(--brand-amber) !important;
+}
+
+.slidev-layout em {
+  color: var(--brand-text-muted);
+  font-style: italic;
+}
+
+/* Cover slide */
+.slidev-layout.cover h1 {
+  font-size: 3.2rem;
+  line-height: 1.1;
+  text-wrap: balance;
+  color: var(--brand-green) !important;
+}
+
+.talk-meta {
+  margin-top: 2rem;
+  font-size: 1rem;
+  color: var(--brand-text-muted);
+  letter-spacing: 0.05em;
+}
+
+/* Section divider */
+.slidev-layout.section h1 {
+  color: var(--brand-green) !important;
+  font-size: 3rem;
+}
+
+.slidev-layout.section h2 {
+  color: var(--brand-text-muted) !important;
+  font-weight: 400;
+  font-size: 1.4rem;
+}
+
+/* Inline code */
+.slidev-layout :not(pre) > code {
+  color: var(--brand-amber) !important;
+  background: var(--brand-surface) !important;
+  border: 1px solid var(--brand-border) !important;
+  border-radius: 4px !important;
+  padding: 0.1em 0.4em !important;
+  font-weight: 600;
+  font-family: 'JetBrains Mono', monospace !important;
+}
+
+/* Code blocks */
+.slidev-code,
+.slidev-layout .slidev-code-wrapper {
+  font-family: 'JetBrains Mono', ui-monospace, monospace !important;
+  font-size: 0.92em !important;
+}
+
+/* Blockquote */
+.slidev-layout blockquote {
+  border-left: 4px solid var(--brand-green);
+  padding-left: 1rem;
+  color: var(--brand-text-muted);
+  font-style: italic;
+}
+
+/* Images */
+.slidev-layout p img,
+.chart-img {
+  opacity: 1 !important;
+  border-radius: 8px;
+  width: 100%;
+  max-height: 360px;
+  object-fit: contain;
+}
+
+/* Custom components */
+.tip-box {
+  background: var(--brand-green-dim);
+  border: 1px solid var(--brand-green);
+  border-radius: 8px;
+  padding: 0.75rem 1.25rem;
+  color: var(--brand-text);
+}
+
+.metric-card {
+  background: var(--brand-surface);
+  border: 1px solid var(--brand-border);
+  border-radius: 10px;
+  padding: 1.5rem;
+}
+
+.metric-card h3 {
+  margin-top: 0 !important;
+}
+
+.before-card {
+  background: var(--brand-red-dim);
+  border: 1px solid var(--brand-red);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-top: 1rem;
+  font-style: italic;
+  color: var(--brand-text);
+  line-height: 1.7;
+}
+
+.after-card {
+  background: var(--brand-green-dim);
+  border: 1px solid var(--brand-green);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-top: 1rem;
+  font-style: italic;
+  color: var(--brand-text);
+  line-height: 1.7;
+}
+
+/* Speech bubble */
+.speech-bubble {
+  background: var(--brand-surface);
+  border: 2px solid var(--brand-amber);
+  border-radius: 1.25rem;
+  padding: 1.25rem 2rem;
+  position: relative;
+  max-width: 80%;
+  margin: 1.5rem auto;
+}
+
+.speech-bubble p {
+  font-size: 1.4rem !important;
+  font-style: italic;
+  color: var(--brand-text) !important;
+  margin: 0;
+}
+
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -14px;
+  left: 2.5rem;
+  border-left: 12px solid transparent;
+  border-right: 2px solid transparent;
+  border-top: 14px solid var(--brand-amber);
+}
