@@ -81,6 +81,8 @@ def fig_cycle_time_histogram(df: pd.DataFrame) -> None:
     ct_plot = ct[ct <= 60]
 
     ax.hist(ct_plot, bins=30, color=GREEN, edgecolor=BG, alpha=0.85)
+    # Escala log melhora leitura quando alguns bins concentram muitos casos.
+    ax.set_yscale("log")
 
     for pct, color, label in [
         (0.50, BLUE, "P50"),
@@ -98,7 +100,7 @@ def fig_cycle_time_histogram(df: pd.DataFrame) -> None:
 
     ax.set_title("Distribuição do Cycle Time", color=TEXT, fontsize=14, pad=12)
     ax.set_xlabel("Dias", color=TEXT_MUTED)
-    ax.set_ylabel("Número de tarefas", color=TEXT_MUTED)
+    ax.set_ylabel("Número de tarefas (escala log)", color=TEXT_MUTED)
     ax.tick_params(colors=TEXT_MUTED)
     ax.legend(fontsize=11, facecolor=SURFACE, labelcolor=TEXT, edgecolor=SURFACE)
     for spine in ax.spines.values():
@@ -167,9 +169,12 @@ def fig_cycle_time_scatterplot(df: pd.DataFrame) -> None:
             val, color=color, linewidth=1.5, linestyle="--", label=label, alpha=0.9
         )
 
-    ax.set_title("Cycle Time Scatterplot", color=TEXT, fontsize=14, pad=12)
+    ax.set_yscale("log")
+    ax.set_title(
+        "Cycle Time Scatterplot (escala logarítmica)", color=TEXT, fontsize=14, pad=12
+    )
     ax.set_xlabel("Data de entrega", color=TEXT_MUTED)
-    ax.set_ylabel("Cycle Time (dias)", color=TEXT_MUTED)
+    ax.set_ylabel("Cycle Time (dias, escala log)", color=TEXT_MUTED)
     ax.xaxis.set_major_formatter(mdates.DateFormatter("%b/%y"))
     ax.xaxis.set_major_locator(mdates.MonthLocator())
     ax.tick_params(colors=TEXT_MUTED, axis="both")
