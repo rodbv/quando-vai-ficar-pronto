@@ -36,7 +36,7 @@ Mesmo quando o trabalho parece parecido, o resultado varia.
 
 1. O Gancho (A Armadilha do "Eu Acho")
 
-Conte exatamente a história que você propôs: “A gente junta o time, chuta margens de erro, imagina paralelismo, e chega num 'talvez 5 semanas'. A liderança repassa pra frente. De repente, chega o email com a data de lançamento gravada na pedra.”
+Conte exatamente a história qu  e você propôs: “A gente junta o time, chuta margens de erro, imagina paralelismo, e chega num 'talvez 5 semanas'. A liderança repassa pra frente. De repente, chega o email com a data de lançamento gravada na pedra.”
 
 A pergunta de transição: "Como sair dessa armadilha onde um palpite vira um compromisso inegociável?"
 

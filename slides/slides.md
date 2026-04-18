@@ -8,7 +8,7 @@ info: |
   métricas de fluxo e simulação.
 transition: fade
 mdc: true
-lineNumbers: false
+lineNumbers: true
 highlighter: shiki
 canvasWidth: 1280
 aspectRatio: 16/9
@@ -59,7 +59,6 @@ layout: default
   </div>
 </div>
 
-
 ---
 layout: default
 ---
@@ -105,3 +104,76 @@ layout: default
   </div>
 </div>
 
+
+---
+layout: default
+---
+
+# Prevendo 1 item: Scatterplot
+
+<div class="h-[98%] mt-3 w-full overflow-hidden">
+  <img src="/cycle_time_scatterplot.png" alt="Scatterplot de cycle time" class="h-full w-full object-contain" />
+</div>
+
+---
+layout: default
+---
+
+# Mas eu não quero fazer esse treco
+
+
+| INICIO     | FIM        | DIAS | P   |
+| ---------- | ---------- | ---- | --- |
+| 01/06/2026 | 01/06/2026 | 1    |     |
+| 02/06/2026 | 03/06/2026 | 2    |     |
+| 03/06/2026 | 04/06/2026 | 2    |     |
+| 04/06/2026 | 06/06/2026 | 3    |     |
+| 05/06/2026 | 08/06/2026 | 4    | 50  |
+| 06/06/2026 | 09/06/2026 | 4    |     |
+| 07/06/2026 | 10/06/2026 | 4    | 70  |
+| 08/06/2026 | 12/06/2026 | 5    |     |
+| 09/06/2026 | 14/06/2026 | 6    | 90  |
+| 10/06/2026 | 20/06/2026 | 11   |     |
+
+---
+layout: default
+---
+
+# Mas eu quero usar Python
+
+<div class="text-2xl">
+
+```python {lines:true}
+dias = sorted(row["dias"] for row in tarefas)
+
+def percentil(dados, p):
+    return dados[int(len(dados) * p / 100) - 1]
+
+p50 = percentil(dias, 50)   # 5 dias
+p85 = percentil(dias, 85)   # 14 dias
+p95 = percentil(dias, 95)   # 31 dias
+```
+
+</div>
+
+<style>
+.slidev-code code, .slidev-code pre {
+  font-size: 1.6rem !important;
+  line-height: 1.6 !important;
+}
+</style>
+
+---
+
+# O que você já ganha com isso?
+
+
+<div class="mt-20 text-2xl">
+
+Agora o seu time já tem um SLE (Service Level Expectaction)
+
+
+## Para qualquer tarefa, o time leva 14 dias para entregar, com 85% de confiança 
+
+(agora para de ficar pedindo estimativa e deixa a gente trabalhar...)
+</div>
