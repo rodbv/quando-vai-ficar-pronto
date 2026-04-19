@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap");
 
 :root {
   --primary: #b22222;
@@ -16,6 +17,19 @@
 .slidev-layout {
   font-family: var(--font-sans);
   font-size: 2rem;
+  line-height: 1.3;
+}
+
+.slidev-layout pre,
+.slidev-layout code {
+  font-size: 1.35rem;
+  line-height: 1.6;
+  font-family: "JetBrains Mono", monospace;
+}
+
+.slidev-layout.code-slide {
+  background: #1a1a1a !important;
+  color: #f8f8f2;
 }
 
 .slidev-layout.cover {
@@ -31,13 +45,13 @@
     linear-gradient(to right, var(--primary) 0%, var(--primary) 68%, transparent 68%) !important;
 }
 
-.slidev-layout:not(.cover) {
+.slidev-layout:not(.cover):not(.image-slide-contain) {
   position: relative;
   padding: 0 !important;
   background: radial-gradient(circle at 100% 100%, #ffffff 0%, #f7f7f8 38%, #ececef 100%) !important;
 }
 
-.slidev-layout:not(.cover)::after {
+.slidev-layout:not(.cover):not(.image-slide-contain)::after {
   content: "";
   position: absolute;
   right: 0.7rem;
@@ -49,38 +63,129 @@
   z-index: 5;
 }
 
-.slidev-layout:not(.cover) > *:not(h1) {
+.slidev-layout:not(.cover):not(.image-slide-contain) > *:not(h1) {
   padding-left: 2rem;
   padding-right: 2rem;
 }
 
-.slidev-layout:not(.cover) h1 {
+.slidev-layout:not(.cover):not(.image-slide-contain) h1 {
   display: flex;
   align-items: center;
   margin: 0 0 1.5rem !important;
-  padding: 0 2rem;
-  height: 10%;
+  padding: 0.6rem 2rem 0.75rem;
+  min-height: 4.8rem;
   background: var(--primary);
   border-bottom: 4px solid var(--secondary);
   color: var(--color-text) !important;
   font-size: 2.4rem;
   font-weight: 700;
+  line-height: 1.05;
   letter-spacing: -0.01em;
 }
 
-.slidev-layout:not(.cover) h2,
-.slidev-layout:not(.cover) h3 {
+.slidev-layout:not(.cover):not(.image-slide-contain) h2,
+.slidev-layout:not(.cover):not(.image-slide-contain) h3 {
   color: var(--primary) !important;
 }
 
-.slidev-layout:not(.cover) h4,
-.slidev-layout:not(.cover) h5,
-.slidev-layout:not(.cover) p,
-.slidev-layout:not(.cover) li {
+.slidev-layout:not(.cover):not(.image-slide-contain) h2 {
+  font-size: 2.1rem;
+  line-height: 1.2;
+  margin: 0.75rem 0 0.5rem;
+}
+
+.slidev-layout:not(.cover):not(.image-slide-contain) h3 {
+  font-size: 1.85rem;
+  line-height: 1.25;
+}
+
+.slidev-layout:not(.cover):not(.image-slide-contain) h4,
+.slidev-layout:not(.cover):not(.image-slide-contain) h5,
+.slidev-layout:not(.cover):not(.image-slide-contain) p,
+.slidev-layout:not(.cover):not(.image-slide-contain) li {
   color: var(--secondary) !important;
 }
 
-.slidev-layout:not(.cover) table {
+.slidev-layout:not(.cover):not(.image-slide-contain) p {
+  font-size: 1.7rem;
+  line-height: 1.4;
+  margin-top: 0.75rem;
+}
+
+.slidev-layout:not(.cover):not(.image-slide-contain) li {
+  font-size: 1.7rem;
+  line-height: 1.35;
+}
+
+.slidev-layout:not(.cover):not(.image-slide-contain) ul {
+  margin: 0.75rem 0 0;
+  padding-left: 3.1rem;
+}
+
+.slidev-layout:not(.cover):not(.image-slide-contain) li + li {
+  margin-top: 0.45rem;
+}
+
+.slidev-layout:not(.cover):not(.image-slide-contain) ul ul {
+  margin-top: 0.55rem;
+  padding-left: 2rem;
+}
+
+.slidev-layout:not(.cover):not(.image-slide-contain) ul ul li {
+  font-size: 1.45rem;
+  line-height: 1.3;
+}
+
+.slidev-layout.sle-actions-slide .lead {
+  margin: 0.2rem 2rem 0;
+  font-size: 1.95rem;
+  line-height: 1.22;
+  color: var(--primary) !important;
+  max-width: 92%;
+}
+
+.slidev-layout.sle-actions-slide .section-label {
+  margin: 1rem 2rem 0.2rem;
+  font-size: 1.55rem;
+  line-height: 1.25;
+  font-weight: 600;
+  color: var(--secondary) !important;
+}
+
+.slidev-layout.sle-actions-slide ul {
+  margin-top: 0.35rem;
+}
+
+.slidev-layout:not(.cover):not(.image-slide-contain) .quote-block {
+  position: relative;
+  margin: 1.4rem 2rem 0;
+  padding: 0.9rem 1.25rem 0.95rem 1.5rem;
+  max-width: 88%;
+  border-left: 0.35rem solid var(--primary);
+  background: linear-gradient(90deg, rgba(178, 34, 34, 0.12) 0%, rgba(178, 34, 34, 0.04) 100%);
+  color: var(--primary) !important;
+  font-size: 1.85rem;
+  line-height: 1.18;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  box-shadow: 0 10px 24px rgba(101, 33, 42, 0.08);
+}
+
+.slidev-layout:not(.cover):not(.image-slide-contain) .quote-block::before {
+  content: "\201C";
+  position: absolute;
+  top: -0.2rem;
+  left: 0.7rem;
+  font-size: 2.8rem;
+  line-height: 1;
+  color: rgba(178, 34, 34, 0.28);
+}
+
+.slidev-layout.sle-actions-slide .quote-block {
+  margin-top: 1.15rem;
+}
+
+.slidev-layout:not(.cover):not(.image-slide-contain) table {
   width: calc(100% - 4rem);
   margin: 1rem 2rem 0;
   border-collapse: collapse;
@@ -89,28 +194,36 @@
   font-size: 1.3rem;
 }
 
-.slidev-layout:not(.cover) th,
-.slidev-layout:not(.cover) td {
+.slidev-layout:not(.cover):not(.image-slide-contain) th,
+.slidev-layout:not(.cover):not(.image-slide-contain) td {
   border: 2px solid #e7caca;
   padding: 0.45rem 0.7rem;
   text-align: left;
   color: var(--secondary) !important;
 }
 
-.slidev-layout:not(.cover) th {
+.slidev-layout:not(.cover):not(.image-slide-contain) th {
   background: #fde4e4;
   color: var(--primary) !important;
   font-weight: 700;
 }
 
-.slidev-layout:not(.cover) tbody tr:nth-child(even) {
+.slidev-layout:not(.cover):not(.image-slide-contain) tbody tr:nth-child(even) {
   background: #fff1f1;
 }
 
-.slidev-layout:not(.cover) th:nth-child(3),
-.slidev-layout:not(.cover) td:nth-child(3) {
+.slidev-layout:not(.cover):not(.image-slide-contain) th:nth-child(3),
+.slidev-layout:not(.cover):not(.image-slide-contain) td:nth-child(3) {
   color: var(--green) !important;
   font-weight: 700;
+}
+
+.slidev-layout.image-slide-contain {
+  background-color: #ffffff !important;
+}
+
+.slidev-layout.image-slide-contain::after {
+  display: none !important;
 }
 
 .slidev-layout.cover h1 {
@@ -154,6 +267,53 @@
   background-color: #ffffff;
 }
 
+.planilha-pane {
+  height: calc(100% - 2rem);
+  width: auto;
+  max-width: calc(100% - 1rem);
+  margin: 0.3rem auto;
+  background-image: url("/planilha-explicacao-p85.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.slidev-layout.planilha-slide {
+  display: flex;
+  flex-direction: column;
+}
+
+.slidev-layout.planilha-slide h1 {
+  flex: 0 0 auto;
+}
+
+.slidev-layout.planilha-slide .planilha-pane {
+  flex: 1 1 auto;
+  min-height: 0;
+  height: auto;
+  width: 100%;
+  margin: 0.2rem auto 0.3rem;
+}
+
+/* Reusable layout: h1 fixed, img fills remaining height */
+.slidev-layout.full-height-img-slide {
+  display: flex;
+  flex-direction: column;
+}
+
+.slidev-layout.full-height-img-slide h1 {
+  flex: 0 0 auto;
+}
+
+.slide-full-img {
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  object-fit: contain;
+  display: block;
+  margin: 0.4rem auto 0;
+}
+
 .pane-tl {
   background-position: 0% 0%;
 }
@@ -186,7 +346,7 @@
     width: min(31%, 220px);
   }
 
-  .slidev-layout:not(.cover)::after {
+  .slidev-layout:not(.cover):not(.image-slide-contain)::after {
     width: 92px;
     height: 44px;
     right: 0.55rem;

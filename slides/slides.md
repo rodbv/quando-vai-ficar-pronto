@@ -23,6 +23,7 @@ Respondendo a pergunta mais importante do cliente.
 
 ---
 layout: default
+class: planilha-slide
 ---
 
 <div class="cartoon-pane pane-tl" role="img" aria-label="Cartoon painel superior esquerdo"></div>
@@ -97,7 +98,7 @@ layout: default
 
 | Início | Fim | Dias |
 |---|---|---|
-| 03/03/2026 | 04/03/2026 | 2 |
+| 03/03/2026 | 03/03/2026 | 1 |
 | 03/03/2026 | 06/03/2026 | 4 |
 | 04/03/2026 | 08/03/2026 | 5 |
 | 05/03/2026 | 09/03/2026 | 5 |
@@ -107,3 +108,81 @@ layout: default
 | 12/03/2026 | 18/03/2026 | 7 |
 
 
+
+---
+layout: default
+class: full-height-img-slide
+---
+
+# Com isso podemos dizer qual nossa previsão para 1 item
+
+
+## Baseado nos dados, vemos que nós terminamos 85% dos itens em 8 dias ou menos.
+<img class="slide-full-img" src="/planilha-explicacao-p85.png" alt="Planilha com explicacao visual do percentil p85" />
+
+
+
+---
+layout: default
+class: full-height-img-slide
+---
+
+# Deixa o Excel te ajudar
+
+<img class="slide-full-img" src="/planilha-formula-percentil.png" alt="Planilha com explicacao visual do percentil p85" />
+
+---
+layout: default
+class: code-slide
+---
+
+# Ou melhor ainda, o Python
+
+
+```python
+import math
+import numpy as np
+
+lead_times = carrega_dias_csv()
+
+def percentil(dados: list[int], p: float) -> int:
+    return math.ceil(np.percentile(dados, p))
+
+percentil(lead_times, 50)  # 5 dias
+percentil(lead_times, 75)  # 7 dias
+percentil(lead_times, 85)  # 8 dias
+```
+
+---
+layout: default
+---
+
+# Agora temos nosso SLE (Service Level Expectation)
+
+
+## Nosso SLE atual é de 8 dias com 85% de confiança.
+
+Ou seja, sabemos que qualquer trabalho termina em 8 dias ou menos em 85% dos casos.
+
+
+
+---
+layout: default
+class: sle-actions-slide
+---
+
+# Mas se o meu SLE estiver alto?
+
+
+## O que podemos fazer é diminuir a dispersão dos valores, ou seja, reduzir o comprimento da cauda longa.
+
+<p class="section-label">Para isso, devemos adotar duas práticas:</p>
+
+1. Reduzir WIP (Work in Progress), ou seja, fazer menos multitasking
+2. Monitorar quanto tempo cada item está levando ("Idade do item")
+
+No nosso exemplo, um item começa com 15% de chance de estourar o SLE, mas depois de 4 dias, a chance já é de 30%.
+
+<div style="margin-top:5rem">
+<blockquote class="quote-block">Para de começar e começa a terminar</blockquote>
+</div>
