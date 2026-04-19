@@ -165,6 +165,61 @@ p95 = percentil(dias, 95)   # 31 dias
 
 ---
 
+# Monte Carlo em Python puro
+
+<div class="text-[1.8rem] leading-tight">
+
+```python {lines:true}
+import csv, random
+
+throughput = []
+with open("data/throughput_latest_15w.csv") as f:
+  for row in csv.DictReader(f):
+    throughput.append(int(row["throughput"]))
+
+def semanas_para_80_cards(tp):
+  feitas, semanas = 0, 0
+  while feitas < 80:
+    feitas += random.choice(tp)
+    semanas += 1
+  return semanas
+
+random.seed(42)
+print(semanas_para_80_cards(throughput))
+```
+
+</div>
+
+---
+
+# Rastreando 1000 simulações para GIF
+
+<div class="text-[1.45rem] leading-tight">
+
+```python {lines:true}
+import csv, random
+
+rows = []
+rng = random.Random(42)
+
+for run_id in range(1, 1001):
+  done, week_num = 0, 0
+  while done < 80:
+    week_num += 1
+    picked = rng.choice(throughput)
+    done += picked
+    rows.append([run_id, week_num, picked, done])
+
+with open("data/monte_carlo_trace_1k.csv", "w", newline="") as f:
+  w = csv.writer(f)
+  w.writerow(["run_id", "week_num", "throughput_picked", "cumulative_done"])
+  w.writerows(rows)
+```
+
+</div>
+
+---
+
 # O que você já ganha com isso?
 
 
