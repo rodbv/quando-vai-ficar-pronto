@@ -255,23 +255,27 @@ def fig_cycle_time_histogram(df: pd.DataFrame) -> None:
 
 
 def fig_normal_distribution_reference(
-    mean_minutes: float = 32.0,
-    median_minutes: float = 32.0,
-    std_minutes: float = 6.0,
+    mean_days: float = 10.0,
+    median_days: float = 10.0,
+    std_days: float = 4.0,
 ) -> None:
-    """Curva normal de referência em minutos para ilustrar média e mediana coincidentes."""
-    x_min = max(0, mean_minutes - 4 * std_minutes)
-    x_max = mean_minutes + 4 * std_minutes
+    """Curva normal de referência em dias para ilustrar média e mediana coincidentes."""
+    # Eixo simétrico em torno da média, começando em x=0.
+    x_min = 0.0
+    x_max = 2 * mean_days
     x = np.linspace(x_min, x_max, 800)
-    y = (1 / (std_minutes * np.sqrt(2 * np.pi))) * np.exp(
-        -0.5 * ((x - mean_minutes) / std_minutes) ** 2
+    y = (1 / (std_days * np.sqrt(2 * np.pi))) * np.exp(
+        -0.5 * ((x - mean_days) / std_days) ** 2
     )
+    # Força a curva a tocar y=0 nas extremidades para efeito visual didático.
+    y[0] = 0.0
+    y[-1] = 0.0
 
     fig, ax = plt.subplots(figsize=(11, 5), facecolor=BG)
     ax.set_facecolor(BG)
 
-    one_sigma_low = mean_minutes - std_minutes
-    one_sigma_high = mean_minutes + std_minutes
+    one_sigma_low = max(0.0, mean_days - std_days)
+    one_sigma_high = min(x_max, mean_days + std_days)
     sigma_mask = (x >= one_sigma_low) & (x <= one_sigma_high)
 
     ax.fill_between(x, y, color=MAIN, alpha=0.12)
@@ -279,32 +283,34 @@ def fig_normal_distribution_reference(
     ax.plot(x, y, color=MAIN, linewidth=3)
 
     ax.axvline(
-        mean_minutes,
+        mean_days,
         color=MAIN,
         linewidth=2.2,
         linestyle="--",
-        label=f"Média: {mean_minutes:.0f} min",
+        label=f"Média: {mean_days:.0f} dias",
     )
     ax.axvline(
-        median_minutes,
+        median_days,
         color=RED,
         linewidth=2.2,
         linestyle=":",
-        label=f"Mediana: {median_minutes:.0f} min",
+        label=f"Mediana: {median_days:.0f} dias",
     )
     ax.axvspan(
         one_sigma_low,
         one_sigma_high,
         color=GREEN,
         alpha=0.08,
-        label=f"Faixa central: {one_sigma_low:.0f}-{one_sigma_high:.0f} min",
+        label=f"Faixa central: {one_sigma_low:.0f}-{one_sigma_high:.0f} dias",
     )
 
-    ax.set_title("Distribuição Normal de Referência", color=TEXT, fontsize=14, pad=12)
-    ax.set_xlabel("Minutos", color=TEXT_MUTED)
+    ax.set_title(
+        "Como nosso cérebro pensa em estimativas", color=TEXT, fontsize=14, pad=12
+    )
+    ax.set_xlabel("Dias", color=TEXT_MUTED)
     ax.set_ylabel("Densidade", color=TEXT_MUTED)
     ax.set_xlim(x_min, x_max)
-    ax.set_xticks(np.arange(int(x_min), int(x_max) + 1, 4))
+    ax.set_xticks(np.arange(int(x_min), int(x_max) + 1, 2))
     ax.tick_params(colors=TEXT_MUTED)
     ax.grid(axis="y", color=GRID, linestyle=":", linewidth=0.9)
     ax.legend(
@@ -316,6 +322,7 @@ def fig_normal_distribution_reference(
         labelspacing=0.8,
         handlelength=2.4,
         handletextpad=0.9,
+        loc="upper right",
     )
     for spine in ax.spines.values():
         spine.set_color(GRID)
@@ -325,6 +332,89 @@ def fig_normal_distribution_reference(
     fig.savefig(out, dpi=150, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print(f"✓ {out}")
+
+
+def fig_skewed_distribution_reference(
+    df: pd.DataFrame, max_percentile_for_plot: float = 99.0
+) -> None:
+    """Curva assimétrica à direita usando lead time real (cycle_time_days)."""
+    sample = df["cycle_time_days"].to_numpy(dtype=float)
+    sample = sample[sample > 0]
+
+    p50 = float(np.percentile(sample, 50))
+    p75 = float(np.percentile(sample, 75))
+    p85 = float(np.percentile(sample, 85))
+    p95 = float(np.percentile(sample, 95))
+
+    x_max = int(np.ceil(np.percentile(sample, max_percentile_for_plot)))
+    x_max = max(x_max, int(np.ceil(p95 * 1.1)), 20)
+    bins = np.arange(0.5, x_max + 1.5, 1.0)
+    sample_plot = sample[sample <= x_max]
+    hist, edges = np.histogram(sample_plot, bins=bins, density=True)
+    centers = (edges[:-1] + edges[1:]) / 2
+    sigma_k = 1.4
+    radius = int(np.ceil(4 * sigma_k))
+    kernel_x = np.arange(-radius, radius + 1)
+    kernel = np.exp(-0.5 * (kernel_x / sigma_k) ** 2)
+    kernel /= kernel.sum()
+    smooth = np.convolve(hist, kernel, mode="same")
+
+    fig, ax = plt.subplots(figsize=(11, 5), facecolor=BG)
+    ax.set_facecolor(BG)
+
+    ax.fill_between(centers, smooth, color=MAIN, alpha=0.12)
+    ax.plot(centers, smooth, color=MAIN, linewidth=3)
+
+    ax.axvline(
+        p50,
+        color=GREEN,
+        linewidth=2.2,
+        linestyle="--",
+        label=f"Mediana (P50): {p50:.0f} dias",
+    )
+    ax.axvline(
+        p75,
+        color=TEXT_MUTED,
+        linewidth=1.8,
+        linestyle=":",
+        label=f"P75: {p75:.0f} dias",
+    )
+    ax.axvline(
+        p85, color=MAIN, linewidth=2.0, linestyle="--", label=f"P85: {p85:.0f} dias"
+    )
+    ax.axvline(
+        p95, color=RED, linewidth=2.2, linestyle="-", label=f"P95: {p95:.0f} dias"
+    )
+
+    ax.set_title(
+        "Lead time real: distribuição assimétrica", color=TEXT, fontsize=14, pad=12
+    )
+    ax.set_xlabel("Dias", color=TEXT_MUTED)
+    ax.set_ylabel("Densidade", color=TEXT_MUTED)
+    ax.set_xlim(0, x_max)
+    ax.tick_params(colors=TEXT_MUTED)
+    ax.grid(axis="y", color=GRID, linestyle=":", linewidth=0.9)
+    ax.legend(
+        fontsize=14.5,
+        facecolor=BG,
+        labelcolor=TEXT,
+        edgecolor=GRID,
+        borderpad=1.0,
+        labelspacing=0.8,
+        handlelength=2.4,
+        handletextpad=0.9,
+        loc="upper right",
+    )
+    for spine in ax.spines.values():
+        spine.set_color(GRID)
+
+    fig.tight_layout()
+    out = OUTPUT_DIR / "skewed_distribution_curve.png"
+    fig.savefig(out, dpi=150, bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print(
+        f"✓ {out}  (dados reais n={len(sample)} P50={p50:.0f} P75={p75:.0f} P85={p85:.0f} P95={p95:.0f} dias)"
+    )
 
 
 def airport_trip_minutes() -> np.ndarray:
@@ -1431,7 +1521,8 @@ if __name__ == "__main__":
         csv_path="data/monte_carlo_trace_daily_10k.csv",
     )
 
-    fig_normal_distribution_reference(mean_minutes=32, median_minutes=32)
+    fig_normal_distribution_reference(mean_days=10, median_days=10)
+    fig_skewed_distribution_reference(df)
     fig_airport_travel_time_distribution()
     fig_airport_travel_time_histogram()
     fig_airport_travel_time_cdf()

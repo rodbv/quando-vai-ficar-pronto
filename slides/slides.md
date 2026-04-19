@@ -1,6 +1,5 @@
 ---
 theme: seriph
-colorSchema: dark
 css: ./style.css
 title: Quando vai ficar pronto?
 info: |
@@ -12,24 +11,39 @@ lineNumbers: true
 highlighter: shiki
 canvasWidth: 1280
 aspectRatio: 16/9
-background: '#0b1f1a'
 layout: cover
 
 ---
 
-# Quando vai ficar pronto?
+# Quando vai ficar<br>pronto?
 
 Respondendo a pergunta mais importante do cliente.
 
-<div class="talk-meta">
-  Python Sul · 2026 · Rodrigo Vieira
-</div>
+<img class="cover-logo" src="/pysul-logo.svg" alt="Python Sul 2026 Londrina - PR" />
 
 ---
-layout: image
-image: /trampo.png
-backgroundSize: contain
+layout: default
 ---
+
+<div class="cartoon-pane pane-tl" role="img" aria-label="Cartoon painel superior esquerdo"></div>
+
+---
+layout: default
+---
+
+<div class="cartoon-pane pane-tr" role="img" aria-label="Cartoon painel superior direito"></div>
+
+---
+layout: default
+---
+
+<div class="cartoon-pane pane-bl" role="img" aria-label="Cartoon painel inferior esquerdo"></div>
+
+---
+layout: default
+---
+
+<div class="cartoon-pane pane-br" role="img" aria-label="Cartoon painel inferior direito"></div>
 
 ---
 layout: default
@@ -37,198 +51,59 @@ layout: default
 
 # Como sair dessa armadilha?
 
-<div class="h-[72%] flex flex-col justify-center space-y-10 text-left">
-  <div>
-    <h3 class="text-2xl">Estimativa</h3>
-    <div class="mt-4 text-[2.1rem] leading-tight">
-      "Acho que dá dia 8 de junho"
-    </div>
-    <div class="mt-5 text-lg leading-relaxed opacity-85">
-      Estimativa é palpite pontual.
-    </div>
-  </div>
+## Queremos sair da estimativa que compromete a pessoa ou time...
 
-  <div>
-    <h3 class="text-2xl">Previsão</h3>
-    <div class="mt-4 text-[2.1rem] leading-tight">
-      "Temos 50% de confiança de entregar até dia 8 de junho, e 90% de confiança até dia 20."
-    </div>
-    <div class="mt-5 text-lg leading-relaxed opacity-85">
-      Previsão tem dois elementos: uma faixa de datas com percentual de confiança.
-    </div>
-  </div>
-</div>
+- "Acho que leva 10 dias."
 
----
-layout: default
----
+## ...para previsões orientadas a dados
 
-# Mas como fazer uma previsão?
+- "De acordo com entregas recentes, temos 80% de confiança de terminar em 14 dias."
 
-<div class="h-[70%] flex flex-col justify-center items-start text-left">
-  <ul class="text-left space-y-4 text-2xl leading-tight">
-    <li>Jogo nos búzios?</li>
-    <li>Claude?</li>
-    <li>3 horas de reunião?</li>
-  </ul>
-</div>
-
----
-layout: default
----
-
-# Na verdade só juntar um dado que você provavelmente já tem:
-
-<div class="h-[72%] flex flex-col justify-center">
-  <ul class="text-left space-y-2 text-xl">
-    <li>Data de início da tarefa</li>
-    <li>Data de fim da tarefa</li>
-  </ul>
-
-  <div class="mt-6">
-    <table>
-      <thead>
-        <tr>
-          <th>INICIO</th>
-          <th>FIM</th>
-          <th>DIAS</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>03/06/2026</td><td>08/06/2026</td><td>6</td></tr>
-        <tr><td>04/06/2026</td><td>04/06/2026</td><td>1</td></tr>
-        <tr><td>05/06/2026</td><td>07/06/2026</td><td>3</td></tr>
-        <tr><td>14/06/2026</td><td>19/06/2026</td><td>5</td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+## Por quê?
+- Estimativa com só uma data não captura a incerteza.
+- Estimar dá trabalho e parece estar sempre errado, por mais que a gente capriche.
 
 
 ---
 layout: default
 ---
 
-# Prevendo 1 item: Scatterplot
+# Por que a gente parece sempre estimar por baixo?
 
-<div class="h-[98%] mt-3 w-full overflow-hidden">
-  <img src="/cycle_time_scatterplot.png" alt="Scatterplot de cycle time" class="h-full w-full object-contain" />
-</div>
+## Nosso cérebro (e otimismo) pensa em distruibuição normal
 
----
-layout: default
----
-
-# Mas eu não quero fazer esse treco
-
-
-| INICIO     | FIM        | DIAS | P   |
-| ---------- | ---------- | ---- | --- |
-| 01/06/2026 | 01/06/2026 | 1    |     |
-| 02/06/2026 | 03/06/2026 | 2    |     |
-| 03/06/2026 | 04/06/2026 | 2    |     |
-| 04/06/2026 | 06/06/2026 | 3    |     |
-| 05/06/2026 | 08/06/2026 | 4    | 50  |
-| 06/06/2026 | 09/06/2026 | 4    |     |
-| 07/06/2026 | 10/06/2026 | 4    | 70  |
-| 08/06/2026 | 12/06/2026 | 5    |     |
-| 09/06/2026 | 14/06/2026 | 6    | 90  |
-| 10/06/2026 | 20/06/2026 | 11   |     |
+<img src="/normal_distribution_curve.png" alt="Curva normal de referência" style="width: 92%; max-height: 72%; object-fit: contain; display: block; margin: 1.2rem auto 0;" />
 
 ---
 layout: default
 ---
 
-# Mas eu quero usar Python
+# Nosso tipo de trabalho é de 'cauda longa'
 
-<div class="text-2xl">
+## É mais fácil aparecer alguma surpresa que **atrase** a entrega, do que uma que adiante.
 
-```python {lines:true}
-dias = sorted(row["dias"] for row in tarefas)
-
-def percentil(dados, p):
-    return dados[int(len(dados) * p / 100) - 1]
-
-p50 = percentil(dias, 50)   # 5 dias
-p85 = percentil(dias, 85)   # 14 dias
-p95 = percentil(dias, 95)   # 31 dias
-```
-
-</div>
-
-<style>
-.slidev-code code, .slidev-code pre {
-  font-size: 1.6rem !important;
-  line-height: 1.6 !important;
-}
-</style>
+<img src="/skewed_distribution_curve.png" alt="Distribuição real de lead time com cauda longa" style="width: 92%; max-height: 72%; object-fit: contain; display: block; margin: 1.2rem auto 0;" />
 
 ---
-
-# Monte Carlo em Python puro
-
-<div class="text-[1.8rem] leading-tight">
-
-```python {lines:true}
-import csv, random
-
-throughput = []
-with open("data/throughput_latest_15w.csv") as f:
-  for row in csv.DictReader(f):
-    throughput.append(int(row["throughput"]))
-
-def semanas_para_80_cards(tp):
-  feitas, semanas = 0, 0
-  while feitas < 80:
-    feitas += random.choice(tp)
-    semanas += 1
-  return semanas
-
-random.seed(42)
-print(semanas_para_80_cards(throughput))
-```
-
-</div>
-
+layout: default
 ---
 
-# Rastreando 1000 simulações para GIF
+# Mas como fazer previsões sem reunião de estimativa?
 
-<div class="text-[1.45rem] leading-tight">
+## Você só precisa coletar duas coisas para cada item de trabalho:
 
-```python {lines:true}
-import csv, random
+- A data de início
+- A data de fim
 
-rows = []
-rng = random.Random(42)
-
-for run_id in range(1, 1001):
-  done, week_num = 0, 0
-  while done < 80:
-    week_num += 1
-    picked = rng.choice(throughput)
-    done += picked
-    rows.append([run_id, week_num, picked, done])
-
-with open("data/monte_carlo_trace_1k.csv", "w", newline="") as f:
-  w = csv.writer(f)
-  w.writerow(["run_id", "week_num", "throughput_picked", "cumulative_done"])
-  w.writerows(rows)
-```
-
-</div>
-
----
-
-# O que você já ganha com isso?
+| Início | Fim | Dias |
+|---|---|---|
+| 03/03/2026 | 04/03/2026 | 2 |
+| 03/03/2026 | 06/03/2026 | 4 |
+| 04/03/2026 | 08/03/2026 | 5 |
+| 05/03/2026 | 09/03/2026 | 5 |
+| 06/03/2026 | 11/03/2026 | 6 |
+| 07/03/2026 | 10/03/2026 | 4 |
+| 10/03/2026 | 15/03/2026 | 6 |
+| 12/03/2026 | 18/03/2026 | 7 |
 
 
-<div class="mt-20 text-2xl">
-
-Agora o seu time já tem um SLE (Service Level Expectaction)
-
-
-## Para qualquer tarefa, o time leva 14 dias para entregar, com 85% de confiança 
-
-(agora para de ficar pedindo estimativa e deixa a gente trabalhar...)
-</div>
