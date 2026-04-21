@@ -17,6 +17,7 @@ import pandas as pd
 
 OUTPUT_DIR = Path("slides/public")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+DATA_FILE = Path("data/lead_time_data_clean_2026.csv")
 
 # Paleta light para charts
 BG = "#ffffff"
@@ -33,7 +34,7 @@ MC_BAR = "#98c9ac"
 
 def load_data(clean_cycle_time: bool = True) -> pd.DataFrame:
     df = pd.read_csv(
-        "data/lead_time_data.csv",
+        DATA_FILE,
         header=None,
         names=["started_at", "finished_at", "cycle_time_days"],
     )
@@ -901,15 +902,11 @@ def fig_throughput_weekly(df: pd.DataFrame) -> None:
 
 
 def fig_cycle_time_scatterplot(df: pd.DataFrame) -> None:
-    """Cycle Time Scatterplot — visualização preferida por Vacanti."""
+    """Lead Time Scatterplot com dados reais e linhas de P50/P85."""
     import matplotlib.dates as mdates
 
-    max_date = df["finished_at"].max()
-    cutoff_date = max_date - pd.DateOffset(months=3)
-    df_plot = df[df["finished_at"] >= cutoff_date].copy()
-
-    ct = df_plot["cycle_time_days"]
-    dates = df_plot["finished_at"]
+    ct = df["cycle_time_days"]
+    dates = df["finished_at"]
 
     plot_bg = "#ffffff"
     text_main = "#0f172a"
@@ -925,32 +922,20 @@ def fig_cycle_time_scatterplot(df: pd.DataFrame) -> None:
     for pct, color, label in [
         (0.50, GREEN, f"P50: {ct.quantile(0.50):.0f} dias"),
         (0.85, MAIN, f"P85: {ct.quantile(0.85):.0f} dias"),
-        (0.95, RED, f"P95: {ct.quantile(0.95):.0f} dias"),
     ]:
         val = ct.quantile(pct)
         ax.axhline(
             val, color=color, linewidth=1.5, linestyle="--", label=label, alpha=0.9
         )
 
-    ax.set_yscale("log")
-    ax.yaxis.set_major_locator(mticker.FixedLocator([1, 10, 100]))
-    ax.yaxis.set_major_formatter(
-        mticker.FuncFormatter(
-            lambda value, _: (
-                "1 dia"
-                if value == 1
-                else f"{int(value)} dias" if value in (1, 10, 100) else ""
-            )
-        )
-    )
     ax.set_title(
-        "Cycle Time Scatterplot (últimos 3 meses)",
+        "Lead Time Scatterplot (dados reais de 2026)",
         color=text_main,
         fontsize=14,
         pad=12,
     )
     ax.set_xlabel("Data de entrega", color=text_muted)
-    ax.set_ylabel("Cycle Time (dias, escala log)", color=text_muted)
+    ax.set_ylabel("Lead time (dias)", color=text_muted)
     ax.xaxis.set_major_formatter(mdates.DateFormatter("%b/%y"))
     ax.xaxis.set_major_locator(mdates.MonthLocator())
     ax.tick_params(colors=text_muted, axis="both")

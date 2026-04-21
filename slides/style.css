@@ -7,6 +7,7 @@
   --secondary: #65212a;
   --paper: #f2f2f2;
   --stage: #d4d4d8;
+  --paragraph-gap: 1.3rem;
 
   --color-bg: var(--paper);
   --color-text: #ffffff;
@@ -109,7 +110,7 @@
 .slidev-layout:not(.cover):not(.image-slide-contain) p {
   font-size: 1.7rem;
   line-height: 1.4;
-  margin-top: 0.75rem;
+  margin-top: var(--paragraph-gap);
 }
 
 .slidev-layout:not(.cover):not(.image-slide-contain) li {
