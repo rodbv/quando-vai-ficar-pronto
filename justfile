@@ -1,3 +1,5 @@
+# Alias para abrir o notebook principal
+nb: notebook-open
 slides:
     cd slides && npm run dev -- --remote --port 3030
 
@@ -13,6 +15,11 @@ charts:
 # Notebook companion (SLE + Monte Carlo)
 notebook-deps:
     uv run python -m pip install -U jupyter nbconvert
+
+
+# Abre direto o notebook principal
+notebook-open:
+    uv run jupyter notebook notebook/previsao.ipynb
 
 notebook:
     uv run python -m notebook --notebook-dir notebook
