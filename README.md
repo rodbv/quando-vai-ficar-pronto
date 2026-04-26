@@ -25,6 +25,29 @@ just charts
 uv run python generate_charts.py
 ```
 
+## Notebook (SLE + Monte Carlo)
+
+Para experimentar com os conceitos (SLE para 1 item, Monte Carlo para N itens), veja `notebook/`:
+- `notebook/previsao.ipynb` — notebook companion dos slides
+- `notebook/flow_forecast.py` — helpers do notebook (não compartilhado com `generate_charts.py`)
+
+### CSV mínimo esperado
+
+Um CSV com pelo menos estas colunas:
+- `started_at`: data ou datetime (hora é ignorada)
+- `finished_at`: data ou datetime (hora é ignorada)
+
+Throughput sempre por dia (inclui fins de semana + zeros no intervalo).
+
+### Rodar
+
+Abra o `.ipynb` no Cursor e execute as células, ou rode Jupyter no ambiente do projeto:
+
+```sh
+uv run python -m pip install -U jupyter
+uv run python -m notebook
+```
+
 ## Deploy
 
 O deploy é feito automaticamente para o GitHub Pages via GitHub Actions. O conteúdo publicado está em `gh-pages`.
@@ -33,6 +56,7 @@ O deploy é feito automaticamente para o GitHub Pages via GitHub Actions. O cont
 - `slides/` — Projeto Slidev (Markdown, CSS, assets)
 - `data/` — Dados reais para simulação e gráficos
 - `generate_charts.py` — Script para gerar gráficos
+- `notebook/` — Notebook + helpers (SLE + Monte Carlo)
 - `justfile` — Atalhos para build e automação
 
 ## Licença
