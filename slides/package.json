@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "slidev --open false",
-    "build": "slidev build",
+    "build": "slidev build --base /quando-vai-ficar-pronto/",
     "export": "slidev export"
   },
   "dependencies": {
