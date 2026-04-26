@@ -237,12 +237,12 @@ layout: default
 
 # Obrigado!
 
-<div style="display: flex; align-items: center; justify-content: center; gap: 5rem; margin-top: 3rem;">
-    <img src="/vinta_logo.png" alt="Logo da Vinta" style="height: 110px;" />
-    <img src="/pysul-logo.svg" alt="Python Sul" style="height: 110px;" />
-</div>
+<img src="/qrcode.png" alt="QR Code" style="display: block; margin: 2.5rem auto 0; width: 38vw; max-width: 520px; min-width: 220px; height: auto; box-shadow: 0 0 32px #0002; border-radius: 1.5rem;" />
 
-<div style="font-size: 2.5rem; margin-top: 2.5rem; text-align: center;">Perguntas?</div>
+<div style="position: absolute; left: 0; right: 0; bottom: 0; width: 100vw; display: flex; justify-content: space-between; align-items: flex-end; pointer-events: none;">
+    <img src="/vinta_logo.png" alt="Logo da Vinta" style="height: 60px; opacity: 0.97; margin-left: 2.5rem; margin-bottom: 1.5rem; pointer-events: auto;" />
+    <img src="/pysul-logo.svg" alt="Python Sul" style="height: 130px; opacity: 0.97; margin-right: 2.5rem; margin-bottom: 1.5rem; pointer-events: auto;" />
+</div>
 
 percentil(lead_times, 50)  # 4 dias
 percentil(lead_times, 75)  # 8 dias
@@ -543,6 +543,8 @@ class: no-pysul-watermark
 ---
 
 # Obrigado!
+
+<img src="/qrcode.png" alt="QR Code" style="display: block; margin: 2.5rem auto 0; width: 38vw; max-width: 520px; min-width: 220px; height: auto; box-shadow: 0 0 32px #0002; border-radius: 1.5rem;" />
 
 <div style="position: absolute; left: 0; right: 0; bottom: 0; width: 100vw; display: flex; justify-content: space-between; align-items: flex-end; pointer-events: none;">
     <img src="/vinta_logo.png" alt="Logo da Vinta" style="height: 60px; opacity: 0.97; margin-left: 2.5rem; margin-bottom: 1.5rem; pointer-events: auto;" />
