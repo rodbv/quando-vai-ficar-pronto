@@ -19,17 +19,17 @@ OUTPUT_DIR = Path("slides/public")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 DATA_FILE = Path("data/lead_time_data_clean_2026.csv")
 
-# Paleta light para charts
+# Paleta Turquoise Harmony para charts
 BG = "#ffffff"
-BG2 = "#fff5f5"
-SURFACE = "#fff1f1"
-TEXT = "#2b1616"
-TEXT_MUTED = "#7a4a4a"
-GRID = "#e7caca"
-GREEN = "#2d8c57"
-RED = "#ff0000"
-MAIN = "#b22222"
-MC_BAR = "#98c9ac"
+BG2 = "#f0f3bd"  # cream
+SURFACE = "#e5f5f3"  # teal tint
+TEXT = "#032830"  # near-black dark teal
+TEXT_MUTED = "#4a8a84"  # muted teal
+GRID = "#b2e0db"  # light teal
+GREEN = "#02c39a"  # mint-leaf
+RED = "#00a896"  # verdigris
+MAIN = "#05668d"  # baltic-blue
+MC_BAR = "#028090"  # teal
 
 
 def load_data(clean_cycle_time: bool = True) -> pd.DataFrame:
@@ -1508,9 +1508,6 @@ if __name__ == "__main__":
 
     fig_normal_distribution_reference(mean_days=10, median_days=10)
     fig_skewed_distribution_reference(df)
-    fig_airport_travel_time_distribution()
-    fig_airport_travel_time_histogram()
-    fig_airport_travel_time_cdf()
     fig_cycle_time_distribution_curve(df)
     fig_cycle_time_histogram(df)
     fig_cycle_time_scatterplot(df)

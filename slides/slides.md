@@ -15,6 +15,7 @@ layout: cover
 
 ---
 
+
 # Quando vai ficar<br>pronto?
 
 Respondendo a pergunta mais importante do cliente.
@@ -23,7 +24,22 @@ Respondendo a pergunta mais importante do cliente.
 
 ---
 layout: default
-class: planilha-slide
+---
+
+
+# Quem sou eu
+
+<ul style="font-size: 2.5rem; line-height: 1.5; margin-bottom: 2.5rem;">
+    <li>Pai do Henrique</li>
+    <li>Tech Lead na Vinta Software, empresa de Recife que nasceu na comunidade Python Nordeste</li>
+    <li>Trabalho com Django e Python há 4 anos, e desenvolvimento Web há ... vish!</li>
+    <li>Contribuidor do Django e outros projetos Open Source.</li>
+</ul>
+
+<img src="/vinta_logo.png" alt="Logo da Vinta" style="height: 48px; position: absolute; left: 2.5rem; bottom: 2.5rem;" />
+
+---
+layout: default
 ---
 
 <div class="cartoon-pane pane-tl" role="img" aria-label="Cartoon painel superior esquerdo"></div>
@@ -46,7 +62,6 @@ layout: default
 ---
 
 <div class="cartoon-pane pane-br" role="img" aria-label="Cartoon painel inferior direito"></div>
-
 ---
 layout: default
 ---
@@ -66,9 +81,48 @@ layout: default
 layout: default
 ---
 
+
+
+# O que vamos ver hoje
+
+<ol style="font-size: 2.9rem; line-height: 1.5; margin-left: 2.2rem;">
+    <li style="margin-bottom: 1.1rem; font-size: 2.2rem;">Estimativa vs. Previsão: por que são coisas diferentes</li>
+    <li style="margin-bottom: 1.1rem; font-size: 2.2rem;">Como prever a entrega de 1 item</li>
+    <li style="margin-bottom: 1.1rem; font-size: 2.2rem;">Como prever a entrega de vários itens</li>
+    <li style="font-size: 2.2rem;">Como acelerar entregas do jeito certo</li>
+</ol>
+
+
+---
+layout: default
+class: definition-slide
+---
+
+# O que é uma previsão?
+
+## **Previsão** é uma declaração sobre o futuro baseada em dados históricos, que expressa a probabilidade de um determinado resultado.
+
+
+**O que compõe uma previsão:**
+
+- **Uma data (ou intervalo de datas)** para o resultado
+- **Uma medida de confiança** (ex: 85% de chance)
+
+**Exemplos:**
+
+- “Temos 85% de confiança de entregar até **11 de maio**.”
+- “Temos 70% de chance de entregar entre **10 e 15 de maio**.”
+
+<span style="font-size: 1.3rem; color: #4a8a84;">Baseado em <i>Actionable Agile Metrics</i></span>
+
+
+---
+layout: default
+---
+
 # Por que a gente parece sempre estimar por baixo?
 
-## Nosso cérebro (e otimismo) pensa em distruibuição normal
+## Nosso cérebro (e otimismo) pensa em distribuição normal
 
 <img src="/normal_distribution_curve.png" alt="Curva normal de referência" style="width: 92%; max-height: 72%; object-fit: contain; display: block; margin: 1.2rem auto 0;" />
 
@@ -156,7 +210,6 @@ class: code-slide
 
 # Ou melhor ainda, o Python
 
-
 ```python
 import math
 import numpy as np
@@ -164,7 +217,32 @@ import numpy as np
 lead_times = carrega_dias_csv()
 
 def percentil(dados: list[int], p: float) -> int:
-    return math.ceil(np.percentile(dados, p))
+        return math.ceil(np.percentile(dados, p))
+
+---
+layout: default
+---
+
+
+# Conclusão
+
+- Previsão não é chute: é confiança baseada em dados.
+- Use seus próprios dados para responder “quando vai ficar pronto?” com transparência.
+- Sempre comunique a incerteza: data + confiança.
+- Comece pequeno: registre entregas, calcule percentis, compartilhe previsões.
+
+---
+layout: default
+---
+
+# Obrigado!
+
+<div style="display: flex; align-items: center; justify-content: center; gap: 5rem; margin-top: 3rem;">
+    <img src="/vinta_logo.png" alt="Logo da Vinta" style="height: 110px;" />
+    <img src="/pysul-logo.svg" alt="Python Sul" style="height: 110px;" />
+</div>
+
+<div style="font-size: 2.5rem; margin-top: 2.5rem; text-align: center;">Perguntas?</div>
 
 percentil(lead_times, 50)  # 4 dias
 percentil(lead_times, 75)  # 8 dias
@@ -197,7 +275,7 @@ Por ser baseado em seus dados recentes, nesse número já está embutido tudo aq
 layout: default
 ---
 
-# E como fazer previsão de entrega de um projeto com vários itens?
+# Previsão de entrega de um projeto com vários itens 
 
 ## Para isso, a gente pode usar Simulação de Monte Carlo.
 
@@ -223,18 +301,18 @@ layout: default
 
 ##  Tendo o TP, simular a entrega de 10 itens seria sortear dentre esses valores o TP diário até completar a entrega dos 10 itens. Uma simulação seria algo assim:
 
-| Dia | Itens entregues | Itens restantes |
+| Dia | Itens entregues | Restantes |
 |---|---|---|
-| 1 | 2 | 8 |
-| 2 | 0 | 8 |
-| 3 | 1 | 7 |
-| 4 | 3 | 4 | 
-| 5 | 0 | 4 |
-| 6 | 2 | 2 |
-| 7 | 1 | 1 |
-| 8 | 1 | 0 |
+| 1 | 0 | 10 |
+| 2 | 1 | 9 |
+| 3 | 0 | 9 |
+| 4 | 2 | 7 |
+| 5 | 0 | 7 |
+| 6 | 1 | 6 |
+| ... | ... | ... |
+| 23 | 1 | 0 |
 
-Ou seja essa minha primeira simulação deu resultado de 8 dias.
+Essa minha primeira simulação deu resultado de 23 dias.
 
 ---
 layout: default
@@ -256,7 +334,7 @@ def simula_entrega(num_itens: int, historico: list[int]) -> int:
     return dias
 
 dias_para_10_itens = simula_entrega(10, historico_tp)
-print(dias_para_10_itens)  # ex.: 8
+print(dias_para_10_itens)  # ex.: 23
 ```
 
 ---
@@ -274,12 +352,24 @@ resultados = [simula_entrega(10, historico_tp) for _ in range(10_000)]
 p50, p85, p95 = np.percentile(resultados, [50, 85, 95])
 
 print(f"P50={p50:.0f}  P85={p85:.0f}  P95={p95:.0f} dias")
-# P50=10  P85=15  P95=20 dias
+# P50=24  P85=30  P95=34 dias
 ```
 
-Ou seja, agora podemos dizer que temos 85% de confiança de entregar os 10 itens em 15 dias ou menos, e 95% de confiança de entregar em 20 dias ou menos.
+Ou seja, agora podemos dizer que temos 85% de confiança de entregar os 10 itens em 30 dias ou menos, e 95% de confiança de entregar em 34 dias ou menos.
 
 Sem chute, sem reunião de estimativa, só com dados reais e simulação.
+
+
+---
+layout: default
+class: full-height-img-slide
+---
+
+# Resultado: 10.000 simulações de Monte Carlo
+
+## Distribuição dos resultados com percentis de confiança
+
+<img src="/monte_carlo_resultado_daily.png" alt="Histograma das 10.000 simulações de Monte Carlo com linhas P50, P85 e P95" style="width: 96%; max-height: 72%; object-fit: contain; display: block; margin: 1rem auto 0;" />
 
 
 ---
@@ -363,7 +453,7 @@ Limitar o WIP ajuda a reduzir o tempo de ciclo, melhorar a qualidade e aumentar 
 A [Lei de Little](https://pt.wikipedia.org/wiki/Teoria_das_filas#Lei_de_Little) relaciona o tempo de ciclo, o WIP e a taxa de entrega (throughput):
 
 $$
-\Large\text{🔽 Tempo de Ciclo} = \frac{\text{WIP}}{\text{🔼 Taxa de Entrega (TP)}}
+\Large\textcolor{#02c39a}{\downarrow}\!\text{Tempo de Ciclo} = \frac{\text{WIP}}{\textcolor{#02c39a}{\uparrow}\!\text{Taxa de Entrega (TP)}}
 $$
 
 ---
@@ -380,5 +470,83 @@ Limitar o WIP ajuda a reduzir o tempo de ciclo, melhorar a qualidade e aumentar 
 A [Lei de Little](https://pt.wikipedia.org/wiki/Teoria_das_filas#Lei_de_Little) relaciona o tempo de ciclo, o WIP e a taxa de entrega (throughput):
 
 $$
-\Large\text{🔽 Tempo de Ciclo} = \frac{\text{🔽 WIP}}{\text{🔼 Taxa de Entrega (TP)}}
+\Large\textcolor{#02c39a}{\downarrow}\!\text{Tempo de Ciclo} = \frac{\textcolor{#02c39a}{\downarrow}\!\text{WIP}}{\text{Taxa de Entrega (TP)}}
 $$
+
+---
+layout: default
+---
+
+# Stop starting, start finishing
+
+## Cada item novo que você inicia aumenta o WIP - e envelhece tudo que já está em andamento.
+
+- **Resistir ao impulso** de puxar tarefa nova enquanto há itens em andamento
+- Terminar 1 item entrega valor imediato; iniciar mais 1 só aumenta espera de todos
+- Para freelancers: cliente esperando feedback não conta como "em andamento" - **pause o item, não o projeto**
+
+<div class="quote-block">
+Não é sobre trabalhar mais. É sobre terminar antes de começar.
+</div>
+
+---
+layout: default
+---
+
+# Monitore a idade dos itens em andamento
+
+## "Item Age" é há quantos dias um item está em progresso - sem ter terminado.
+
+Todo item novo tem **15% de chance de estourar o SLE de 11 dias**.
+
+Mas um item com 6 dias em andamento já entrou na cauda longa da distribuição - essa chance sobe para **~40%**.
+
+| Item | Iniciado em | Idade atual | Risco de estourar SLE |
+|---|---|---|---|
+| Bug fix | 22/04 | 6 dias | 40% - zona de atenção |
+| Feature A | 14/04 | 12 dias | já estourou |
+| Relatório | 10/04 | 16 dias | 🚨 investigar bloqueio |
+
+---
+layout: default
+---
+
+# Reduza o tamanho dos itens (Right-Sizing)
+
+## Para cada card novo, faça uma pergunta simples a partir do SLE atual:
+
+<div class="quote-block">
+"Estamos confiantes de que isso termina em 11 dias?"
+</div>
+
+Se a resposta for hesitante, quebre o card: reavalie o escopo, discuta o que pode ser entregue antes, negocie o que é necessário.
+
+Não precisa estimar com precisão. Só precisa de confiança suficiente.
+
+
+---
+layout: default
+---
+
+# Conclusão
+
+- Quando o cliente pede estimativa e velocidade, na verdade o que ele precisa é **previsibilidade e transparência**.
+- Previsão não é chute e otimismo não é estratégia.
+- Para 1 item use percentis de lead time, para vários itens use simulação de Monte Carlo.
+- Sempre comunique a incerteza: data + confiança.
+- Comece pequeno: registre dados, calcule o SLE, compartilhe resultados.
+
+---
+layout: default
+footer: false
+class: no-pysul-watermark
+---
+
+# Obrigado!
+
+<div style="font-size: 2.5rem; margin-top: 2.5rem; text-align: center;">Perguntas?</div>
+
+<div style="position: absolute; left: 0; right: 0; bottom: 0; width: 100vw; display: flex; justify-content: space-between; align-items: flex-end; pointer-events: none;">
+    <img src="/vinta_logo.png" alt="Logo da Vinta" style="height: 60px; opacity: 0.97; margin-left: 2.5rem; margin-bottom: 1.5rem; pointer-events: auto;" />
+    <img src="/pysul-logo.svg" alt="Python Sul" style="height: 180px; opacity: 0.97; margin-right: 2.5rem; margin-bottom: 1.5rem; pointer-events: auto;" />
+</div>
