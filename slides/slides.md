@@ -544,9 +544,7 @@ class: no-pysul-watermark
 
 # Obrigado!
 
-<div style="font-size: 2.5rem; margin-top: 2.5rem; text-align: center;">Perguntas?</div>
-
 <div style="position: absolute; left: 0; right: 0; bottom: 0; width: 100vw; display: flex; justify-content: space-between; align-items: flex-end; pointer-events: none;">
     <img src="/vinta_logo.png" alt="Logo da Vinta" style="height: 60px; opacity: 0.97; margin-left: 2.5rem; margin-bottom: 1.5rem; pointer-events: auto;" />
-    <img src="/pysul-logo.svg" alt="Python Sul" style="height: 180px; opacity: 0.97; margin-right: 2.5rem; margin-bottom: 1.5rem; pointer-events: auto;" />
+    <img src="/pysul-logo.svg" alt="Python Sul" style="height: 130px; opacity: 0.97; margin-right: 2.5rem; margin-bottom: 1.5rem; pointer-events: auto;" />
 </div>
