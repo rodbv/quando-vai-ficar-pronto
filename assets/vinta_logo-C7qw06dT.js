@@ -1,0 +1,1 @@
+var e=`/quando-vai-ficar-pronto/vinta_logo.png`;export{e as t};

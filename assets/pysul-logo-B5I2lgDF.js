@@ -1,0 +1,1 @@
+var e=`/quando-vai-ficar-pronto/pysul-logo.svg`;export{e as t};
