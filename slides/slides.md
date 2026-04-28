@@ -219,34 +219,8 @@ lead_times = carrega_dias_csv()
 def percentil(dados: list[int], p: float) -> int:
         return math.ceil(np.percentile(dados, p))
 
----
-layout: default
----
+print(percentil(lead_time, 85)) # 11
 
-
-# Conclusão
-
-- Previsão não é chute: é confiança baseada em dados.
-- Use seus próprios dados para responder “quando vai ficar pronto?” com transparência.
-- Sempre comunique a incerteza: data + confiança.
-- Comece pequeno: registre entregas, calcule percentis, compartilhe previsões.
-
----
-layout: default
----
-
-# Obrigado!
-
-<img src="/qrcode.png" alt="QR Code" style="display: block; margin: 2.5rem auto 0; width: 38vw; max-width: 520px; min-width: 220px; height: auto; box-shadow: 0 0 32px #0002; border-radius: 1.5rem;" />
-
-<div style="position: absolute; left: 0; right: 0; bottom: 0; width: 100vw; display: flex; justify-content: space-between; align-items: flex-end; pointer-events: none;">
-    <img src="/vinta_logo.png" alt="Logo da Vinta" style="height: 60px; opacity: 0.97; margin-left: 2.5rem; margin-bottom: 1.5rem; pointer-events: auto;" />
-    <img src="/pysul-logo.svg" alt="Python Sul" style="height: 130px; opacity: 0.97; margin-right: 2.5rem; margin-bottom: 1.5rem; pointer-events: auto;" />
-</div>
-
-percentil(lead_times, 50)  # 4 dias
-percentil(lead_times, 75)  # 8 dias
-percentil(lead_times, 85)  # 11 dias
 ```
 
 ---
@@ -256,7 +230,7 @@ layout: default
 # Agora temos nosso SLE (Service Level Expectation)
 
 
-## Nosso SLE atual é de 11 dias com 85% de confiança.
+## De acordo com os dados recentes, nosso SLE é de 11 dias com 85% de confiança.
 
 **Ou seja, sabemos que qualquer trabalho termina em 11 dias ou menos em 85% dos casos.**
 
@@ -277,19 +251,17 @@ layout: default
 
 # Previsão de entrega de um projeto com vários itens 
 
-## Para isso, a gente pode usar Simulação de Monte Carlo.
+## Para diversos itens sendo trabalhados em paralelo, vamos usar Simulações de Monte Carlo.
 
-Tudo começa calculando um outro número dos nossos dados de início e fim: quantos items terminaram por dia ("throughput", TP).
+A partir dos mesmos dados de antes, calculamos nossa **taxa de entrega diária** (*throughput*, TP).
 
-| Data | Itens terminados |
+| Data | Itens entregues (TP diário) |
 |---|---|
 | 03/03/2026 | 1 |
 | 04/03/2026 | 0 |
 | 05/03/2026 | 1 |
 | 06/03/2026 | 3 |
 | 07/03/2026 | 2 |
-| 08/03/2026 | 0 |
-| 09/03/2026 | 0 |
 | ... | ... |
 | 14/04/2026 | 2 | 
 
@@ -297,7 +269,7 @@ Tudo começa calculando um outro número dos nossos dados de início e fim: quan
 layout: default
 ---
 
-# Rodando 1 simulação de Monte Carlo
+# Rodando 1 simulação de Monte Carlo para 10 itens
 
 ##  Tendo o TP, simular a entrega de 10 itens seria sortear dentre esses valores o TP diário até completar a entrega dos 10 itens. Uma simulação seria algo assim:
 
@@ -321,6 +293,8 @@ layout: default
 # Passo 1: função simula_entrega (1 execução)
 
 ```python
+import random
+
 historico_tp = carrega_tp_csv()  # [1, 0, 1, 3, 2, 0, 0, ..., 2]
 
 def simula_entrega(num_itens: int, historico: list[int]) -> int:
@@ -333,8 +307,7 @@ def simula_entrega(num_itens: int, historico: list[int]) -> int:
 
     return dias
 
-dias_para_10_itens = simula_entrega(10, historico_tp)
-print(dias_para_10_itens)  # ex.: 23
+simula_entrega(10, historico_tp) # ex: 23
 ```
 
 ---
@@ -376,9 +349,28 @@ class: full-height-img-slide
 layout: default
 ---
 
-# Simulando "Quantos itens até o dia X?"
+# Rodando 1 simulação para "quantos itens até 01/06?"
 
-## Também podemos simular "Quantos itens podemos entregar até o dia X?"
+## Para cada dia restante até o prazo, sorteamos um TP do histórico e acumulamos os itens entregues:
+
+| Dia | TP sorteado | Entregues (acumulado) |
+|---|---|---|
+| 1 | 1 | 1 |
+| 2 | 0 | 1 |
+| 3 | 2 | 3 |
+| 4 | 1 | 4 |
+| 5 | 0 | 4 |
+| 6 | 3 | 7 |
+| ... | ... | ... |
+| 34 | 1 | 26 |
+
+Essa simulação resultou em **26 itens** entregues até 01/06/2026.
+
+---
+layout: default
+---
+
+# Passo 2: 10.000 simulações — "quantos itens até o dia X?"
 
 ```python
 def simula_itens(prazo: date, historico: list[int]) -> int:
@@ -388,13 +380,26 @@ def simula_itens(prazo: date, historico: list[int]) -> int:
     return entregues
 
 resultados = [simula_itens(date(2026, 6, 1), historico_tp) for _ in range(10_000)]
-p50, p85, p95 = np.percentile(resultados, [50, 85, 95])
+p15, p50, p85 = np.percentile(resultados, [15, 50, 85])
 
-print(f"P50={p50:.0f}  P85={p85:.0f}  P95={p95:.0f} itens")
-# P50=25  P85=30  P95=35 itens
+print(f"P15={p15:.0f}  P50={p50:.0f}  P85={p85:.0f} itens")
+# P15=59  P50=72  P85=86 itens
 ```
 
-Ou seja, temos 85% de confiança de entregar pelo menos 30 itens até o dia 01/06/2026.
+Aqui os percentis são **invertidos** em relação à previsão de data: P85=86 significa que 85% das simulações entregaram **86 ou menos** — só 15% de confiança de chegar lá.
+
+Para dizer "85% de confiança de entregar **pelo menos** N itens", usamos o **P15**: temos 85% de confiança de entregar pelo menos **59 itens** até 01/06/2026.
+
+---
+layout: default
+class: full-height-img-slide
+---
+
+# Resultado: 10.000 simulações — "quantos itens até 01/06?"
+
+## A área verde mostra que 85% das simulações entregam P15 itens **ou mais**
+
+<img src="/monte_carlo_itens.png" alt="Histograma das 10.000 simulações de quantos itens até o prazo, com P15 destacado como estimativa conservadora" style="width: 96%; max-height: 72%; object-fit: contain; display: block; margin: 1rem auto 0;" />
 
 ---
 layout: default

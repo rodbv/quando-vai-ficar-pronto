@@ -49,6 +49,11 @@
   color: #1a1a1a !important;
 }
 
+/* Shiki: números de linha em cinza bem claro */
+.slidev-code-line-numbers .slidev-code code .line::before {
+  color: #c8c8c8 !important;
+}
+
 /* ─── Cover ─────────────────────────────────────────────── */
 
 .slidev-layout.cover {

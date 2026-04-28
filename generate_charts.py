@@ -1481,6 +1481,87 @@ def fig_monte_carlo_histogram_100_runs(
     print(f"✓ {out}  (runs={len(completion_weeks)} P85={p85:.0f} dias)")
 
 
+def fig_monte_carlo_itens(
+    throughput_values: np.ndarray,
+    prazo_dias: int = 34,
+    n_sim: int = 10_000,
+    seed: int = 42,
+    output: str = "monte_carlo_itens.png",
+) -> tuple[float, float, float]:
+    """Histograma de 'quantos itens entregamos até o prazo?'
+    Usa P15 como estimativa conservadora (85% das simulações entregam >= P15 itens).
+    """
+    rng = np.random.default_rng(seed)
+    resultados = np.array(
+        [int(rng.choice(throughput_values, size=prazo_dias).sum()) for _ in range(n_sim)]
+    )
+
+    p15 = float(np.percentile(resultados, 15))
+    p50 = float(np.percentile(resultados, 50))
+    p85 = float(np.percentile(resultados, 85))
+
+    fig, ax = plt.subplots(figsize=(11, 5), facecolor=BG)
+    ax.set_facecolor(BG)
+
+    bins = range(int(resultados.min()), int(resultados.max()) + 2)
+    ax.hist(resultados, bins=bins, color=MC_BAR, edgecolor=BG, alpha=0.9, align="left")
+
+    # Shade area to the right of P15 to show "85% das simulações"
+    ax.axvspan(p15, resultados.max() + 1, color=GREEN, alpha=0.10, zorder=0)
+
+    ax.axvline(
+        p15,
+        color=MAIN,
+        linewidth=2.5,
+        linestyle="--",
+        label=f"P15: {p15:.0f} itens  ← use este",
+    )
+    ax.axvline(
+        p50,
+        color=GREEN,
+        linewidth=2,
+        linestyle="--",
+        label=f"P50: {p50:.0f} itens",
+    )
+    ax.axvline(
+        p85,
+        color=RED,
+        linewidth=2,
+        linestyle="--",
+        label=f"P85: {p85:.0f} itens  (só 15% chegam aqui)",
+    )
+
+    ax.annotate(
+        "85% das simulações\nentregam ≥ P15 itens",
+        xy=(p15 + (p85 - p15) * 0.45, ax.get_ylim()[1] * 0.7),
+        color=TEXT_MUTED,
+        fontsize=11,
+        ha="center",
+        va="center",
+    )
+
+    ax.set_title(
+        f"Monte Carlo: quantos itens entregamos em {prazo_dias} dias?",
+        color=TEXT,
+        fontsize=14,
+        pad=12,
+    )
+    ax.set_xlabel("Itens entregues", color=TEXT_MUTED)
+    ax.set_ylabel("Frequência (10.000 simulações)", color=TEXT_MUTED)
+    ax.xaxis.set_major_locator(mticker.MaxNLocator(integer=True))
+    ax.tick_params(colors=TEXT_MUTED)
+    ax.legend(fontsize=11, facecolor=SURFACE, labelcolor=TEXT, edgecolor=GRID)
+    for spine in ax.spines.values():
+        spine.set_color(GRID)
+
+    fig.tight_layout()
+    out = OUTPUT_DIR / output
+    fig.savefig(out, dpi=150, bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print(f"✓ {out}  (P15={p15:.0f} P50={p50:.0f} P85={p85:.0f} itens)")
+    return p15, p50, p85
+
+
 if __name__ == "__main__":
     df = load_data()
     df_tp = load_data(clean_cycle_time=False)
@@ -1534,6 +1615,11 @@ if __name__ == "__main__":
         trace_csv="data/monte_carlo_trace_daily_10k.csv",
         target_cards=50,
         output="02-monte-carlo-histograma-100-runs-daily.png",
+    )
+    fig_monte_carlo_itens(
+        throughput_values=np.array(throughput_daily_latest_16w),
+        prazo_dias=34,
+        output="monte_carlo_itens.png",
     )
     print("\nCharts salvos em slides/public/")
     print("Rode 'just slides' para ver a apresentação.")
