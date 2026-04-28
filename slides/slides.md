@@ -482,17 +482,14 @@ $$
 layout: default
 ---
 
-# Stop starting, start finishing
+# "Stop starting, start finishing"
 
 ## Cada item novo que você inicia aumenta o WIP - e envelhece tudo que já está em andamento.
 
-- **Resistir ao impulso** de puxar tarefa nova enquanto há itens em andamento
-- Terminar 1 item entrega valor imediato; iniciar mais 1 só aumenta espera de todos
-- Para freelancers: cliente esperando feedback não conta como "em andamento" - **pause o item, não o projeto**
+- Trabalho deve ser "puxado" e não "empurrrado", ou seja, só inicie um novo item quando tiver capacidade para isso.
+- Priorize itens à direita no quadro - inclusive itens de colegas!
+- Um limite estrito de WIP garante que o time foque em terminar o que já começou, ao invés de começar mais coisas.
 
-<div class="quote-block">
-Não é sobre trabalhar mais. É sobre terminar antes de começar.
-</div>
 
 ---
 layout: default
@@ -521,7 +518,7 @@ layout: default
 ## Para cada card novo, faça uma pergunta simples a partir do SLE atual:
 
 <div class="quote-block">
-"Estamos confiantes de que isso termina em 11 dias?"
+"Estamos confiantes de que isso termina abaixo do nosso SLE?"
 </div>
 
 Se a resposta for hesitante, quebre o card: reavalie o escopo, discuta o que pode ser entregue antes, negocie o que é necessário.
@@ -535,11 +532,11 @@ layout: default
 
 # Conclusão
 
-- Quando o cliente pede estimativa e velocidade, na verdade o que ele precisa é **previsibilidade e transparência**.
-- Previsão não é chute e otimismo não é estratégia.
+- Quando o cliente pede estimativa e velocidade, normalmente o que ele precisa é **previsibilidade e transparência**.
 - Para 1 item use percentis de lead time, para vários itens use simulação de Monte Carlo.
 - Sempre comunique a incerteza: data + confiança.
-- Comece pequeno: registre dados, calcule o SLE, compartilhe resultados.
+- Comece pequeno: registre data de início e fim, calcule SLE, torne o trabalho visível.
+- Estimativa é um nome bonito pra chute, e otimismo não é estratégia.
 
 ---
 layout: default

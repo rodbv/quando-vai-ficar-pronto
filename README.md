@@ -29,7 +29,7 @@ uv run python generate_charts.py
 
 Para experimentar com os conceitos (SLE para 1 item, Monte Carlo para N itens), veja `notebook/`:
 - `notebook/previsao.ipynb` — notebook companion dos slides
-- `notebook/flow_forecast.py` — helpers do notebook (não compartilhado com `generate_charts.py`)
+- `notebook/lib/flow_forecast.py` — helpers do notebook
 
 ### CSV mínimo esperado
 
