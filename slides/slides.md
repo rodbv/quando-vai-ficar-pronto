@@ -532,7 +532,7 @@ Se um item está demorando, investigue:
 layout: default
 ---
 
-# Reduza o tamanho dos itens (Right-Sizing)
+# Controle o tamanho dos itens (Right-Sizing)
 
 ## Para cada card novo, faça uma pergunta simples a partir do SLE atual:
 
