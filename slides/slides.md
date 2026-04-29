@@ -202,6 +202,18 @@ layout: default
 class: full-height-img-slide
 ---
 
+# Distribuição do lead time
+
+## A área à esquerda de 11 dias representa 85% dos itens
+
+<img src="/cycle_time_histogram.png" alt="Histograma de lead time com percentil 85 destacado" style="width: 95%; max-height: 68%; object-fit: contain; display: block; margin: 1rem auto 0;" />
+
+
+---
+layout: default
+class: full-height-img-slide
+---
+
 # Com isso podemos dizer qual nossa previsão para 1 item
 
 

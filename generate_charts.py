@@ -221,8 +221,10 @@ def fig_cycle_time_histogram(df: pd.DataFrame) -> None:
 
     # Cap em 60 dias pra não distorcer visualmente pelos outliers
     ct_plot = ct[ct <= 60]
+    p85 = float(ct.quantile(0.85))
 
     ax.hist(ct_plot, bins=30, color=GREEN, edgecolor=BG, alpha=0.85)
+    ax.axvspan(0, p85, color=GREEN, alpha=0.16, zorder=0)
     # Escala log melhora leitura quando alguns bins concentram muitos casos.
     ax.set_yscale("log")
 
@@ -1493,7 +1495,10 @@ def fig_monte_carlo_itens(
     """
     rng = np.random.default_rng(seed)
     resultados = np.array(
-        [int(rng.choice(throughput_values, size=prazo_dias).sum()) for _ in range(n_sim)]
+        [
+            int(rng.choice(throughput_values, size=prazo_dias).sum())
+            for _ in range(n_sim)
+        ]
     )
 
     p15 = float(np.percentile(resultados, 15))
