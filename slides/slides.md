@@ -1,5 +1,6 @@
 ---
 theme: seriph
+colorSchema: auto
 css: ./style.css
 title: Quando vai ficar pronto?
 info: |
@@ -31,8 +32,8 @@ layout: default
 
 <ul style="font-size: 2.5rem; line-height: 1.5; margin-bottom: 2.5rem;">
     <li>Pai do Henrique</li>
+    <li>Co-organizador da Python Floripa</li>
     <li>Tech Lead na Vinta Software, empresa de Recife que nasceu na comunidade Python Nordeste</li>
-    <li>Trabalho com Django e Python há 4 anos, e desenvolvimento Web há ... vish!</li>
     <li>Contribuidor do Django e outros projetos Open Source.</li>
 </ul>
 
@@ -430,6 +431,7 @@ layout: default
 ---
 layout: default
 class: little-law-slide
+hide: true
 ---
 
 # Limite o trabalho em andamento (WIP)
@@ -447,6 +449,7 @@ $$
 ---
 layout: default
 class: little-law-slide
+hide: true
 ---
 
 # Limite o trabalho em andamento (WIP)
@@ -464,6 +467,7 @@ $$
 ---
 layout: default
 class: little-law-slide
+hide: true
 ---
 
 # Limite o trabalho em andamento (WIP)
@@ -541,14 +545,22 @@ layout: default
 ---
 layout: default
 footer: false
-class: no-pysul-watermark
 ---
 
-# Obrigado!
+# Obrigado! {.text-center}
 
-<img src="/qrcode.png" alt="QR Code" style="display: block; margin: 2.5rem auto 0; width: 38vw; max-width: 520px; min-width: 220px; height: auto; box-shadow: 0 0 32px #0002; border-radius: 1.5rem;" />
+<div class="flex justify-center gap-10 mt-3 text-2xl font-medium" style="color: var(--teal);">
+  <span>📧 rodrigo.vieira@gmail.com</span>
+  <span>🐘 @rodbv@pynews.com.br</span>
+</div>
 
-<div style="position: absolute; left: 0; right: 0; bottom: 0; width: 100vw; display: flex; justify-content: space-between; align-items: flex-end; pointer-events: none;">
-    <img src="/vinta_logo.png" alt="Logo da Vinta" style="height: 60px; opacity: 0.97; margin-left: 2.5rem; margin-bottom: 1.5rem; pointer-events: auto;" />
-    <img src="/pysul-logo.svg" alt="Python Sul" style="height: 130px; opacity: 0.97; margin-right: 2.5rem; margin-bottom: 1.5rem; pointer-events: auto;" />
+<img src="/qrcode.png" alt="QR Code" class="block mx-auto mt-6 h-auto rounded-2xl shadow-md" style="width: 42%; max-width: 540px; min-width: 220px;" />
+
+<div class="text-center mt-8">
+  <div class="text-2xl font-semibold" style="color: var(--baltic-blue);">github.com/rodbv/quando-vai-ficar-pronto</div>
+  <div class="text-xl mt-1 text-gray-500">slides, código e notebook</div>
+</div>
+
+<div class="absolute bottom-0 left-0 pb-6 px-10">
+  <img src="/vinta_logo.png" alt="Logo da Vinta" class="h-10" />
 </div>
