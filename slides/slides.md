@@ -544,6 +544,29 @@ layout: default
 
 ---
 layout: default
+---
+
+# Para aprender mais
+
+<div class="flex items-center gap-10 mt-4">
+  <div class="flex flex-col items-center gap-3">
+    <a href="https://actionableagile.com/books/aamfp/" target="_blank" rel="noopener">
+      <img src="/vacanti.webp" alt="Actionable Agile Metrics for Predictability - Daniel S. Vacanti" style="height: 384px; border-radius: 8px; box-shadow: 0 4px 24px rgba(0,0,0,0.18);" />
+    </a>
+  </div>
+  <div class="flex flex-col items-center gap-3">
+    <a href="https://actionableagile.com/books/wwibd/" target="_blank" rel="noopener">
+      <img src="/wwibd.jpeg" alt="When Will It Be Done? - Daniel S. Vacanti" style="height: 384px; border-radius: 8px; box-shadow: 0 4px 24px rgba(0,0,0,0.18);" />
+    </a>
+  </div>
+  <ul style="font-size: 1.7rem; line-height: 1.6; color: var(--secondary);">
+    <li style="margin-bottom: 2rem;">Livros e vídeos do Daniel Vacanti<br><a href="https://actionableagile.com" target="_blank" rel="noopener" style="color: var(--teal); font-size: 1.6rem;">actionableagile.com</a></li>
+    <li>Blog posts do Troy Magennis<br><a href="https://www.focusedobjective.com" target="_blank" rel="noopener" style="color: var(--teal); font-size: 1.6rem;">focusedobjective.com</a></li>
+  </ul>
+</div>
+
+---
+layout: default
 footer: false
 ---
 

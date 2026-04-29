@@ -59,5 +59,15 @@ O deploy é feito automaticamente para o GitHub Pages via GitHub Actions. O cont
 - `notebook/` — Notebook + helpers (SLE + Monte Carlo)
 - `justfile` — Atalhos para build e automação
 
+## Referências
+
+- **Daniel S. Vacanti** — livros e vídeos sobre métricas de fluxo e previsibilidade ágil:
+  - [Actionable Agile Metrics for Predictability](https://actionableagile.com/books/aamfp/)
+  - [When Will It Be Done?](https://actionableagile.com/books/wwibd/)
+  - [actionableagile.com](https://actionableagile.com)
+
+- **Troy Magennis** — blog posts e ferramentas de simulação Monte Carlo:
+  - [focusedobjective.com](https://www.focusedobjective.com)
+
 ## Licença
 MIT. Veja o arquivo LICENSE.
