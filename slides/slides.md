@@ -610,16 +610,11 @@ footer: false
 # Obrigado! {.text-center}
 
 <div class="flex justify-center gap-10 mt-3 text-2xl font-medium" style="color: var(--teal);">
-  <span style="display: inline-flex; align-items: center; gap: 0.3em;"><img src="/linkedin.svg" alt="LinkedIn" style="height: 1em;" /> <a href="https://www.linkedin.com/in/rodrigobvieira/" target="_blank" rel="noopener" style="color: inherit; text-decoration: none;">linkedin.com/in/rodrigobvieira</a></span>
+  <span style="display: inline-flex; align-items: center; gap: 0.3em;"><img src="/linkedin.svg" alt="LinkedIn" style="height: 1em;" /> <a href="https://www.linkedin.com/in/rodrigobvieira/" target="_blank" rel="noopener" style="color: inherit; text-decoration: none;">rodrigobvieira</a></span>
   <span style="display: inline-flex; align-items: center; gap: 0.3em;"><img src="/mastodon-icon.png" alt="Mastodon" style="height: 1em;" /> <a href="https://pynews.com.br/@rodbv" target="_blank" rel="noopener" style="color: inherit; text-decoration: none;">pynews.com.br/@rodbv</a></span>
 </div>
 
 <img src="/qrcode.png" alt="QR Code" class="block mx-auto mt-6 h-auto rounded-2xl shadow-md" style="width: 42%; max-width: 540px; min-width: 220px;" />
-
-<div class="text-center mt-8">
-  <a href="https://github.com/rodbv/quando-vai-ficar-pronto" target="_blank" rel="noopener" class="text-2xl font-semibold" style="color: var(--baltic-blue);">github.com/rodbv/quando-vai-ficar-pronto</a>
-  <div class="text-xl mt-1 text-gray-500">slides, código e notebook</div>
-</div>
 
 <div class="absolute bottom-0 left-0 pb-6 px-10">
   <img src="/vinta_logo.png" alt="Logo da Vinta" class="h-10" />
