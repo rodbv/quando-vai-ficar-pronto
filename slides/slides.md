@@ -32,9 +32,9 @@ layout: default
 
 <ul style="font-size: 2.2rem; line-height: 1.5; margin-bottom: 1.5rem;">
     <li>Pai do Henrique</li>
-    <li>Co-organizador da Python Floripa</li>
     <li>Tech Lead na Vinta Software, empresa de Recife que nasceu na comunidade Python Nordeste</li>
-    <li>Contribuidor do Django e outros projetos Open Source.</li>
+    <li>Contribuidor do Django (faz pouco tempo)</li>
+    <li>Co-organizador da Python Floripa</li>
 </ul>
 
 <img src="/pyfln.png" alt="Python Floripa" style="height: 265px; border-radius: 16px; box-shadow: 0 4px 24px rgba(2, 128, 144, 0.15); margin-left: 2.8rem;" />
