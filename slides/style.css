@@ -79,9 +79,9 @@
 
 .slidev-layout:not(.cover):not(.image-slide-contain) {
   position: relative;
-  padding: 0 !important;
+  padding: 0;
   /* Soft cream-white gradient — warm, projector-friendly */
-  background: linear-gradient(160deg, #ffffff 0%, #f6f9ea 100%) !important;
+  background: linear-gradient(160deg, #ffffff 0%, #f6f9ea 100%);
 }
 
 /* Penguin-inspired: thin palette keyline at top */
@@ -315,7 +315,10 @@
 /* ─── Image-only slides ─────────────────────────────────── */
 
 .slidev-layout.image-slide-contain {
-  background-color: #ffffff !important;
+  background-color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  padding: 0;
 }
 
 .slidev-layout.image-slide-contain::after {
@@ -411,10 +414,12 @@
 .slide-full-img {
   flex: 1 1 auto;
   min-height: 0;
-  width: 100%;
+  width: calc(100% - 5.6rem);
   object-fit: contain;
   display: block;
-  margin: 0.4rem auto 0;
+  margin: 0.4rem 2.8rem 1.4rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(2, 128, 144, 0.12);
 }
 
 /* ─── Pane positions ────────────────────────────────────── */

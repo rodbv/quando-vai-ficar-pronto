@@ -93,6 +93,10 @@ layout: default
     <li style="font-size: 2.2rem;">Como acelerar entregas do jeito certo</li>
 </ol>
 
+<p style="position: absolute; bottom: 3.5rem; left: 2.8rem; right: 2.8rem; font-size: 1.35rem; color: var(--teal); opacity: 0.75;">
+  Todo o código, links e referências desta apresentação estarão disponíveis ao final — vou mostrar um QR Code.
+</p>
+
 
 ---
 layout: default
@@ -422,11 +426,12 @@ layout: default
 
 ---
 layout: default
+class: full-height-img-slide
 ---
 
-# Princípios de gestão de fluxo: Visualize o trabalho
+# Visualize o trabalho
 
-<img class="slide-full-img" src="/kanban.png" alt="Quadro Kanban com colunas e cartões de trabalho" />
+<img class="slide-full-img" src="/trello-kanban.png" alt="Quadro Kanban com colunas e cartões de trabalho" />
 
 ---
 layout: default
@@ -507,11 +512,21 @@ Todo item novo tem **15% de chance de estourar o SLE de 11 dias**.
 
 Mas um item com 6 dias em andamento já entrou na cauda longa da distribuição - essa chance sobe para **~40%**.
 
-| Item | Iniciado em | Idade atual | Risco de estourar SLE |
-|---|---|---|---|
-| Bug fix | 22/04 | 6 dias | 40% - zona de atenção |
-| Feature A | 14/04 | 12 dias | já estourou |
-| Relatório | 10/04 | 16 dias | 🚨 investigar bloqueio |
+Se um item está demorando, investigue:
+
+<div class="grid grid-cols-2 gap-8 mt-2">
+<div>
+
+- Tem algum **bloqueador**? Podemos fazer um mutirão?
+- O **escopo cresceu** depois que começou?
+- Tem alguém **trabalhando nisso agora**?
+- **Perdeu prioridade**? Vale a pena cancelar?
+
+</div>
+<div class="flex items-center justify-center">
+  <img src="/card_age.png" alt="Item age no quadro" style="max-height: 300px; border-radius: 12px; box-shadow: 0 4px 24px rgba(0,0,0,0.25);" />
+</div>
+</div>
 
 ---
 layout: default
@@ -546,7 +561,7 @@ layout: default
 layout: default
 ---
 
-# Para aprender mais
+# Para ver mais
 
 <div class="flex items-center gap-10 mt-4">
   <div class="flex flex-col items-center gap-3">
@@ -555,13 +570,14 @@ layout: default
     </a>
   </div>
   <div class="flex flex-col items-center gap-3">
-    <a href="https://actionableagile.com/books/wwibd/" target="_blank" rel="noopener">
-      <img src="/wwibd.jpeg" alt="When Will It Be Done? - Daniel S. Vacanti" style="height: 384px; border-radius: 8px; box-shadow: 0 4px 24px rgba(0,0,0,0.18);" />
+    <a href="https://www.focusedobjective.com/throughput" target="_blank" rel="noopener">
+      <img src="/forecaster.png" alt="Simulador avançado (Troy Magennis)" style="height: 384px; border-radius: 8px; box-shadow: 0 4px 24px rgba(0,0,0,0.18);" />
     </a>
   </div>
   <ul style="font-size: 1.7rem; line-height: 1.6; color: var(--secondary);">
     <li style="margin-bottom: 2rem;">Livros e vídeos do Daniel Vacanti<br><a href="https://actionableagile.com" target="_blank" rel="noopener" style="color: var(--teal); font-size: 1.6rem;">actionableagile.com</a></li>
-    <li>Blog posts do Troy Magennis<br><a href="https://www.focusedobjective.com" target="_blank" rel="noopener" style="color: var(--teal); font-size: 1.6rem;">focusedobjective.com</a></li>
+    <li>Simulador avançado (Troy Magennis)<br><a href="https://www.focusedobjective.com/throughput" target="_blank" rel="noopener" style="color: var(--teal); font-size: 1.6rem;">focusedobjective.com/throughput</a></li>
+    <li style="margin-top: 2rem; font-weight: 700; font-size: 2rem; color: var(--teal);">Vem falar comigo!</li>
   </ul>
 </div>
 

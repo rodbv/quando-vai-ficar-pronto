@@ -68,6 +68,7 @@ O deploy é feito automaticamente para o GitHub Pages via GitHub Actions. O cont
 
 - **Troy Magennis** — blog posts e ferramentas de simulação Monte Carlo:
   - [focusedobjective.com](https://www.focusedobjective.com)
+  - [Simulador avançado (Troy Magennis)](https://www.focusedobjective.com/throughput)
 
 ## Licença
 MIT. Veja o arquivo LICENSE.
