@@ -102,6 +102,18 @@ layout: default
 
 ---
 layout: default
+---
+
+# O que é uma estimativa?
+
+<div class="flex justify-center mt-6">
+  <img src="/bug.png" alt="Chute vs Estimativa" class="h-auto rounded-xl" style="max-height: 380px; margin-bottom: 1.5rem;" />
+</div>
+
+<h3 style="text-align: center; color: #000;">É impossível evitar estimativas totalmente, porém, podemos minimizá-las</h3>
+
+---
+layout: default
 class: definition-slide
 ---
 
@@ -117,11 +129,9 @@ class: definition-slide
 
 **Exemplos:**
 
-- “Temos 85% de confiança de entregar até **11 de maio**.”
-- “Temos 70% de chance de entregar entre **10 e 15 de maio**.”
-
-<span style="font-size: 1.3rem; color: #4a8a84;">Baseado em <i>Actionable Agile Metrics</i></span>
-
+- “Temos 85% de confiança de entregar **este item** até **11 de maio**.”
+- “Temos 70% de chance de entregar **esses 5 itens** entre **10 e 15 de maio**.”
+- “Temos 85% de confiança que vamos terminar **pelo menos** **12 itens** até o dia **20 de maio**.”
 
 ---
 layout: default
@@ -555,7 +565,6 @@ layout: default
 - Para 1 item use percentis de lead time, para vários itens use simulação de Monte Carlo.
 - Sempre comunique a incerteza: data + confiança.
 - Comece pequeno: registre data de início e fim, calcule SLE, torne o trabalho visível.
-- Estimativa é um nome bonito pra chute, e otimismo não é estratégia.
 
 ---
 layout: default
