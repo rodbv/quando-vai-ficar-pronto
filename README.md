@@ -70,5 +70,10 @@ O deploy é feito automaticamente para o GitHub Pages via GitHub Actions. O cont
   - [focusedobjective.com](https://www.focusedobjective.com)
   - [Simulador avançado (Troy Magennis)](https://www.focusedobjective.com/throughput)
 
+## Contato
+
+- [LinkedIn](https://www.linkedin.com/in/rodrigobvieira/)
+- [Mastodon](https://pynews.com.br/@rodbv)
+
 ## Licença
 MIT. Veja o arquivo LICENSE.
