@@ -393,9 +393,7 @@ print(f"P15={p15:.0f}  P50={p50:.0f}  P85={p85:.0f} itens")
 # P15=59  P50=72  P85=86 itens
 ```
 
-Aqui os percentis são **invertidos** em relação à previsão de data: P85=86 significa que 85% das simulações entregaram **86 ou menos** — só 15% de confiança de chegar lá.
-
-Para dizer "85% de confiança de entregar **pelo menos** N itens", usamos o **P15**: temos 85% de confiança de entregar pelo menos **59 itens** até 01/06/2026.
+Aqui os percentis são crescentes, então a maior confiança vem do valor à esquerda: temos **85% de confiança** de entregar pelo menos **59 itens** até 01/06/2026.
 
 ---
 layout: default
