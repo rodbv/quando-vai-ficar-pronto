@@ -33,7 +33,7 @@ layout: default
 <ul style="font-size: 2.2rem; line-height: 1.5; margin-bottom: 1.5rem;">
     <li>Pai do Henrique</li>
     <li>Tech Lead na Vinta Software, empresa de Recife que nasceu na comunidade Python Nordeste</li>
-    <li>Contribuidor do Django (faz pouco tempo)</li>
+    <li>Contribuidor do Django e outros projetos open source</li>
     <li>Co-organizador da Python Floripa</li>
 </ul>
 
@@ -598,8 +598,8 @@ footer: false
 # Obrigado! {.text-center}
 
 <div class="flex justify-center gap-10 mt-3 text-2xl font-medium" style="color: var(--teal);">
-  <span>📧 rodrigo.vieira@gmail.com</span>
-  <span>🐘 @rodbv@pynews.com.br</span>
+  <span>rodrigo.vieira@gmail.com</span>
+  <span style="display: inline-flex; align-items: center; gap: 0.3em;"><img src="/mastodon-icon.png" alt="Mastodon" style="height: 1.2em;" /> @rodbv@pynews.com.br</span>
 </div>
 
 <img src="/qrcode.png" alt="QR Code" class="block mx-auto mt-6 h-auto rounded-2xl shadow-md" style="width: 42%; max-width: 540px; min-width: 220px;" />
