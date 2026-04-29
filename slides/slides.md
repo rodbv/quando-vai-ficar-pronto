@@ -356,9 +356,9 @@ class: full-height-img-slide
 layout: default
 ---
 
-# Rodando 1 simulação para "quantos itens até 01/06?"
+# Simulando entregas até uma data limite
 
-## Para cada dia restante até o prazo, sorteamos um TP do histórico e acumulamos os itens entregues:
+## Para cada dia restante até a data limite, sorteamos um TP do histórico e acumulamos os itens entregues:
 
 | Dia | TP sorteado | Entregues (acumulado) |
 |---|---|---|
@@ -369,9 +369,9 @@ layout: default
 | 5 | 0 | 4 |
 | 6 | 3 | 7 |
 | ... | ... | ... |
-| 34 | 1 | 26 |
+| N | 1 | 26 |
 
-Essa simulação resultou em **26 itens** entregues até 01/06/2026.
+Essa simulação resultou em **26 itens** entregues até a data limite.
 
 ---
 layout: default
@@ -596,7 +596,7 @@ footer: false
 <img src="/qrcode.png" alt="QR Code" class="block mx-auto mt-6 h-auto rounded-2xl shadow-md" style="width: 42%; max-width: 540px; min-width: 220px;" />
 
 <div class="text-center mt-8">
-  <div class="text-2xl font-semibold" style="color: var(--baltic-blue);">github.com/rodbv/quando-vai-ficar-pronto</div>
+  <a href="https://github.com/rodbv/quando-vai-ficar-pronto" target="_blank" rel="noopener" class="text-2xl font-semibold" style="color: var(--baltic-blue);">github.com/rodbv/quando-vai-ficar-pronto</a>
   <div class="text-xl mt-1 text-gray-500">slides, código e notebook</div>
 </div>
 
