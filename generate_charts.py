@@ -292,13 +292,6 @@ def fig_normal_distribution_reference(
         linestyle="--",
         label=f"Média: {mean_days:.0f} dias",
     )
-    ax.axvline(
-        median_days,
-        color=RED,
-        linewidth=2.2,
-        linestyle=":",
-        label=f"Mediana: {median_days:.0f} dias",
-    )
     ax.axvspan(
         one_sigma_low,
         one_sigma_high,
@@ -1519,30 +1512,18 @@ def fig_monte_carlo_itens(
         color=MAIN,
         linewidth=2.5,
         linestyle="--",
-        label=f"P15: {p15:.0f} itens  ← use este",
     )
     ax.axvline(
         p50,
         color=GREEN,
         linewidth=2,
         linestyle="--",
-        label=f"P50: {p50:.0f} itens",
     )
     ax.axvline(
         p85,
         color=RED,
         linewidth=2,
         linestyle="--",
-        label=f"P85: {p85:.0f} itens  (só 15% chegam aqui)",
-    )
-
-    ax.annotate(
-        "85% das simulações\nentregam ≥ P15 itens",
-        xy=(p15 + (p85 - p15) * 0.45, ax.get_ylim()[1] * 0.7),
-        color=TEXT_MUTED,
-        fontsize=11,
-        ha="center",
-        va="center",
     )
 
     ax.set_title(
@@ -1555,7 +1536,6 @@ def fig_monte_carlo_itens(
     ax.set_ylabel("Frequência (10.000 simulações)", color=TEXT_MUTED)
     ax.xaxis.set_major_locator(mticker.MaxNLocator(integer=True))
     ax.tick_params(colors=TEXT_MUTED)
-    ax.legend(fontsize=11, facecolor=SURFACE, labelcolor=TEXT, edgecolor=GRID)
     for spine in ax.spines.values():
         spine.set_color(GRID)
 
