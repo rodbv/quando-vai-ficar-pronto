@@ -217,7 +217,7 @@ class: full-height-img-slide
 # Com isso podemos dizer qual nossa previsão para 1 item
 
 
-## Baseado nos dados limpos de 2026, vemos que nós terminamos 85% dos itens em 11 dias ou menos.
+## Baseado nos dados recentes, vemos que nós terminamos 85% dos itens em 11 dias ou menos.
 
 <img src="/cycle_time_scatterplot.png" alt="Scatterplot de lead time com dados reais e linhas de P50 e P85" style="width: 95%; max-height: 68%; object-fit: contain; display: block; margin: 1rem auto 0;" />
 
