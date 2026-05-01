@@ -383,7 +383,7 @@ def fig_skewed_distribution_reference(
     )
 
     ax.set_title(
-        "Lead time real: distribuição assimétrica", color=TEXT, fontsize=14, pad=12
+        "Tempo de ciclo real: distribuição assimétrica", color=TEXT, fontsize=14, pad=12
     )
     ax.set_xlabel("Dias", color=TEXT_MUTED)
     ax.set_ylabel("Densidade", color=TEXT_MUTED)
@@ -924,13 +924,13 @@ def fig_cycle_time_scatterplot(df: pd.DataFrame) -> None:
         )
 
     ax.set_title(
-        "Lead Time Scatterplot (dados reais de 2026)",
+        "Tempo de Ciclo Scatterplot (dados reais de 2026)",
         color=text_main,
         fontsize=14,
         pad=12,
     )
     ax.set_xlabel("Data de entrega", color=text_muted)
-    ax.set_ylabel("Lead time (dias)", color=text_muted)
+    ax.set_ylabel("Tempo de ciclo (dias)", color=text_muted)
     ax.xaxis.set_major_formatter(mdates.DateFormatter("%b/%y"))
     ax.xaxis.set_major_locator(mdates.MonthLocator())
     ax.tick_params(colors=text_muted, axis="both")

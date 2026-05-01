@@ -182,7 +182,7 @@ layout: default
 
 # Mas como fazer previsões sem reunião de estimativa?
 
-## E a partir disso, calcular quantos dias cada item levou ("Lead time").
+## E a partir disso, calcular quantos dias cada item levou ("Tempo de ciclo").
 
 | Início | Fim | Dias |
 |---|---|---|
@@ -200,6 +200,7 @@ layout: default
 ---
 layout: default
 class: full-height-img-slide
+hide: true
 ---
 
 # Distribuição do lead time
@@ -278,11 +279,29 @@ Por ser baseado em seus dados recentes, nesse número já está embutido tudo aq
 layout: default
 ---
 
+# Previsão de vários itens: O método Monte Carlo
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1rem;">
+  <div style="display: flex; align-items: center; justify-content: center;">
+    <img src="/mcs.png" alt="Método Monte Carlo" style="width: 90%;" />
+  </div>
+  <div>
+    <ul style="font-size: 1.5rem; line-height: 2.4rem;">
+      <li>Concebido por Ulam, Von Neumann e Metropolis em <strong>Los Alamos</strong> (1946–47), no programa nuclear americano</li>
+      <li>Ideia central: <strong>amostragem aleatória</strong> para aproximar problemas sem solução analítica — em vez de calcular todas as possibilidades (inviável), amostras aleatórias suficientes <strong>convergem para a resposta correta</strong></li>
+    </ul>
+  </div>
+</div>
+
+---
+layout: default
+---
+
 # Previsão de entrega de um projeto com vários itens 
 
-## Para diversos itens sendo trabalhados em paralelo, vamos usar Simulações de Monte Carlo.
 
-A partir dos mesmos dados de antes, calculamos nossa **taxa de entrega diária** (*throughput*, TP).
+### A partir dos mesmos dados de antes, calculamos nossa **taxa de entrega diária** (*throughput*, TP).
+
 
 | Data | Itens entregues (TP diário) |
 |---|---|
@@ -300,7 +319,8 @@ layout: default
 
 # Rodando 1 simulação de Monte Carlo para 10 itens
 
-##  Tendo o TP, simular a entrega de 10 itens seria sortear dentre esses valores o TP diário até completar a entrega dos 10 itens. Uma simulação seria algo assim:
+###  Para 10 itens, vamos sortear dentre esses valores o TP diário até completar essa quantidade. Uma rodada seria assim:
+
 
 | Dia | Itens entregues | Restantes |
 |---|---|---|
@@ -313,7 +333,7 @@ layout: default
 | ... | ... | ... |
 | 23 | 1 | 0 |
 
-Essa minha primeira simulação deu resultado de 23 dias.
+Essa primeira simulação deu resultado de 23 dias.
 
 ---
 layout: default
@@ -458,67 +478,119 @@ class: full-height-img-slide
 ---
 layout: default
 class: little-law-slide
-hide: true
 ---
 
 # Limite o trabalho em andamento (WIP)
 
 ## O WIP (Work In Progress) é o número de itens que estão sendo trabalhados ao mesmo tempo. 
 
-Limitar o WIP ajuda a reduzir o tempo de ciclo, melhorar a qualidade e aumentar a satisfação do time.
+Limitar o WIP ajuda a reduzir o tempo de ciclo e nos leva a focar em terminar o trabalho antes de iniciar outro (reduzir multitasking).
 
-A [Lei de Little](https://pt.wikipedia.org/wiki/Teoria_das_filas#Lei_de_Little) relaciona o tempo de ciclo, o WIP e a taxa de entrega (throughput):
+<div class="quote-block">
+Stop starting, start finishing!
+</div>
+
+---
+layout: default
+class: little-law-slide
+---
+
+# Lei de Little
+
+<div style="display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: start;">
+<div>
+
+## Relaciona o tempo de ciclo, o WIP e a taxa de entrega (throughput):
 
 $$
 \Large\text{ Tempo de Ciclo} = \frac{\text{WIP}}{\text{ Taxa de Entrega (TP)}}
 $$
 
+</div>
+<div style="text-align: center; padding-top: 0.5rem;">
+  <img src="/stuartlittle.jpeg" alt="Stuart Little" style="width: 240px; aspect-ratio: 4/3; object-fit: cover; border-radius: 8px;" />
+  <p style="font-size: 0.9rem; margin-top: 0.4rem; opacity: 0.7;">Stuart Little</p>
+</div>
+</div>
+
 ---
 layout: default
 class: little-law-slide
-hide: true
 ---
 
-# Limite o trabalho em andamento (WIP)
+# Lei de Little
 
-## O WIP (Work In Progress) é o número de itens que estão sendo trabalhados ao mesmo tempo. 
+<div style="display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: start;">
+<div>
 
-Limitar o WIP ajuda a reduzir o tempo de ciclo, melhorar a qualidade e aumentar a satisfação do time.
+## Relaciona o tempo de ciclo, o WIP e a taxa de entrega (throughput):
 
-A [Lei de Little](https://pt.wikipedia.org/wiki/Teoria_das_filas#Lei_de_Little) relaciona o tempo de ciclo, o WIP e a taxa de entrega (throughput):
+$$
+\Large\text{ Tempo de Ciclo} = \frac{\text{WIP}}{\text{ Taxa de Entrega (TP)}}
+$$
+
+</div>
+<div style="text-align: center; padding-top: 0.5rem;">
+  <img src="/johnlittle.png" alt="John Little" style="width: 240px; border-radius: 8px;" />
+  <p style="font-size: 0.9rem; margin-top: 0.4rem; opacity: 0.7;">John Little</p>
+</div>
+</div>
+
+---
+layout: default
+class: little-law-slide
+---
+
+# Lei de Little
+
+<div style="display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: start;">
+<div>
+
+## Aumentando a taxa de entrega, o tempo de ciclo cai:
 
 $$
 \Large\textcolor{#02c39a}{\downarrow}\!\text{Tempo de Ciclo} = \frac{\text{WIP}}{\textcolor{#02c39a}{\uparrow}\!\text{Taxa de Entrega (TP)}}
 $$
 
+</div>
+<div style="text-align: center; padding-top: 0.5rem;">
+  <img src="/johnlittle.png" alt="John Little" style="width: 240px; border-radius: 8px;" />
+  <p style="font-size: 0.9rem; margin-top: 0.4rem; opacity: 0.7;">John Little</p>
+</div>
+</div>
+
 ---
 layout: default
 class: little-law-slide
-hide: true
 ---
 
-# Limite o trabalho em andamento (WIP)
+# Lei de Little
 
-## O WIP (Work In Progress) é o número de itens que estão sendo trabalhados ao mesmo tempo. 
+<div style="display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: start;">
+<div>
 
-Limitar o WIP ajuda a reduzir o tempo de ciclo, melhorar a qualidade e aumentar a satisfação do time.
-
-A [Lei de Little](https://pt.wikipedia.org/wiki/Teoria_das_filas#Lei_de_Little) relaciona o tempo de ciclo, o WIP e a taxa de entrega (throughput):
+## Reduzindo o WIP, o tempo de ciclo também cai:
 
 $$
 \Large\textcolor{#02c39a}{\downarrow}\!\text{Tempo de Ciclo} = \frac{\textcolor{#02c39a}{\downarrow}\!\text{WIP}}{\text{Taxa de Entrega (TP)}}
 $$
 
+</div>
+<div style="text-align: center; padding-top: 0.5rem;">
+  <img src="/johnlittle.png" alt="John Little" style="width: 240px; border-radius: 8px;" />
+  <p style="font-size: 0.9rem; margin-top: 0.4rem; opacity: 0.7;">John Little</p>
+</div>
+</div>
+
 ---
 layout: default
+hide: true
 ---
 
 # "Stop starting, start finishing"
 
-## Cada item novo que você inicia aumenta o WIP - e envelhece tudo que já está em andamento.
-
-- Trabalho deve ser "puxado" e não "empurrrado", ou seja, só inicie um novo item quando tiver capacidade para isso.
-- Priorize itens à direita no quadro - inclusive itens de colegas!
+- A nossa meta não é iniciar trabalho, e sim entregar
+- Antes de iniciar um novo trabalho, cheque se você pode terminar algo já em andamento, inclusive itens de colegas
 - Um limite estrito de WIP garante que o time foque em terminar o que já começou, ao invés de começar mais coisas.
 
 
@@ -532,7 +604,7 @@ layout: default
 
 Todo item novo tem **15% de chance de estourar o SLE de 11 dias**.
 
-Mas um item com 6 dias em andamento já entrou na cauda longa da distribuição - essa chance sobe para **~40%**.
+Mas um item com 6 dias em andamento já entrou na cauda longa da distribuição - essa chance sobe para mais de **40%**.
 
 Se um item está demorando, investigue:
 
@@ -574,7 +646,7 @@ layout: default
 # Conclusão
 
 - Quando o cliente pede estimativa e velocidade, normalmente o que ele precisa é **previsibilidade e transparência**.
-- Para 1 item use percentis de lead time, para vários itens use simulação de Monte Carlo.
+- Para 1 item use percentis de tempo de ciclo, para vários itens use simulação de Monte Carlo.
 - Sempre comunique a incerteza: data + confiança.
 - Comece pequeno: registre data de início e fim, calcule SLE, torne o trabalho visível.
 
