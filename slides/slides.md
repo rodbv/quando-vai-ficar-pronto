@@ -631,7 +631,7 @@ layout: default
 ## Para cada card novo, faça uma pergunta simples a partir do SLE atual:
 
 <div class="quote-block">
-"Estamos confiantes de que isso termina abaixo do nosso SLE?"
+Estamos confiantes de que isso termina abaixo do nosso SLE?
 </div>
 
 Se a resposta for hesitante, quebre o card: reavalie o escopo, discuta o que pode ser entregue antes, negocie o que é necessário.
