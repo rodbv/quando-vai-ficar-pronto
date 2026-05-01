@@ -110,7 +110,7 @@ layout: default
   <img src="/bug.png" alt="Chute vs Estimativa" class="h-auto rounded-xl" style="max-height: 380px; margin-bottom: 1.5rem;" />
 </div>
 
-<h3 style="text-align: center; color: #000;">É impossível evitar estimativas totalmente, porém, podemos minimizá-las</h3>
+<h3 style="text-align: center; color: #000;">É difícil evitar estimativas totalmente, mas podemos minimizá-las e não fazer um "castelo de cartas".</h3>
 
 ---
 layout: default
@@ -130,7 +130,6 @@ class: definition-slide
 **Exemplos:**
 
 - “Temos 85% de confiança de entregar **este item** até **11 de maio**.”
-- “Temos 70% de chance de entregar **esses 5 itens** entre **10 e 15 de maio**.”
 - “Temos 85% de confiança que vamos terminar **pelo menos** **12 itens** até o dia **20 de maio**.”
 
 ---
@@ -510,29 +509,6 @@ $$
 <div style="text-align: center; padding-top: 0.5rem;">
   <img src="/stuartlittle.jpeg" alt="Stuart Little" style="width: 240px; aspect-ratio: 4/3; object-fit: cover; border-radius: 8px;" />
   <p style="font-size: 0.9rem; margin-top: 0.4rem; opacity: 0.7;">Stuart Little</p>
-</div>
-</div>
-
----
-layout: default
-class: little-law-slide
----
-
-# Lei de Little
-
-<div style="display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: start;">
-<div>
-
-## Relaciona o tempo de ciclo, o WIP e a taxa de entrega (throughput):
-
-$$
-\Large\text{ Tempo de Ciclo} = \frac{\text{WIP}}{\text{ Taxa de Entrega (TP)}}
-$$
-
-</div>
-<div style="text-align: center; padding-top: 0.5rem;">
-  <img src="/johnlittle.png" alt="John Little" style="width: 240px; border-radius: 8px;" />
-  <p style="font-size: 0.9rem; margin-top: 0.4rem; opacity: 0.7;">John Little</p>
 </div>
 </div>
 
