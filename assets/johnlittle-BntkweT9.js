@@ -1,0 +1,1 @@
+var e=`/quando-vai-ficar-pronto/johnlittle.png`;export{e as t};
