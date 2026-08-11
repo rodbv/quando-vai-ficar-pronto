@@ -27,15 +27,15 @@ DATA_FILE = Path("data/lead_time_data_clean_2026.csv")
 # o linestyle ("--", ":", "-"), ja usado nos percentis. Cada cor abaixo e
 # escolhida para ser visivel contra o branco, nao contra as outras.
 BG = "#ffffff"
-BG2 = "#fff8e5"  # PyNE cream
-SURFACE = "#fdf3e3"  # warm tint, igual a faixa do cabecalho de tabela
+BG2 = "#f2f8e4"  # tint verde claro, igual a faixa do cabecalho de tabela
+SURFACE = "#f2f8e4"  # tint verde claro
 TEXT = "#032830"  # near-black, igual ao corpo de texto dos slides
-TEXT_MUTED = "#8a5a3c"  # warm brown, 5.82:1 no branco
-GRID = "#e8d5bc"  # warm light
-GREEN = "#6f9a0a"  # PyNE green, 3.33:1
-RED = "#a62a1b"  # PyNE red, 7.07:1 (antes era verdigris, apesar do nome)
-MAIN = "#b4540a"  # PyNE orange, 4.98:1, mesmo tom dos h1
-MC_BAR = "#8c3d10"  # rust, 7.53:1
+TEXT_MUTED = "#4a5c36"  # verde acinzentado, 6.4:1 no branco
+GRID = "#dbe6c4"  # verde claro
+GREEN = "#6b990a"  # escala verde g-300, 3.30:1
+RED = "#a62a1b"  # PyNE red, 7.07:1, usado so no P95
+MAIN = "#436006"  # escala verde g-600, 6.74:1, mesmo tom dos h1
+MC_BAR = "#507307"  # escala verde g-500, 5.18:1
 
 
 def load_data(clean_cycle_time: bool = True) -> pd.DataFrame:
