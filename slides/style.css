@@ -31,9 +31,12 @@
   /* Darkened cousins of the same hues, for surfaces that carry text.
      The brand colors above are drawn for a logo and are all too light
      to sit under white or cream type. */
-  --pyne-orange-dk: #b4540a; /* headings — 4.98:1 on white, 4.67:1 on #f6f9ea */
+  --pyne-orange-dk: #b4540a; /* h1, underline  — 4.67:1 on #f6f9ea */
+  --pyne-green-dk: #567b08; /* h2/h3, table col 3 — 4.64:1 */
+  --pyne-amber-dk: #9a6605; /* bullets — 4.60:1 */
+  --pyne-red-dk: #a62a1b; /* quote bar — 6.62:1 */
   --pyne-red-deep: #721d13; /* .alerta — 10.34:1, reads as emphasis by darkness */
-  --pyne-rust: #8c3d10;
+  --pyne-rust: #8c3d10; /* table header band — 7.05:1 */
   --pyne-rust-deep: #3d1a0b;
   --pyne-ember: #7a2e10;
   --pyne-leaf-dk: #4a6b0a;
@@ -182,7 +185,7 @@
 
 .slidev-layout:not(.cover):not(.image-slide-contain) h2,
 .slidev-layout:not(.cover):not(.image-slide-contain) h3 {
-  color: var(--pyne-orange-dk) !important;
+  color: var(--pyne-green-dk) !important;
 }
 
 .slidev-layout:not(.cover):not(.image-slide-contain) h2 {
@@ -256,9 +259,9 @@
   padding-left: 3.1rem;
 }
 
-/* Accent-colored bullets — same accent as the headings */
+/* Bullets take amber, their own hue in the role system */
 .slidev-layout:not(.cover):not(.image-slide-contain) li::marker {
-  color: var(--pyne-orange-dk);
+  color: var(--pyne-amber-dk);
 }
 
 .slidev-layout:not(.cover):not(.image-slide-contain) li + li {
@@ -304,8 +307,8 @@
   margin: 1.4rem 2.8rem 0;
   padding: 1rem 1.5rem 1rem 1.8rem;
   max-width: 88%;
-  border-left: 4px solid var(--pyne-orange-dk);
-  background: linear-gradient(90deg, rgba(180, 84, 10, 0.09) 0%, rgba(140, 61, 16, 0.02) 100%);
+  border-left: 4px solid var(--pyne-red-dk);
+  background: linear-gradient(90deg, rgba(166, 42, 27, 0.09) 0%, rgba(140, 61, 16, 0.02) 100%);
   color: var(--primary) !important;
   font-size: 1.85rem;
   line-height: 1.22;
@@ -322,7 +325,7 @@
   left: 0.65rem;
   font-size: 2.8rem;
   line-height: 1;
-  color: rgba(180, 84, 10, 0.38);
+  color: rgba(166, 42, 27, 0.38);
 }
 
 .slidev-layout.sle-actions-slide .quote-block {
@@ -354,7 +357,7 @@
 }
 
 .slidev-layout:not(.cover):not(.image-slide-contain) th {
-  background: var(--pyne-orange-dk);
+  background: var(--pyne-rust);
   color: #ffffff !important;
   font-weight: 700;
   border-bottom: none;
@@ -367,7 +370,7 @@
 
 .slidev-layout:not(.cover):not(.image-slide-contain) th:nth-child(3),
 .slidev-layout:not(.cover):not(.image-slide-contain) td:nth-child(3) {
-  color: var(--pyne-orange-dk) !important;
+  color: var(--pyne-green-dk) !important;
   font-weight: 700;
 }
 
