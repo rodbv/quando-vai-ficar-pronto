@@ -19,17 +19,23 @@ OUTPUT_DIR = Path("slides/public")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 DATA_FILE = Path("data/lead_time_data_clean_2026.csv")
 
-# Paleta Turquoise Harmony para charts
+# Paleta Python Nordeste 2026, tirada de slides/public/pyne-logo.svg.
+#
+# As series nao se separam por luminancia: num fundo branco toda serie precisa
+# de pelo menos 3:1 contra o branco, o que limita a luminancia a ~0.28, e nessa
+# faixa nao cabem tres series com 3:1 entre elas. Quem separa as series aqui e
+# o linestyle ("--", ":", "-"), ja usado nos percentis. Cada cor abaixo e
+# escolhida para ser visivel contra o branco, nao contra as outras.
 BG = "#ffffff"
-BG2 = "#f0f3bd"  # cream
-SURFACE = "#e5f5f3"  # teal tint
-TEXT = "#032830"  # near-black dark teal
-TEXT_MUTED = "#4a8a84"  # muted teal
-GRID = "#b2e0db"  # light teal
-GREEN = "#02c39a"  # mint-leaf
-RED = "#00a896"  # verdigris
-MAIN = "#05668d"  # baltic-blue
-MC_BAR = "#028090"  # teal
+BG2 = "#fff8e5"  # PyNE cream
+SURFACE = "#fdf3e3"  # warm tint, igual a faixa do cabecalho de tabela
+TEXT = "#032830"  # near-black, igual ao corpo de texto dos slides
+TEXT_MUTED = "#8a5a3c"  # warm brown, 5.82:1 no branco
+GRID = "#e8d5bc"  # warm light
+GREEN = "#6f9a0a"  # PyNE green, 3.33:1
+RED = "#a62a1b"  # PyNE red, 7.07:1 (antes era verdigris, apesar do nome)
+MAIN = "#b4540a"  # PyNE orange, 4.98:1, mesmo tom dos h1
+MC_BAR = "#8c3d10"  # rust, 7.53:1
 
 
 def load_data(clean_cycle_time: bool = True) -> pd.DataFrame:
@@ -903,11 +909,15 @@ def fig_cycle_time_scatterplot(df: pd.DataFrame) -> None:
     ct = df["cycle_time_days"]
     dates = df["finished_at"]
 
-    plot_bg = "#ffffff"
-    text_main = "#0f172a"
-    text_muted = "#475569"
-    grid = "#cbd5e1"
-    point = "#16a34a"
+    # Esta funcao tinha sua propria paleta (slate + green do Tailwind), que nao
+    # batia nem com a antiga nem com a nova. Agora usa as constantes do modulo.
+    # Os pontos usam MC_BAR para nao competir com as linhas de P50 (GREEN) e
+    # P85 (MAIN) que passam por cima deles.
+    plot_bg = BG
+    text_main = TEXT
+    text_muted = TEXT_MUTED
+    grid = GRID
+    point = MC_BAR
 
     fig, ax = plt.subplots(figsize=(13, 5), facecolor=plot_bg)
     ax.set_facecolor(plot_bg)
