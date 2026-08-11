@@ -14,15 +14,35 @@
   --cream: #f0f3bd;
 
   /* Semantic roles */
-  --primary: var(--baltic-blue);
+  --primary: var(--pyne-orange-dk);
   --green: var(--mint-leaf);
   --secondary: #032830; /* near-black dark teal — high contrast on projector */
   --paper: var(--cream);
   --stage: #b2e0db;
   --paragraph-gap: 1.3rem;
 
+  /* Python Nordeste 2026 — hues lifted from pyne-logo.svg */
+  --pyne-green: #80b80c;
+  --pyne-amber: #f7aa1c;
+  --pyne-orange: #ef7512;
+  --pyne-red: #da3724;
+  --pyne-cream: #fff8e5;
+
+  /* Darkened cousins of the same hues, for surfaces that carry text.
+     The brand colors above are drawn for a logo and are all too light
+     to sit under white or cream type. */
+  --pyne-orange-dk: #b4540a; /* headings — 4.98:1 on white, 4.67:1 on #f6f9ea */
+  --pyne-red-deep: #721d13; /* .alerta — 10.34:1, reads as emphasis by darkness */
+  --pyne-rust: #8c3d10;
+  --pyne-rust-deep: #3d1a0b;
+  --pyne-ember: #7a2e10;
+  --pyne-leaf-dk: #4a6b0a;
+  --pyne-leaf-deep: #3a5408;
+
   --color-bg: var(--paper);
-  --color-text: #ffffff;
+  /* Cover type — the logo's own cream, so title and logo read as one material.
+     8.08:1 against the lightest stop of the cover gradient. */
+  --color-text: var(--pyne-cream);
   --color-accent: var(--green);
   --font-sans: "Ubuntu", Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -64,14 +84,18 @@
   align-content: flex-start !important;
   padding: 4.5rem 3rem !important;
   color: var(--color-text);
-  /* Fluid gradient — no hard diagonal lines */
+  /* Fluid gradient — no hard diagonal lines. Dark at both ends, because
+     cream type sits top-left and the logo sits bottom-right.
+     Rust, not green, at the bottom-right end: the logo's own green
+     (#80b80c) reads at 2.11:1 against a green ground and at 6.5:1
+     against #3d1a0b, so a green end swallows the map. */
   background: linear-gradient(
     135deg,
-    var(--baltic-blue) 0%,
-    var(--teal) 38%,
-    var(--verdigris) 65%,
-    #b8e8bf 88%,
-    var(--cream) 100%
+    var(--pyne-leaf-deep) 0%,
+    var(--pyne-leaf-dk) 22%,
+    var(--pyne-rust) 52%,
+    var(--pyne-ember) 78%,
+    var(--pyne-rust-deep) 100%
   ) !important;
 }
 
@@ -94,23 +118,27 @@
   height: 5px;
   background: linear-gradient(
     90deg,
-    var(--baltic-blue) 0%,
-    var(--teal) 33%,
-    var(--verdigris) 66%,
-    var(--mint-leaf) 100%
+    var(--pyne-green) 0%,
+    var(--pyne-amber) 33%,
+    var(--pyne-orange) 66%,
+    var(--pyne-red) 100%
   );
   z-index: 4;
 }
 
-/* Logo watermark — portrait logo, so the box is taller than wide */
+/* Logo watermark — the map only, not the full lockup. The wordmark occupies
+   the bottom third of the SVG and is illegible at this size, so the image is
+   scaled to the box width and cropped at 66.7%, where the transparent gap
+   between the map and "Python Nordeste" falls. */
 .slidev-layout:not(.cover):not(.image-slide-contain)::after {
   content: "";
   position: absolute;
   right: 0.7rem;
   bottom: 0.55rem;
-  width: 52px;
-  height: 80px;
-  background: url("/pyne-logo.svg") no-repeat center / contain;
+  width: 60px;
+  height: 62px;
+  background: url("/pyne-logo.svg") no-repeat top center;
+  background-size: 60px auto;
   pointer-events: none;
   z-index: 5;
 }
@@ -146,7 +174,7 @@
   left: 2.8rem;
   right: 2.8rem;
   height: 3px;
-  background: linear-gradient(90deg, var(--mint-leaf), var(--verdigris), rgba(0, 168, 150, 0));
+  background: linear-gradient(90deg, var(--pyne-orange), var(--pyne-amber), rgba(247, 170, 28, 0));
   border-radius: 2px;
 }
 
@@ -154,7 +182,7 @@
 
 .slidev-layout:not(.cover):not(.image-slide-contain) h2,
 .slidev-layout:not(.cover):not(.image-slide-contain) h3 {
-  color: var(--teal) !important;
+  color: var(--pyne-orange-dk) !important;
 }
 
 .slidev-layout:not(.cover):not(.image-slide-contain) h2 {
@@ -188,14 +216,49 @@
   line-height: 1.35;
 }
 
+/* ─── Ênfase ────────────────────────────────────────────────
+
+   The PyNE palette is analogous (hue 6° to 80°, all warm) and its members
+   are near-isoluminant, so hue cannot separate meanings here: #b4540a and
+   #577c08 differ in luminance by a factor of 1.02, and under deuteranopia
+   the whole family collapses to olive within 1.37:1. Emphasis therefore
+   comes from darkness and from fills, never from switching colour.        */
+
+/* Bold stays near-black. The deck has one type accent and it belongs to
+   the headings, so **negrito** must not compete with them. */
+.slidev-layout:not(.cover):not(.image-slide-contain) strong {
+  font-weight: 700;
+  color: var(--secondary) !important;
+}
+
+/* .alerta — for the one or two moments the talk turns on, such as the P50
+   warning. Reads as emphasis because it is darker than everything around
+   it, which survives a weak projector and colour deficiency. 10.34:1. */
+.slidev-layout:not(.cover):not(.image-slide-contain) .alerta {
+  color: var(--pyne-red-deep) !important;
+  font-weight: 700;
+}
+
+/* .destaque — amber is unusable as type at 1.83:1, but as a fill under the
+   body near-black it measures 7.94:1. Use it on figures, not on sentences. */
+.slidev-layout:not(.cover):not(.image-slide-contain) .destaque {
+  background: var(--pyne-amber);
+  color: var(--secondary) !important;
+  font-weight: 700;
+  padding: 0.05em 0.35em;
+  border-radius: 4px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
 .slidev-layout:not(.cover):not(.image-slide-contain) ul {
   margin: 0.75rem 0 0;
   padding-left: 3.1rem;
 }
 
-/* Accent-colored bullets */
+/* Accent-colored bullets — same accent as the headings */
 .slidev-layout:not(.cover):not(.image-slide-contain) li::marker {
-  color: var(--mint-leaf);
+  color: var(--pyne-orange-dk);
 }
 
 .slidev-layout:not(.cover):not(.image-slide-contain) li + li {
@@ -241,15 +304,15 @@
   margin: 1.4rem 2.8rem 0;
   padding: 1rem 1.5rem 1rem 1.8rem;
   max-width: 88%;
-  border-left: 4px solid var(--mint-leaf);
-  background: linear-gradient(90deg, rgba(2, 195, 154, 0.09) 0%, rgba(0, 168, 150, 0.02) 100%);
+  border-left: 4px solid var(--pyne-orange-dk);
+  background: linear-gradient(90deg, rgba(180, 84, 10, 0.09) 0%, rgba(140, 61, 16, 0.02) 100%);
   color: var(--primary) !important;
   font-size: 1.85rem;
   line-height: 1.22;
   font-weight: 600;
   letter-spacing: -0.01em;
   border-radius: 0 10px 10px 0;
-  box-shadow: 0 4px 20px rgba(2, 128, 144, 0.08);
+  box-shadow: 0 4px 20px rgba(140, 61, 16, 0.08);
 }
 
 .slidev-layout:not(.cover):not(.image-slide-contain) .quote-block::before {
@@ -259,7 +322,7 @@
   left: 0.65rem;
   font-size: 2.8rem;
   line-height: 1;
-  color: rgba(2, 195, 154, 0.38);
+  color: rgba(180, 84, 10, 0.38);
 }
 
 .slidev-layout.sle-actions-slide .quote-block {
@@ -275,23 +338,23 @@
   border-spacing: 0;
   border-radius: 10px;
   overflow: hidden;
-  background: #f2fbf9;
+  background: #fdf9f0;
   color: var(--secondary) !important;
   font-size: 1.3rem;
-  box-shadow: 0 2px 16px rgba(2, 128, 144, 0.1);
+  box-shadow: 0 2px 16px rgba(140, 61, 16, 0.1);
 }
 
 .slidev-layout:not(.cover):not(.image-slide-contain) th,
 .slidev-layout:not(.cover):not(.image-slide-contain) td {
   border: none;
-  border-bottom: 1px solid rgba(2, 128, 144, 0.12);
+  border-bottom: 1px solid rgba(140, 61, 16, 0.14);
   padding: 0.5rem 0.85rem;
   text-align: left;
   color: var(--secondary) !important;
 }
 
 .slidev-layout:not(.cover):not(.image-slide-contain) th {
-  background: var(--teal);
+  background: var(--pyne-orange-dk);
   color: #ffffff !important;
   font-weight: 700;
   border-bottom: none;
@@ -299,12 +362,12 @@
 }
 
 .slidev-layout:not(.cover):not(.image-slide-contain) tbody tr:nth-child(even) {
-  background: rgba(2, 195, 154, 0.07);
+  background: rgba(180, 84, 10, 0.06);
 }
 
 .slidev-layout:not(.cover):not(.image-slide-contain) th:nth-child(3),
 .slidev-layout:not(.cover):not(.image-slide-contain) td:nth-child(3) {
-  color: var(--teal) !important;
+  color: var(--pyne-orange-dk) !important;
   font-weight: 700;
 }
 
@@ -420,7 +483,7 @@
   display: block;
   margin: 0.4rem 2.8rem 1.4rem;
   border-radius: 12px;
-  box-shadow: 0 4px 24px rgba(2, 128, 144, 0.12);
+  box-shadow: 0 4px 24px rgba(140, 61, 16, 0.12);
 }
 
 /* ─── Pane positions ────────────────────────────────────── */
@@ -458,8 +521,9 @@
   }
 
   .slidev-layout:not(.cover):not(.image-slide-contain)::after {
-    width: 42px;
-    height: 64px;
+    width: 48px;
+    height: 50px;
+    background-size: 48px auto;
     right: 0.55rem;
     bottom: 0.45rem;
   }
