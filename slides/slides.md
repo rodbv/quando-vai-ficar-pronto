@@ -4,7 +4,7 @@ colorSchema: auto
 css: ./style.css
 title: Quando vai ficar pronto?
 info: |
-  Talk na Python Sul sobre previsibilidade de entregas com
+  Talk na Python Nordeste sobre previsibilidade de entregas com
   métricas de fluxo e simulação.
 transition: fade
 mdc: true
