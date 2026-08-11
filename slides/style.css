@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap");
-/* Remove watermark on slides with .no-pysul-watermark */
-.slidev-layout.no-pysul-watermark::after {
+/* Remove watermark on slides with .no-pyne-watermark */
+.slidev-layout.no-pyne-watermark::after {
   display: none !important;
 }
 
@@ -102,15 +102,15 @@
   z-index: 4;
 }
 
-/* Logo watermark */
+/* Logo watermark — portrait logo, so the box is taller than wide */
 .slidev-layout:not(.cover):not(.image-slide-contain)::after {
   content: "";
   position: absolute;
   right: 0.7rem;
   bottom: 0.55rem;
-  width: 114px;
-  height: 56px;
-  background: url("/pysul-logo.svg") no-repeat center / contain;
+  width: 52px;
+  height: 80px;
+  background: url("/pyne-logo.svg") no-repeat center / contain;
   pointer-events: none;
   z-index: 5;
 }
@@ -351,8 +351,9 @@
   position: absolute;
   right: 2.2rem;
   bottom: 1.6rem;
-  width: min(25.5%, 320px);
-  height: auto;
+  /* Portrait logo — bound the height so it can't push past the slide */
+  height: min(55%, 380px);
+  width: auto;
   z-index: 3;
 }
 
@@ -452,12 +453,13 @@
   .cover-logo {
     right: 1.2rem;
     bottom: 1rem;
-    width: min(31%, 220px);
+    height: min(48%, 260px);
+    width: auto;
   }
 
   .slidev-layout:not(.cover):not(.image-slide-contain)::after {
-    width: 92px;
-    height: 44px;
+    width: 42px;
+    height: 64px;
     right: 0.55rem;
     bottom: 0.45rem;
   }

@@ -21,7 +21,7 @@ layout: cover
 
 Respondendo a pergunta mais importante do cliente.
 
-<img class="cover-logo" src="/pysul-logo.svg" alt="Python Sul 2026 Londrina - PR" />
+<img class="cover-logo" src="/pyne-logo.svg" alt="Python Nordeste 2026 Fortaleza - CE" />
 
 ---
 layout: default
