@@ -278,9 +278,11 @@
   padding-left: 3.1rem;
 }
 
-/* Bullets take a brighter step of the same green scale */
+/* Bullets take the literal logo green. A marker is decorative, not
+   information: the list structure comes from layout, so 2.24:1 is spendable
+   here in a way it is not on type. */
 .slidev-layout:not(.cover):not(.image-slide-contain) li::marker {
-  color: var(--g-300);
+  color: var(--pyne-green);
 }
 
 .slidev-layout:not(.cover):not(.image-slide-contain) li + li {
@@ -379,8 +381,11 @@
 .slidev-layout:not(.cover):not(.image-slide-contain) th {
   /* Light band with a rust rule, not a solid dark fill. A heavy header is a
      spreadsheet convention and outweighs the data it sits above. */
-  background: var(--g-050);
-  color: var(--g-600) !important;
+  /* The literal logo green, as a fill rather than as type. It fails at 2.24:1
+     as dark-on-light text but carries the body near-black at 6.5:1, so this
+     is where #80b80c can appear at full strength. */
+  background: var(--pyne-green);
+  color: var(--secondary) !important;
   font-weight: 700;
   border-bottom: 2px solid var(--g-600);
   letter-spacing: 0.01em;
@@ -397,7 +402,7 @@
 }
 
 .slidev-layout:not(.cover):not(.image-slide-contain) th:nth-child(3) {
-  color: var(--g-600) !important;
+  color: var(--secondary) !important;
 }
 
 /* ─── Image-only slides ─────────────────────────────────── */
@@ -431,7 +436,8 @@
   font-size: clamp(1.2rem, 2.5vw, 3rem);
   line-height: 1.35;
   font-weight: 400;
-  color: var(--color-text) !important;
+  /* Literal #80b80c, legible here because the ground is dark: 5.5:1 */
+  color: var(--pyne-green) !important;
   opacity: 1 !important;
 }
 
