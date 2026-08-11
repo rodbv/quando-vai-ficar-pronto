@@ -33,7 +33,8 @@
      to sit under white or cream type. */
   --pyne-orange-dk: #b4540a; /* h1, underline  — 4.67:1 on #f6f9ea */
   --pyne-green-dk: #567b08; /* h2/h3, table col 3 — 4.64:1 */
-  --pyne-amber-dk: #9a6605; /* bullets — 4.60:1 */
+  --pyne-amber-dk: #be7d07; /* bullets — 3.21:1, bright enough to read as amber */
+  --pyne-band: #fdf3e3; /* table header band — light, so the data leads */
   --pyne-red-dk: #a62a1b; /* quote bar — 6.62:1 */
   --pyne-red-deep: #721d13; /* .alerta — 10.34:1, reads as emphasis by darkness */
   --pyne-rust: #8c3d10; /* table header band — 7.05:1 */
@@ -183,9 +184,12 @@
 
 /* ─── H2 / H3 ───────────────────────────────────────────── */
 
+/* h2/h3 carry full sentences in this deck, not short labels, so they read as
+   text and take the body colour. Size and weight carry the hierarchy.
+   Colour on running prose reads as muddy, whatever the hue. */
 .slidev-layout:not(.cover):not(.image-slide-contain) h2,
 .slidev-layout:not(.cover):not(.image-slide-contain) h3 {
-  color: var(--pyne-green-dk) !important;
+  color: var(--secondary) !important;
 }
 
 .slidev-layout:not(.cover):not(.image-slide-contain) h2 {
@@ -357,10 +361,12 @@
 }
 
 .slidev-layout:not(.cover):not(.image-slide-contain) th {
-  background: var(--pyne-rust);
-  color: #ffffff !important;
+  /* Light band with a rust rule, not a solid dark fill. A heavy header is a
+     spreadsheet convention and outweighs the data it sits above. */
+  background: var(--pyne-band);
+  color: var(--pyne-rust) !important;
   font-weight: 700;
-  border-bottom: none;
+  border-bottom: 2px solid var(--pyne-rust);
   letter-spacing: 0.01em;
 }
 
@@ -375,7 +381,7 @@
 }
 
 .slidev-layout:not(.cover):not(.image-slide-contain) th:nth-child(3) {
-  color: #ffffff !important;
+  color: var(--pyne-rust) !important;
 }
 
 /* ─── Image-only slides ─────────────────────────────────── */
