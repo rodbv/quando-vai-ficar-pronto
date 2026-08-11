@@ -1,6 +1,6 @@
 # Quando vai ficar pronto?
 
-Slides e materiais da palestra apresentada na Python Nordeste 2026, sobre previsibilidade de entregas com métricas de fluxo e simulação Monte Carlo.
+Slides e materiais da palestra apresentada na Python Sul 2026 e na Python Nordeste 2026, sobre previsibilidade de entregas com métricas de fluxo e simulação Monte Carlo.
 
 ## Slides
 
