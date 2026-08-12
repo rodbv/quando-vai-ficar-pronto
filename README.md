@@ -2,6 +2,8 @@
 
 Slides e materiais da palestra apresentada na Python Sul 2026 e na Python Nordeste 2026, sobre previsibilidade de entregas com métricas de fluxo e simulação Monte Carlo.
 
+A `main` traz a versão da **Python Nordeste 2026** (Fortaleza). A versão da **Python Sul 2026** (Londrina) está preservada na branch [`pysul-2026`](https://github.com/rodbv/quando-vai-ficar-pronto/tree/pysul-2026).
+
 ## Slides
 
 Acesse os slides online:
