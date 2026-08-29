@@ -1,3 +1,5 @@
+default: run
+
 # Alias para abrir o notebook principal
 nb: notebook-open
 slides:
@@ -8,6 +10,10 @@ slides-install:
 
 slides-build:
     cd slides && npm run build
+
+just-build: slides-install slides-build
+
+run: slides-install slides-build slides
 
 charts:
     uv run python generate_charts.py
