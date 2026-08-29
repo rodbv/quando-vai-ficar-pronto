@@ -32,14 +32,14 @@ layout: default
 
 <ul style="font-size: 2.2rem; line-height: 1.5; margin-bottom: 1.5rem;">
     <li>Pai do Henrique</li>
-    <li>Tech Lead na Vinta Software, empresa de Recife que nasceu na comunidade Python Nordeste</li>
+    <li>Engenheiro de Software Senior na Loadsmart</li>
     <li>Contribuidor do Django e outros projetos open source</li>
     <li>Co-organizador da Python Floripa</li>
 </ul>
 
 <img src="/pyfln.png" alt="Python Floripa" style="height: 265px; border-radius: 16px; box-shadow: 0 4px 24px rgba(2, 128, 144, 0.15); margin-left: 2.8rem;" />
 
-<img src="/vinta_logo.png" alt="Logo da Vinta" style="height: 48px; position: absolute; left: 2.5rem; bottom: 2.5rem;" />
+<img src="/loadsmart_logo.png" alt="Logo da Loadsmart" style="height: 48px; position: absolute; left: 2.5rem; bottom: 2.5rem;" />
 
 ---
 layout: default
@@ -665,5 +665,5 @@ footer: false
 <img src="/qrcode.png" alt="QR Code" class="block mx-auto mt-6 h-auto rounded-2xl shadow-md" style="width: 42%; max-width: 540px; min-width: 220px;" />
 
 <div class="absolute bottom-0 left-0 pb-6 px-10">
-  <img src="/vinta_logo.png" alt="Logo da Vinta" class="h-10" />
+  <img src="/loadsmart_logo.png" alt="Logo da Loadsmart" class="h-10" />
 </div>
