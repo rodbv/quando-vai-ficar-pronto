@@ -230,17 +230,3 @@
   object-fit: contain;
 }
 
-.fonte { font-size: 0.6em; color: var(--muted); }
-
-/* Caixa no lugar de um gráfico que ainda não existe. */
-.placeholder {
-  flex: 1 1 auto;
-  display: grid;
-  place-items: center;
-  border: 3px dashed var(--card-line);
-  border-radius: 12px;
-  background: var(--card);
-  color: var(--muted);
-  text-align: center;
-  margin-bottom: 0.4em;
-}

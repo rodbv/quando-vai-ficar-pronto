@@ -71,22 +71,6 @@ class: quadrinho
 -->
 
 ---
-class: grafico
----
-
-# Story Points funcionam?
-
-<div class="placeholder">Story Points (X) × tempo de entrega em dias (Y)</div>
-
-<p class="fonte">Sonya Siderova, <a href="https://www.linkedin.com/pulse/evidence-story-points-delivery-time-dont-correlate-sonya-siderova-gudae/">Evidence: story points and delivery time don't correlate</a></p>
-
-<!--
-- Se Story Points previssem prazo, os pontos subiriam da esquerda para a direita.
-- Um item de 1 ponto leva de 1 a 22 dias. Os de 8 pontos ficam na mesma faixa.
-- A correlação é quase zero: a reunião de pontuação não diz quando o item fica pronto.
--->
-
----
 
 # Para 1 item: anote início e fim
 
