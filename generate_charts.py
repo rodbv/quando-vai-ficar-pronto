@@ -19,23 +19,21 @@ OUTPUT_DIR = Path("slides/public")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 DATA_FILE = Path("data/lead_time_data_clean_2026.csv")
 
-# Paleta Python Nordeste 2026, tirada de slides/public/pyne-logo.svg.
+# Paleta Python Floripa: azul-marinho e laranja, as cores de slides/brands/python-floripa.
 #
-# As series nao se separam por luminancia: num fundo branco toda serie precisa
-# de pelo menos 3:1 contra o branco, o que limita a luminancia a ~0.28, e nessa
-# faixa nao cabem tres series com 3:1 entre elas. Quem separa as series aqui e
-# o linestyle ("--", ":", "-"), ja usado nos percentis. Cada cor abaixo e
-# escolhida para ser visivel contra o branco, nao contra as outras.
+# O laranja #ffb80d mede 1.8:1 no branco, entao entra so como preenchimento
+# (barras e pontos), sempre com contorno azul-marinho. Linhas e texto usam os
+# azuis, e o linestyle ("--", ":", "-") separa os percentis.
 BG = "#ffffff"
-BG2 = "#f2f8e4"  # tint verde claro, igual a faixa do cabecalho de tabela
-SURFACE = "#f2f8e4"  # tint verde claro
-TEXT = "#032830"  # near-black, igual ao corpo de texto dos slides
-TEXT_MUTED = "#4a5c36"  # verde acinzentado, 6.4:1 no branco
-GRID = "#dbe6c4"  # verde claro
-GREEN = "#6b990a"  # escala verde g-300, 3.30:1
-RED = "#a62a1b"  # PyNE red, 7.07:1, usado so no P95
-MAIN = "#436006"  # escala verde g-600, 6.74:1, mesmo tom dos h1
-MC_BAR = "#507307"  # escala verde g-500, 5.18:1
+BG2 = "#eef1fb"  # --card da marca
+SURFACE = "#eef1fb"
+TEXT = "#0b1a52"  # --text da marca, azul-marinho
+TEXT_MUTED = "#3f4a7a"  # --muted da marca
+GRID = "#c5cbe6"  # --card-line da marca
+GREEN = "#5a6699"  # P50, azul acinzentado
+RED = "#b3261e"  # usado so no P95
+MAIN = "#0b1a52"  # P85, azul-marinho
+MC_BAR = "#ffb80d"  # laranja da marca, so como preenchimento
 
 
 def load_data(clean_cycle_time: bool = True) -> pd.DataFrame:
@@ -922,7 +920,9 @@ def fig_cycle_time_scatterplot(df: pd.DataFrame) -> None:
     fig, ax = plt.subplots(figsize=(13, 5), facecolor=plot_bg)
     ax.set_facecolor(plot_bg)
 
-    ax.scatter(dates, ct, color=point, alpha=0.45, s=20, zorder=3)
+    ax.scatter(
+        dates, ct, color=point, edgecolors=MAIN, linewidths=0.4, alpha=0.85, s=24, zorder=3
+    )
 
     for pct, color, label in [
         (0.50, GREEN, f"P50: {ct.quantile(0.50):.0f} dias"),
@@ -1017,7 +1017,7 @@ def fig_monte_carlo(
     ax.set_facecolor(BG)
 
     bins = range(int(simulacao.min()), int(simulacao.max()) + 2)
-    ax.hist(simulacao, bins=bins, color=MC_BAR, edgecolor=BG, alpha=0.9, align="left")
+    ax.hist(simulacao, bins=bins, color=MC_BAR, edgecolor=MAIN, linewidth=0.5, align="left")
 
     ax.axvline(
         p50,
