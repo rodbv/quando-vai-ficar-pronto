@@ -1,0 +1,33 @@
+/* Python Floripa: azul-marinho e laranja, fonte Poppins. */
+html[data-brand='python-floripa'] {
+  --bg: #ffffff;
+  --text: #0b1a52;
+  --muted: #3f4a7a;
+  --accent: #0b1a52;
+  --fill: #ffb80d;
+  --on-fill: #0b1a52;
+  --fill-edge: #0b1a52;
+  --card: #eef1fb;
+  --card-line: #c5cbe6;
+  --link: #0540aa;
+  --font-sans: 'Poppins', sans-serif;
+  --font-head: 'Poppins', sans-serif;
+  --head-weight: 800;
+  --head-transform: none;
+  --logo: url('./logo.png');
+  --footer: '';
+  --footer-logo: url('./logo-horizontal-claro.png');
+  --footer-logo-width: 110px;
+}
+
+html.dark[data-brand='python-floripa'] {
+  --bg: #0b1a52;
+  --text: #ffffff;
+  --muted: #d6deff;
+  --accent: #ffb80d;
+  --fill-edge: #ffb80d;
+  --card: #13266e;
+  --card-line: #2b3f8f;
+  --link: #a9bfff;
+  --footer-logo: url('./logo-horizontal-escuro.png');
+}

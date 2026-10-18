@@ -1,0 +1,246 @@
+/*
+ * Estilo base do modelo. As cores, as fontes e o logo vêm das variáveis de cada marca,
+ * em brands/<marca>/brand.css. Para criar uma marca nova, copie uma dessas pastas.
+ * Tamanhos pensados para quem senta no fundo da sala: nada abaixo de 24 px no slide.
+ */
+@import '../brands/python-floripa/brand.css';
+
+/* ---------- base ---------- */
+
+.slidev-layout {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 28px;
+  line-height: 1.35;
+  padding: 2.2rem 3.2rem 3.2rem;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.slidev-layout h1,
+.slidev-layout h2,
+.slidev-layout h3 {
+  font-family: var(--font-head);
+  font-weight: var(--head-weight);
+  text-transform: var(--head-transform);
+  color: var(--text);
+  line-height: 1.15;
+}
+
+.slidev-layout h1 {
+  font-size: 1.45em;
+  margin: 0 0 0.9em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid var(--text);
+}
+
+.slidev-layout h3 {
+  font-size: 1em;
+  color: var(--accent);
+  margin: 0 0 0.5em;
+}
+
+.slidev-layout p { margin: 0 0 0.6em; }
+
+.slidev-layout ul,
+.slidev-layout ol { margin: 0; padding-left: 1.2em; }
+
+.slidev-layout ul { list-style: disc; }
+.slidev-layout ol { list-style: decimal; }
+
+.slidev-layout li { margin: 0.35em 0; }
+.slidev-layout li::marker { color: var(--accent); }
+
+.slidev-layout a {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+/* Marca-texto: texto escuro sobre a cor de destaque, legível no claro e no escuro. */
+.slidev-layout mark {
+  background: var(--fill);
+  color: var(--on-fill);
+  font-weight: 700;
+  padding: 0 0.15em;
+}
+
+.slidev-layout .muted { color: var(--muted); }
+
+/* ---------- código: cartão claro nos dois modos ---------- */
+
+.slidev-layout pre.shiki,
+.slidev-layout .slidev-code {
+  background: #ffffff !important;
+  border: 1px solid #d0d7de;
+  border-radius: 10px;
+  padding: 0.7em 1em !important;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78em !important;
+  line-height: 1.45 !important;
+}
+
+.slidev-layout pre.shiki code,
+.slidev-layout .slidev-code code { font-family: inherit; font-variant-ligatures: none; }
+
+.slidev-layout :not(pre) > code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9em;
+  background: var(--card);
+  color: var(--text);
+  border-radius: 4px;
+  padding: 0.05em 0.3em;
+}
+
+/* ---------- tabela ---------- */
+
+.slidev-layout table { width: 100%; border-collapse: collapse; font-size: 0.82em; }
+.slidev-layout th { background: var(--fill); color: var(--on-fill); text-align: left; }
+.slidev-layout th,
+.slidev-layout td { padding: 0.35em 0.6em; border: 1px solid var(--card-line); }
+.slidev-layout td { background: var(--card); }
+
+/* ---------- capa, seção, frase e encerramento ---------- */
+
+.slidev-layout.cover,
+.slidev-layout.section,
+.slidev-layout.statement,
+.slidev-layout.end {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.slidev-layout.cover h1,
+.slidev-layout.section h1,
+.slidev-layout.statement h1 {
+  border: 0;
+  padding: 0;
+  font-size: 2.1em;
+  color: var(--accent);
+  max-width: 62%;
+}
+
+.slidev-layout.cover::after,
+.slidev-layout.section::after {
+  content: '';
+  position: absolute;
+  right: 3.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30%;
+  height: 62%;
+  background: var(--logo) center / contain no-repeat;
+}
+
+.slidev-layout.section .numero {
+  display: inline-grid;
+  place-items: center;
+  width: 2.6em;
+  height: 2.6em;
+  border-radius: 50%;
+  background: var(--fill);
+  color: var(--on-fill);
+  border: 2px solid var(--fill-edge);
+  font-family: var(--font-head);
+  font-weight: 700;
+  margin-bottom: 0.6em;
+}
+
+.slidev-layout.statement h1 { max-width: 85%; }
+
+/* O subtítulo da capa não pode correr por baixo do logo. */
+.slidev-layout.cover p { max-width: 58%; }
+
+/* ---------- citação ---------- */
+
+.slidev-layout.quote { display: flex; flex-direction: column; justify-content: center; }
+.slidev-layout.quote h1 { border: 0; font-size: 1.9em; text-transform: none; }
+.slidev-layout.quote h1::before { content: '“'; color: var(--accent); }
+.slidev-layout.quote h1::after { content: '”'; color: var(--accent); }
+.slidev-layout.quote p { color: var(--muted); font-family: var(--font-head); font-size: 0.8em; }
+
+/* ---------- destaque: painel com a cor de destaque ---------- */
+
+.slidev-layout.two-columns.destaque { padding: 0; gap: 0; }
+.slidev-layout.two-columns.destaque .col-left {
+  background: var(--fill);
+  color: var(--on-fill);
+  display: flex;
+  align-items: center;
+  padding: 2.5rem;
+}
+.slidev-layout.two-columns.destaque .col-left h1 { border: 0; color: var(--on-fill); margin: 0; }
+.slidev-layout.two-columns.destaque .col-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2.5rem;
+}
+
+/* ---------- duas colunas e imagem ---------- */
+
+.slidev-layout.two-columns,
+.slidev-layout.two-cols-header { column-gap: 2.2rem; }
+
+.slidev-layout.image-left,
+.slidev-layout.image-right { background: var(--bg); }
+
+/* ---------- números em destaque ---------- */
+
+.numeros { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; text-align: center; margin-top: 1.5em; }
+.numeros strong { display: block; font-family: var(--font-head); font-size: 2.6em; line-height: 1; color: var(--accent); }
+.numeros span { font-size: 0.85em; }
+
+/* ---------- diagramas Mermaid: as cores ficam em setup/mermaid.ts ---------- */
+
+.slidev-layout .mermaid { display: flex; justify-content: center; }
+
+/* ---------- QR code ---------- */
+
+.qr { width: 260px; border-radius: 8px; }
+.qr-legenda { font-size: 0.75em; color: var(--muted); text-align: center; }
+
+/* ---------- quadrinho: trampo.png tem 4 painéis, um por slide ---------- */
+
+.slidev-layout.quadrinho { padding: 0.4rem; display: flex; justify-content: center; }
+
+.cartoon-pane {
+  aspect-ratio: 1 / 1;
+  height: 100%;
+  background: #ffffff url('/trampo.png') no-repeat;
+  background-size: 200% 200%;
+}
+
+.pane-tl { background-position: 0% 0%; }
+.pane-tr { background-position: 100% 0%; }
+.pane-bl { background-position: 0% 100%; }
+.pane-br { background-position: 100% 100%; }
+
+/* ---------- gráfico ocupando o resto do slide ---------- */
+
+.slidev-layout.grafico { display: flex; flex-direction: column; }
+.slidev-layout.grafico h1 { flex: 0 0 auto; margin-bottom: 0.4em; }
+.slidev-layout.grafico p { margin-bottom: 0.3em; }
+.slidev-layout.grafico img {
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  object-fit: contain;
+}
+
+.fonte { font-size: 0.6em; color: var(--muted); }
+
+/* Caixa no lugar de um gráfico que ainda não existe. */
+.placeholder {
+  flex: 1 1 auto;
+  display: grid;
+  place-items: center;
+  border: 3px dashed var(--card-line);
+  border-radius: 12px;
+  background: var(--card);
+  color: var(--muted);
+  text-align: center;
+  margin-bottom: 0.4em;
+}
