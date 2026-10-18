@@ -230,17 +230,41 @@
   object-fit: contain;
 }
 
-.fonte { font-size: 0.6em; color: var(--muted); }
 
-/* Caixa no lugar de um gráfico que ainda não existe. */
-.placeholder {
+/* ---------- estilos da palestra completa ---------- */
+
+.slidev-layout h2 { font-size: 1.2em; margin: 0.6em 0 0.4em; }
+
+.slidev-layout.full-height-img-slide { display: flex; flex-direction: column; }
+.slidev-layout.full-height-img-slide h1 { flex: 0 0 auto; }
+
+.slide-full-img {
   flex: 1 1 auto;
-  display: grid;
-  place-items: center;
-  border: 3px dashed var(--card-line);
+  min-height: 0;
+  width: 100%;
+  object-fit: contain;
+  display: block;
+  margin: 0.4rem 0 1.4rem;
   border-radius: 12px;
-  background: var(--card);
-  color: var(--muted);
-  text-align: center;
-  margin-bottom: 0.4em;
 }
+
+.slidev-layout .quote-block {
+  margin: 1.2rem 0 0;
+  padding: 0.8rem 1.4rem;
+  max-width: 88%;
+  border-left: 6px solid var(--fill);
+  background: var(--card);
+  color: var(--text);
+  font-family: var(--font-head);
+  font-size: 1.2em;
+  font-weight: 700;
+  border-radius: 0 10px 10px 0;
+}
+
+/* O modelo foi desenhado para 980 px; este deck usa 1280 px e slides mais cheios. */
+.slidev-layout { padding-top: 1.6rem; }
+.slidev-layout h1 { margin-bottom: 0.6em; }
+.slidev-layout table { font-size: 0.75em; }
+.slidev-layout.cover h1 { font-size: 2.8em; }
+.slidev-layout.cover p { font-size: 1.15em; }
+.slidev-layout.compacto { font-size: 24px; }

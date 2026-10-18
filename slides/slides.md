@@ -1,15 +1,20 @@
 ---
-theme: seriph
+brand: python-floripa
 colorSchema: auto
-css: ./style.css
+theme: none
 title: Quando vai ficar pronto?
+author: Rodrigo Vieira
+lang: pt-BR
 info: |
-  Talk na Python Nordeste sobre previsibilidade de entregas com
+  Talk na Python Floripa sobre previsibilidade de entregas com
   métricas de fluxo e simulação.
+fonts:
+  sans: Poppins,Roboto
+  mono: JetBrains Mono
+  weights: '400,700,800'
 transition: fade
 mdc: true
 lineNumbers: true
-highlighter: shiki
 canvasWidth: 1280
 aspectRatio: 16/9
 layout: cover
@@ -20,8 +25,6 @@ layout: cover
 # Quando vai ficar<br>pronto?
 
 Respondendo a pergunta mais importante do cliente.
-
-<img class="cover-logo" src="/pyne-logo.svg" alt="Python Nordeste 2026 Fortaleza - CE" />
 
 ---
 layout: default
@@ -37,31 +40,34 @@ layout: default
     <li>Co-organizador da Python Floripa</li>
 </ul>
 
-<img src="/pyfln.png" alt="Python Floripa" style="height: 265px; border-radius: 16px; box-shadow: 0 4px 24px rgba(2, 128, 144, 0.15); margin-left: 2.8rem;" />
+<img src="/pyfln.png" alt="Python Floripa" style="height: 265px; border-radius: 16px; box-shadow: 0 4px 24px rgba(11, 26, 82, 0.15); margin-left: 2.8rem;" />
 
-<img src="/loadsmart_logo.png" alt="Logo da Loadsmart" style="height: 48px; position: absolute; left: 2.5rem; bottom: 2.5rem;" />
+<img src="/loadsmart_logo.png" alt="Logo da Loadsmart" style="height: 48px; position: absolute; right: 3.2rem; bottom: 2.5rem;" />
 
 ---
-layout: default
+layout: full
+class: quadrinho
 ---
 
 <div class="cartoon-pane pane-tl" role="img" aria-label="Cartoon painel superior esquerdo"></div>
 
 ---
-layout: default
-class: full-height-img-slide
+layout: full
+class: quadrinho
 ---
 
 <div class="cartoon-pane pane-tr" role="img" aria-label="Cartoon painel superior direito"></div>
 
 ---
-layout: default
+layout: full
+class: quadrinho
 ---
 
 <div class="cartoon-pane pane-bl" role="img" aria-label="Cartoon painel inferior esquerdo"></div>
 
 ---
-layout: default
+layout: full
+class: quadrinho
 ---
 
 <div class="cartoon-pane pane-br" role="img" aria-label="Cartoon painel inferior direito"></div>
@@ -95,7 +101,7 @@ layout: default
     <li style="font-size: 2.2rem;">Como acelerar entregas do jeito certo</li>
 </ol>
 
-<p style="position: absolute; bottom: 3.5rem; left: 2.8rem; right: 2.8rem; font-size: 1.35rem; color: var(--teal); opacity: 0.75;">
+<p style="position: absolute; bottom: 3.5rem; left: 2.8rem; right: 2.8rem; font-size: 1.35rem; color: var(--accent); opacity: 0.75;">
   Todo o código, links e referências desta apresentação estarão disponíveis ao final — vou mostrar um QR Code.
 </p>
 
@@ -110,7 +116,7 @@ layout: default
   <img src="/bug.png" alt="Chute vs Estimativa" class="h-auto rounded-xl" style="max-height: 380px; margin-bottom: 1.5rem;" />
 </div>
 
-<h3 style="text-align: center; color: #000;">É difícil evitar estimativas totalmente, mas podemos minimizá-las e não fazer um "castelo de cartas".</h3>
+<h3 style="text-align: center;">É difícil evitar estimativas totalmente, mas podemos minimizá-las e não fazer um "castelo de cartas".</h3>
 
 ---
 layout: default
@@ -443,7 +449,7 @@ class: full-height-img-slide
 
 # Resultado: 10.000 simulações — "quantos itens até 01/06?"
 
-## A área verde mostra que 85% das simulações entregam P15 itens **ou mais**
+## A área sombreada mostra que 85% das simulações entregam P15 itens **ou mais**
 
 <img src="/monte_carlo_itens.png" alt="Histograma das 10.000 simulações de quantos itens até o prazo, com P15 destacado como estimativa conservadora" style="width: 96%; max-height: 72%; object-fit: contain; display: block; margin: 1rem auto 0;" />
 
@@ -525,7 +531,7 @@ class: little-law-slide
 ## Aumentando a taxa de entrega, o tempo de ciclo cai:
 
 $$
-\Large\textcolor{#02c39a}{\downarrow}\!\text{Tempo de Ciclo} = \frac{\text{WIP}}{\textcolor{#02c39a}{\uparrow}\!\text{Taxa de Entrega (TP)}}
+\Large\downarrow\!\text{Tempo de Ciclo} = \frac{\text{WIP}}{\uparrow\!\text{Taxa de Entrega (TP)}}
 $$
 
 </div>
@@ -548,7 +554,7 @@ class: little-law-slide
 ## Reduzindo o WIP, o tempo de ciclo também cai:
 
 $$
-\Large\textcolor{#02c39a}{\downarrow}\!\text{Tempo de Ciclo} = \frac{\textcolor{#02c39a}{\downarrow}\!\text{WIP}}{\text{Taxa de Entrega (TP)}}
+\Large\downarrow\!\text{Tempo de Ciclo} = \frac{\downarrow\!\text{WIP}}{\text{Taxa de Entrega (TP)}}
 $$
 
 </div>
@@ -572,6 +578,7 @@ hide: true
 
 ---
 layout: default
+class: compacto
 ---
 
 # Monitore a idade dos itens em andamento
@@ -643,21 +650,21 @@ layout: default
       <img src="/forecaster.png" alt="Simulador avançado (Troy Magennis)" style="height: 384px; border-radius: 8px; box-shadow: 0 4px 24px rgba(0,0,0,0.18);" />
     </a>
   </div>
-  <ul style="font-size: 1.7rem; line-height: 1.6; color: var(--secondary);">
-    <li style="margin-bottom: 2rem;">Livros e vídeos do Daniel Vacanti<br><a href="https://actionableagile.com" target="_blank" rel="noopener" style="color: var(--teal); font-size: 1.6rem;">actionableagile.com</a></li>
-    <li>Simulador avançado (Troy Magennis)<br><a href="https://www.focusedobjective.com/throughput" target="_blank" rel="noopener" style="color: var(--teal); font-size: 1.6rem;">focusedobjective.com/throughput</a></li>
-    <li style="margin-top: 2rem; font-weight: 700; font-size: 2rem; color: var(--teal);">Vem falar comigo!</li>
+  <ul style="font-size: 1.7rem; line-height: 1.6; color: var(--text);">
+    <li style="margin-bottom: 2rem;">Livros e vídeos do Daniel Vacanti<br><a href="https://actionableagile.com" target="_blank" rel="noopener" style="color: var(--accent); font-size: 1.6rem;">actionableagile.com</a></li>
+    <li>Simulador avançado (Troy Magennis)<br><a href="https://www.focusedobjective.com/throughput" target="_blank" rel="noopener" style="color: var(--accent); font-size: 1.6rem;">focusedobjective.com/throughput</a></li>
+    <li style="margin-top: 2rem; font-weight: 700; font-size: 2rem; color: var(--accent);">Vem falar comigo!</li>
   </ul>
 </div>
 
 ---
 layout: default
-footer: false
+semRodape: true
 ---
 
 # Obrigado! {.text-center}
 
-<div class="flex justify-center gap-10 mt-3 text-2xl font-medium" style="color: var(--teal);">
+<div class="flex justify-center gap-10 mt-3 text-2xl font-medium" style="color: var(--accent);">
   <span style="display: inline-flex; align-items: center; gap: 0.3em;"><img src="/linkedin.svg" alt="LinkedIn" style="height: 1em;" /> <a href="https://www.linkedin.com/in/rodrigobvieira/" target="_blank" rel="noopener" style="color: inherit; text-decoration: none;">rodrigobvieira</a></span>
   <span style="display: inline-flex; align-items: center; gap: 0.3em;"><img src="/mastodon-icon.png" alt="Mastodon" style="height: 1em;" /> <a href="https://pynews.com.br/@rodbv" target="_blank" rel="noopener" style="color: inherit; text-decoration: none;">pynews.com.br/@rodbv</a></span>
 </div>
