@@ -1,17 +1,18 @@
 ---
-brand: python-floripa
+brand: python-brasil
 colorSchema: auto
 theme: none
 title: Quando vai ficar pronto?
 author: Rodrigo Vieira
 lang: pt-BR
 info: |
-  Talk na Python Floripa sobre previsibilidade de entregas com
+  Talk na Python Brasil 2026 sobre previsibilidade de entregas com
   métricas de fluxo e simulação.
 fonts:
-  sans: Poppins,Roboto
-  mono: JetBrains Mono
-  weights: '400,700,800'
+  sans: Roboto
+  serif: Cascadia Mono
+  mono: Cascadia Mono
+  weights: '400,700'
 transition: fade
 mdc: true
 lineNumbers: true
@@ -451,7 +452,7 @@ class: full-height-img-slide
 
 ## A área sombreada mostra que 85% das simulações entregam P15 itens **ou mais**
 
-<img src="/monte_carlo_itens.png" alt="Histograma das 10.000 simulações de quantos itens até o prazo, com P15 destacado como estimativa conservadora" style="width: 96%; max-height: 72%; object-fit: contain; display: block; margin: 1rem auto 0;" />
+<img src="/monte_carlo_itens.png" alt="Histograma das 10.000 simulações de quantos itens até o prazo, com P15 destacado como estimativa conservadora" style="width: 96%; max-height: 64%; object-fit: contain; display: block; margin: 1rem auto 0;" />
 
 ---
 layout: default

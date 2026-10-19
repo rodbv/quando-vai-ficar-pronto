@@ -1,0 +1,60 @@
+/*
+ * Python Brasil 2026: as cores, as fontes e o logo do tema Marp pybr2026
+ * (github.com/rodbv/pybr2026-marp), com a identidade visual de Ana Terhorst.
+ * Preto, off-white, verde limão e violeta; Cascadia Mono nos títulos e no código, Roboto no texto.
+ */
+html[data-brand='python-brasil'] {
+  --bg: #ffffff;
+  --text: #0f0f0f;
+  --muted: #4a4a4a;
+  /* Limão como cor de texto some no branco (1,2:1), por isso o destaque no claro é preto. */
+  --accent: #0f0f0f;
+  --fill: #b7ff06;
+  --on-fill: #0f0f0f;
+  --fill-edge: #0f0f0f;
+  --card: #e8f4ba;
+  --card-line: #c9d9a0;
+  --link: #bf2eb2;
+  --font-sans: 'Roboto', sans-serif;
+  --font-head: 'Cascadia Mono', monospace;
+  --head-weight: 700;
+  --head-transform: none;
+  --logo: url('./lockup-on-light.png');
+  --footer: 'Python Brasil 2026';
+}
+
+html.dark[data-brand='python-brasil'] {
+  --bg: #0f0f0f;
+  --text: #e8f4ba;
+  --muted: #ababab;
+  --accent: #b7ff06;
+  --fill-edge: #b7ff06;
+  --card: #242424;
+  --card-line: #3a3a3a;
+  --link: #d26cc9;
+  --logo: url('./lockup-on-dark.png');
+}
+
+/* Títulos de conteúdo em caixa alta, com o fio de ponta a ponta, como nas páginas da marca. */
+html[data-brand='python-brasil'] .slidev-layout:not(.cover) h1 {
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 1.25em;
+  margin-left: -3.2rem;
+  margin-right: -3.2rem;
+  padding-left: 3.2rem;
+  padding-right: 3.2rem;
+}
+
+html[data-brand='python-brasil'] .slidev-layout a { font-family: var(--font-head); }
+
+html[data-brand='python-brasil'] .slidev-layout ol li::marker {
+  font-family: var(--font-head);
+  font-weight: 700;
+}
+
+html[data-brand='python-brasil'] .slidev-layout th,
+html[data-brand='python-brasil'] .slidev-layout td { border: 2px solid var(--bg); }
+
+/* A capa do tema Marp: título de 60 px em até 60% da largura, com o logo à direita. */
+html[data-brand='python-brasil'] .slidev-layout.cover h1 { font-size: 2.15em; max-width: 58%; }

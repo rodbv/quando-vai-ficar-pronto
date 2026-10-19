@@ -3,7 +3,7 @@
  * em brands/<marca>/brand.css. Para criar uma marca nova, copie uma dessas pastas.
  * Tamanhos pensados para quem senta no fundo da sala: nada abaixo de 24 px no slide.
  */
-@import '../brands/python-floripa/brand.css';
+@import '../brands/python-brasil/brand.css';
 
 /* ---------- base ---------- */
 
@@ -76,7 +76,7 @@
   border: 1px solid #d0d7de;
   border-radius: 10px;
   padding: 0.7em 1em !important;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Cascadia Mono', monospace;
   font-size: 0.78em !important;
   line-height: 1.45 !important;
 }
@@ -85,7 +85,7 @@
 .slidev-layout .slidev-code code { font-family: inherit; font-variant-ligatures: none; }
 
 .slidev-layout :not(pre) > code {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Cascadia Mono', monospace;
   font-size: 0.9em;
   background: var(--card);
   color: var(--text);
@@ -268,3 +268,6 @@
 .slidev-layout.cover h1 { font-size: 2.8em; }
 .slidev-layout.cover p { font-size: 1.15em; }
 .slidev-layout.compacto { font-size: 24px; }
+
+/* Os h2 deste deck são frases inteiras: em fonte de texto, cabem em menos linhas. */
+.slidev-layout h2 { font-family: var(--font-sans); }
