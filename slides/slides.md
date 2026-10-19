@@ -43,7 +43,11 @@ layout: default
 
 <img src="/pyfln.png" alt="Python Floripa" style="height: 265px; border-radius: 16px; box-shadow: 0 4px 24px rgba(11, 26, 82, 0.15); margin-left: 2.8rem;" />
 
-<img src="/loadsmart_logo.png" alt="Logo da Loadsmart" style="height: 48px; position: absolute; right: 3.2rem; bottom: 2.5rem;" />
+<div class="flex flex-col items-end gap-8" style="position: absolute; right: 3.2rem; bottom: 2.5rem;">
+  <img src="/python-floripa-claro.png" alt="Logo da Python Floripa" class="dark:hidden" style="height: 48px;" />
+  <img src="/python-floripa-escuro.png" alt="Logo da Python Floripa" class="hidden dark:block" style="height: 48px;" />
+  <img src="/loadsmart_logo.png" alt="Logo da Loadsmart" style="height: 48px;" />
+</div>
 
 ---
 layout: full
