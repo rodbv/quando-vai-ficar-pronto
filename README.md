@@ -1,8 +1,11 @@
 # Quando vai ficar pronto?
 
-Slides e materiais da palestra apresentada na Python Sul 2026 e na Python Nordeste 2026, sobre previsibilidade de entregas com métricas de fluxo e simulação Monte Carlo.
+Slides e materiais da palestra apresentada na Python Sul 2026, na Python Nordeste 2026 e na Python Brasil 2026, sobre previsibilidade de entregas com métricas de fluxo e simulação Monte Carlo.
 
-A `main` traz a versão da **Python Nordeste 2026** (Fortaleza). A versão da **Python Sul 2026** (Londrina) está preservada na branch [`pysul-2026`](https://github.com/rodbv/quando-vai-ficar-pronto/tree/pysul-2026).
+A `main` traz a versão da **Python Brasil 2026**. As versões anteriores ficam nas branches:
+
+- **Python Nordeste 2026** (Fortaleza): [`pyne-2026-final`](https://github.com/rodbv/quando-vai-ficar-pronto/tree/pyne-2026-final)
+- **Python Sul 2026** (Londrina): [`pysul-2026`](https://github.com/rodbv/quando-vai-ficar-pronto/tree/pysul-2026)
 
 ## Slides
 
