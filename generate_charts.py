@@ -19,21 +19,22 @@ OUTPUT_DIR = Path("slides/public")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 DATA_FILE = Path("data/lead_time_data_clean_2026.csv")
 
-# Paleta Python Floripa: azul-marinho e laranja, as cores de slides/brands/python-floripa.
+# Paleta Python Brasil 2026: preto, off-white, verde limão e violeta, as cores de
+# slides/brands/python-brasil.
 #
-# O laranja #ffb80d mede 1.8:1 no branco, entao entra so como preenchimento
-# (barras e pontos), sempre com contorno azul-marinho. Linhas e texto usam os
-# azuis, e o linestyle ("--", ":", "-") separa os percentis.
+# O limão #b7ff06 mede 1.2:1 no branco, entao entra so como preenchimento
+# (barras e pontos), sempre com contorno preto. Linhas e texto usam o preto, o
+# cinza e o violeta, e o linestyle ("--", ":", "-") separa os percentis.
 BG = "#ffffff"
-BG2 = "#eef1fb"  # --card da marca
-SURFACE = "#eef1fb"
-TEXT = "#0b1a52"  # --text da marca, azul-marinho
-TEXT_MUTED = "#3f4a7a"  # --muted da marca
-GRID = "#c5cbe6"  # --card-line da marca
-GREEN = "#5a6699"  # P50, azul acinzentado
-RED = "#b3261e"  # usado so no P95
-MAIN = "#0b1a52"  # P85, azul-marinho
-MC_BAR = "#ffb80d"  # laranja da marca, so como preenchimento
+BG2 = "#e8f4ba"  # off-white da marca
+SURFACE = "#e8f4ba"
+TEXT = "#0f0f0f"  # preto da marca
+TEXT_MUTED = "#4a4a4a"
+GRID = "#d4d4d4"
+GREEN = "#6e6e6e"  # P50, cinza
+RED = "#bf2eb2"  # violeta da marca, usado so no P95
+MAIN = "#0f0f0f"  # P85, preto
+MC_BAR = "#b7ff06"  # limão da marca, so como preenchimento
 
 
 def load_data(clean_cycle_time: bool = True) -> pd.DataFrame:
