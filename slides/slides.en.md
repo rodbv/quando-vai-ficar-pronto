@@ -544,6 +544,10 @@ $$
 \Large\downarrow\!\text{Cycle Time} = \frac{\text{WIP}}{\uparrow\!\text{Delivery Rate (TP)}}
 $$
 
+This is the intuitive approach: if we finish items faster, each item takes less time.
+
+In practice, it usually turns into asking the team to "try harder", which is on the list of what we do **not** want.
+
 </div>
 <div style="text-align: center; padding-top: 0.5rem;">
   <img src="/johnlittle.png" alt="John Little" style="width: 240px; border-radius: 8px;" />
@@ -566,6 +570,10 @@ class: little-law-slide
 $$
 \Large\downarrow\!\text{Cycle Time} = \frac{\downarrow\!\text{WIP}}{\text{Delivery Rate (TP)}}
 $$
+
+This is the lever that the team controls: start fewer items at the same time.
+
+With the same delivery rate, each item waits less and finishes sooner. Nobody needs to work harder.
 
 </div>
 <div style="text-align: center; padding-top: 0.5rem;">
