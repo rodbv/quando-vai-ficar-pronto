@@ -85,7 +85,7 @@ layout: default
 
 # How do we get out of this trap?
 
-## We want to stop giving estimates that become a promise from one person or one team...
+## We want to stop giving estimates that turn into promises from one person or one team...
 
 - "I think it will take about 4 or 5 days."
 
@@ -100,17 +100,17 @@ layout: default
 
 
 
-# What we will see today
+# What we'll cover today
 
 <ol style="font-size: 2.9rem; line-height: 1.5; margin-left: 2.2rem;">
-    <li style="margin-bottom: 1.1rem; font-size: 2.2rem;">Estimates vs. forecasts: why they are different</li>
+    <li style="margin-bottom: 1.1rem; font-size: 2.2rem;">Estimates vs. forecasts: how they differ</li>
     <li style="margin-bottom: 1.1rem; font-size: 2.2rem;">How to forecast the delivery of 1 item</li>
     <li style="margin-bottom: 1.1rem; font-size: 2.2rem;">How to forecast the delivery of many items</li>
-    <li style="font-size: 2.2rem;">How to deliver faster in the right way</li>
+    <li style="font-size: 2.2rem;">How to deliver faster, the right way</li>
 </ol>
 
 <p style="position: absolute; bottom: 3.5rem; left: 2.8rem; right: 2.8rem; font-size: 1.35rem; color: var(--accent); opacity: 0.75;">
-  All the code, links and references from this talk are available at the end. I will show a QR code.
+  You'll find all the code, links and references at the end, in a QR code.
 </p>
 
 
@@ -126,7 +126,7 @@ layout: default
 
 <p style="text-align: center; font-size: 1rem; color: var(--muted); margin: 0 0 1rem;">Left: a guess. Right: an estimate, which is a guess in a suit.</p>
 
-<h3 style="text-align: center;">We cannot avoid estimates completely. But we can use fewer of them, and we should not build one estimate on top of another.</h3>
+<h3 style="text-align: center;">We can't avoid estimates completely, but we can use fewer of them and stop stacking one estimate on top of another.</h3>
 
 ---
 layout: default
@@ -135,7 +135,7 @@ class: definition-slide
 
 # What is a forecast?
 
-## A **forecast** is a statement about the future, based on historical data. It gives the probability of a specific result.
+## A **forecast** is a statement about the future, based on historical data, that gives the probability of a specific outcome.
 
 
 **A forecast has two parts:**
@@ -154,7 +154,7 @@ layout: default
 
 # Why do our estimates always seem too low?
 
-## Our brain (and our optimism) thinks in a normal distribution
+## Our brain (and our optimism) assumes a normal distribution
 
 <img src="/normal_distribution_curve.en.png" alt="Reference normal distribution curve" style="width: 92%; max-height: 72%; object-fit: contain; display: block; margin: 1.2rem auto 0;" />
 
@@ -164,7 +164,7 @@ layout: default
 
 # Our kind of work has a "long tail"
 
-## A surprise that **delays** the delivery is more likely than a surprise that makes it faster.
+## Surprises are more likely to **delay** delivery than to speed it up.
 
 <img src="/skewed_distribution_curve.en.png" alt="Real lead time distribution with a long tail" style="width: 92%; max-height: 72%; object-fit: contain; display: block; margin: 1.2rem auto 0;" />
 
@@ -174,7 +174,7 @@ layout: default
 
 # How can we forecast without estimation meetings?
 
-## You need to collect only two things for each work item:
+## You only need two things for each work item:
 
 - The start date
 - The end date
@@ -280,7 +280,7 @@ layout: default
 **This means that 85% of our work items finish in 11 days or less.**
 
 <p>
-This number comes from your recent data. So it already includes everything that we usually leave out of an estimate:
+This number comes from our recent data, so it already includes everything we usually leave out of an estimate:
 </p>
 
 - Interruptions
@@ -302,8 +302,8 @@ layout: default
   </div>
   <div>
     <ul style="font-size: 1.5rem; line-height: 2.4rem;">
-      <li>Created by Ulam, von Neumann and Metropolis at <strong>Los Alamos</strong> (1946 to 1947), in the US nuclear program</li>
-      <li>Main idea: use <strong>random sampling</strong> for problems that have no analytical solution. We cannot calculate every possibility. But enough random samples <strong>converge to the correct answer</strong>.</li>
+      <li>Created by Ulam, von Neumann and Metropolis at <strong>Los Alamos</strong> (1946 to 1947), as part of the US nuclear program</li>
+      <li>Main idea: use <strong>random sampling</strong> for problems with no analytical solution. We can't calculate every possibility, but enough random samples <strong>converge on the right answer</strong>.</li>
     </ul>
   </div>
 </div>
@@ -334,7 +334,7 @@ layout: default
 
 # Running 1 Monte Carlo simulation for 50 items
 
-###  For 50 items, we pick random daily TP values from this history until we reach 50 items. One run looks like this:
+###  We draw random daily TP values from this history until we reach 50 items. One run looks like this:
 
 
 | Day | Items delivered | Remaining |
@@ -348,7 +348,7 @@ layout: default
 | ... | ... | ... |
 | 23 | 1 | 0 |
 
-This first simulation gave a result of 23 days.
+This first run took 23 days.
 
 ---
 layout: default
@@ -394,7 +394,7 @@ print(f"P50={p50:.0f}  P85={p85:.0f}  P95={p95:.0f} days")
 
 So now we can say: we are 85% confident that we will deliver the 50 items in 30 days or less. We are 95% confident that we will deliver them in 34 days or less.
 
-No guessing and no estimation meeting. Only real data and a simulation.
+No guesswork, no estimation meeting: just real data and a simulation.
 
 
 ---
@@ -471,9 +471,9 @@ layout: default
 
 ## What we do **not** want:
 
-- Choose the "nicer" data, remove outliers, or look for reasons to exclude data.
+- Cherry-pick the data, remove outliers, or look for reasons to exclude data.
 - Ask the team to "try harder", "focus" or "avoid interruptions".
-- Use the 50th percentile. By definition, this means that you will be wrong half of the time.
+- Use the 50th percentile: by definition, you'll be wrong half the time.
 
 <div class="m16"></div>
 
@@ -582,7 +582,7 @@ hide: true
 # "Stop starting, start finishing"
 
 - Our goal is to deliver work, not to start it
-- Before you start new work, check if you can finish something that is already in progress, also items from your colleagues
+- Before you start new work, check if you can finish something that is already in progress, including your colleagues' items
 - A strict WIP limit makes the team finish what it already started, instead of starting more things.
 
 
@@ -595,7 +595,7 @@ class: compacto
 
 ## "Item Age" is the number of days that an item has been in progress, without being finished.
 
-Every new item has a **15% chance to go over the SLE of 11 days**.
+Every new item has a **15% chance of going over the SLE of 11 days**.
 
 But an item that has been in progress for 6 days is already in the long tail of the distribution. Its chance goes up to more than **40%**.
 
