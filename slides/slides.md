@@ -464,7 +464,7 @@ class: full-height-img-slide
 
 # Resultado: 10.000 simulações — "quantos itens até 01/06?"
 
-## A área sombreada mostra que 85% das simulações entregam P15 itens **ou mais**
+## As barras verdes, da linha do P15 para a direita, são 85% das simulações: elas entregam 59 itens **ou mais**
 
 <img src="/monte_carlo_itens.png" alt="Histograma das 10.000 simulações de quantos itens até o prazo, com P15 destacado como estimativa conservadora" style="width: 96%; max-height: 64%; object-fit: contain; display: block; margin: 1rem auto 0;" />
 

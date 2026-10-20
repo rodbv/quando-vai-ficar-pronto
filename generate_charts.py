@@ -1549,10 +1549,11 @@ def fig_monte_carlo_itens(
     ax.set_facecolor(BG)
 
     bins = range(int(resultados.min()), int(resultados.max()) + 2)
-    ax.hist(resultados, bins=bins, color=MC_BAR, edgecolor=BG, alpha=0.9, align="left")
-
-    # Shade area to the right of P15 to show "85% das simulações"
-    ax.axvspan(p15, resultados.max() + 1, color=GREEN, alpha=0.10, zorder=0)
+    _, _, bars = ax.hist(resultados, bins=bins, color=MC_BAR, edgecolor=BG, alpha=0.9, align="left")
+    # As barras abaixo do P15 ficam cinza: as verdes são os 85% das simulações.
+    for bar in bars:
+        if bar.get_x() + bar.get_width() / 2 < p15:
+            bar.set_facecolor(GRID)
 
     ax.axvline(
         p15,

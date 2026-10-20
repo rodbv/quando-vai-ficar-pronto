@@ -467,7 +467,7 @@ class: full-height-img-slide
 
 # Result: 10,000 simulations of "how many items by June 1?"
 
-## The shaded area shows that 85% of the simulations deliver P15 items **or more**
+## The green bars, from the P15 line to the right, are 85% of the simulations: they deliver 59 items **or more**
 
 <img src="/monte_carlo_itens.en.png" alt="Histogram of 10,000 simulations of how many items are done by the deadline, with P15 highlighted as the safe forecast" style="width: 96%; max-height: 64%; object-fit: contain; display: block; margin: 1rem auto 0;" />
 
