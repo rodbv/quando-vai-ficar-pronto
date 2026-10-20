@@ -1,1 +1,0 @@
-import{B as e,L as t,y as n}from"../modules/shiki-CLWvtuQJ.js";import{yt as r}from"../index-D70_Exb4.js";var i={},a={class:`slidev-layout full w-full h-full`};function o(r,i){return t(),n(`div`,a,[e(r.$slots,`default`,{class:`w-full h-full`})])}var s=r(i,[[`render`,o]]);export{s as t};
