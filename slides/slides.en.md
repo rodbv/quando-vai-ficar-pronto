@@ -156,7 +156,9 @@ layout: default
 
 ## Our brain (and our optimism) assumes a normal distribution
 
-<img src="/normal_distribution_curve.en.png" alt="Reference normal distribution curve" style="width: 92%; max-height: 72%; object-fit: contain; display: block; margin: 1.2rem auto 0;" />
+<p style="margin: 0.4rem 0 0;">We picture delivery time as symmetric: finishing early looks as likely as finishing late.</p>
+
+<img src="/normal_distribution_curve.en.png" alt="Reference normal distribution curve" style="width: 92%; max-height: 64%; object-fit: contain; display: block; margin: 1.2rem auto 0;" />
 
 ---
 layout: default
@@ -166,7 +168,9 @@ layout: default
 
 ## Surprises are more likely to **delay** delivery than to speed it up.
 
-<img src="/skewed_distribution_curve.en.png" alt="Real lead time distribution with a long tail" style="width: 92%; max-height: 72%; object-fit: contain; display: block; margin: 1.2rem auto 0;" />
+<p style="margin: 0.4rem 0 0;">Half of the items finish in 4 days, but 1 in 20 takes 16 days or more.</p>
+
+<img src="/skewed_distribution_curve.en.png" alt="Real lead time distribution with a long tail" style="width: 92%; max-height: 64%; object-fit: contain; display: block; margin: 1.2rem auto 0;" />
 
 ---
 layout: default
@@ -245,6 +249,8 @@ class: full-height-img-slide
 ---
 
 # Let the spreadsheet do the math
+
+<p style="margin: 0.4rem 0 0;">In Google Sheets or Excel, <code>=ROUNDUP(PERCENTILE(C2:C21, 0.85))</code> on the Days column gives the SLE: 11 days.</p>
 
 <img class="slide-full-img" src="/excel-p85.png" alt="Spreadsheet with the formula for the 85th percentile" />
 
@@ -406,7 +412,9 @@ class: full-height-img-slide
 
 ## Distribution of the results, with confidence percentiles
 
-<img src="/monte_carlo_resultado_daily.en.png" alt="Histogram of 10,000 Monte Carlo simulations with P50, P85 and P95 lines" style="width: 96%; max-height: 72%; object-fit: contain; display: block; margin: 1rem auto 0;" />
+<p style="margin: 0.4rem 0 0;">Each bar counts the simulations that finished in that many days. 85% of them finished in 30 days or less, so 30 days is the forecast.</p>
+
+<img src="/monte_carlo_resultado_daily.en.png" alt="Histogram of 10,000 Monte Carlo simulations with P50, P85 and P95 lines" style="width: 96%; max-height: 62%; object-fit: contain; display: block; margin: 1rem auto 0;" />
 
 
 ---
@@ -487,6 +495,8 @@ class: full-height-img-slide
 ---
 
 # Make the work visible
+
+<p style="margin: 0.4rem 0 0;">A board shows every item in progress and how long it has been there. Here each card shows its age in days, so the 9-day card stands out before anyone asks about it.</p>
 
 <img class="slide-full-img" src="/trello-kanban.png" alt="Kanban board with columns and work cards" />
 
