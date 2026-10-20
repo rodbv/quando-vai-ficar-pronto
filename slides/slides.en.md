@@ -28,6 +28,8 @@ layout: cover
 
 Answering the customer's most important question.
 
+<a class="lang-link" href="https://rodbv.github.io/quando-vai-ficar-pronto/" lang="pt-BR">Versão em português</a>
+
 ---
 layout: default
 ---
