@@ -4,6 +4,11 @@ on:
   push:
     branches: [main]
 
+# Two runs that push to gh-pages at the same time make one of them fail.
+concurrency:
+  group: deploy-gh-pages
+  cancel-in-progress: false
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
