@@ -55,51 +55,28 @@ layout: full
 class: quadrinho
 ---
 
-<div class="cartoon-pane pane-tl" role="img" aria-label="Comic, panel 1: the team discusses estimates"></div>
-
-<div class="cartoon-caption">
-  <p class="cartoon-caption-title">Discussing estimates</p>
-  <p>"If the work is really this size..."</p>
-  <p>"If the server is available..."</p>
-  <p>"If QA is free by next week..."</p>
-  <p>"I think about 5 or 6 weeks, but it will be hard."</p>
-</div>
+<div class="cartoon-pane cartoon-en pane-tl" role="img" aria-label="Comic, panel 1: the team discusses estimates"></div>
 
 ---
 layout: full
 class: quadrinho
 ---
 
-<div class="cartoon-pane pane-tr" role="img" aria-label="Comic, panel 2: the manager reports to leadership"></div>
-
-<div class="cartoon-caption">
-  <p class="cartoon-caption-title">Leadership report</p>
-  <p>"The team thinks they can do it in 5 weeks, but there are some open questions."</p>
-</div>
+<div class="cartoon-pane cartoon-en pane-tr" role="img" aria-label="Comic, panel 2: the manager reports to leadership"></div>
 
 ---
 layout: full
 class: quadrinho
 ---
 
-<div class="cartoon-pane pane-bl" role="img" aria-label="Comic, panel 3: an executive presents the date to the board"></div>
-
-<div class="cartoon-caption">
-  <p class="cartoon-caption-title">Board meeting</p>
-  <p>"The project will be ready in 5 weeks, on June 8."</p>
-</div>
+<div class="cartoon-pane cartoon-en pane-bl" role="img" aria-label="Comic, panel 3: an executive presents the date to the board"></div>
 
 ---
 layout: full
 class: quadrinho
 ---
 
-<div class="cartoon-pane pane-br" role="img" aria-label="Comic, panel 4: a developer reads an email and panics"></div>
-
-<div class="cartoon-caption">
-  <p class="cartoon-caption-title">The next day...</p>
-  <p>Email: "The customer demo is on June 8 at 2 PM."</p>
-</div>
+<div class="cartoon-pane cartoon-en pane-br" role="img" aria-label="Comic, panel 4: a developer reads an email and panics"></div>
 ---
 layout: default
 ---
