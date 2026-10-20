@@ -18,6 +18,7 @@ mdc: true
 lineNumbers: true
 canvasWidth: 1280
 aspectRatio: 16/9
+routerMode: hash
 layout: cover
 
 ---
