@@ -14,6 +14,7 @@ jobs:
           node-version: 24
       - run: cd slides && npm install
       - run: cd slides && npx slidev build --base /quando-vai-ficar-pronto/
+      - run: cd slides && npx slidev build slides.en.md --base /quando-vai-ficar-pronto/en/ --out dist/en
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
