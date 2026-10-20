@@ -20,6 +20,17 @@ npm install
 npm run dev
 ```
 
+### Versão em inglês
+
+A versão em inglês, *When will it be done?*, fica em `slides/slides.en.md`, usa os mesmos assets e é publicada em https://rodbv.github.io/quando-vai-ficar-pronto/en/.
+
+```sh
+cd slides
+npm run dev:en      # apresentar localmente
+npm run build:en    # gerar em dist/en
+npm run export:en   # gerar o PDF em exports/
+```
+
 ## Geração de gráficos
 
 Os gráficos usados nos slides são gerados a partir dos dados reais em `data/`:
