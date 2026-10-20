@@ -156,7 +156,7 @@ layout: default
 
 ## Our brain (and our optimism) thinks in a normal distribution
 
-<img src="/normal_distribution_curve.png" alt="Reference normal distribution curve" style="width: 92%; max-height: 72%; object-fit: contain; display: block; margin: 1.2rem auto 0;" />
+<img src="/normal_distribution_curve.en.png" alt="Reference normal distribution curve" style="width: 92%; max-height: 72%; object-fit: contain; display: block; margin: 1.2rem auto 0;" />
 
 ---
 layout: default
@@ -166,7 +166,7 @@ layout: default
 
 ## A surprise that **delays** the delivery is more likely than a surprise that makes it faster.
 
-<img src="/skewed_distribution_curve.png" alt="Real lead time distribution with a long tail" style="width: 92%; max-height: 72%; object-fit: contain; display: block; margin: 1.2rem auto 0;" />
+<img src="/skewed_distribution_curve.en.png" alt="Real lead time distribution with a long tail" style="width: 92%; max-height: 72%; object-fit: contain; display: block; margin: 1.2rem auto 0;" />
 
 ---
 layout: default
@@ -222,7 +222,7 @@ hide: true
 
 ## The area to the left of 11 days holds 85% of the items
 
-<img src="/cycle_time_histogram.png" alt="Lead time histogram with the 85th percentile highlighted" style="width: 95%; max-height: 68%; object-fit: contain; display: block; margin: 1rem auto 0;" />
+<img src="/cycle_time_histogram.en.png" alt="Lead time histogram with the 85th percentile highlighted" style="width: 95%; max-height: 68%; object-fit: contain; display: block; margin: 1rem auto 0;" />
 
 
 ---
@@ -235,7 +235,7 @@ class: full-height-img-slide
 
 ## Recent data shows that we finish 85% of our items in 11 days or less.
 
-<img src="/cycle_time_scatterplot.png" alt="Scatterplot of real lead times with P50 and P85 lines" style="width: 95%; max-height: 68%; object-fit: contain; display: block; margin: 1rem auto 0;" />
+<img src="/cycle_time_scatterplot.en.png" alt="Scatterplot of real lead times with P50 and P85 lines" style="width: 95%; max-height: 68%; object-fit: contain; display: block; margin: 1rem auto 0;" />
 
 
 
@@ -406,7 +406,7 @@ class: full-height-img-slide
 
 ## Distribution of the results, with confidence percentiles
 
-<img src="/monte_carlo_resultado_daily.png" alt="Histogram of 10,000 Monte Carlo simulations with P50, P85 and P95 lines" style="width: 96%; max-height: 72%; object-fit: contain; display: block; margin: 1rem auto 0;" />
+<img src="/monte_carlo_resultado_daily.en.png" alt="Histogram of 10,000 Monte Carlo simulations with P50, P85 and P95 lines" style="width: 96%; max-height: 72%; object-fit: contain; display: block; margin: 1rem auto 0;" />
 
 
 ---
@@ -461,7 +461,7 @@ class: full-height-img-slide
 
 ## The shaded area shows that 85% of the simulations deliver P15 items **or more**
 
-<img src="/monte_carlo_itens.png" alt="Histogram of 10,000 simulations of how many items are done by the deadline, with P15 highlighted as the safe forecast" style="width: 96%; max-height: 64%; object-fit: contain; display: block; margin: 1rem auto 0;" />
+<img src="/monte_carlo_itens.en.png" alt="Histogram of 10,000 simulations of how many items are done by the deadline, with P15 highlighted as the safe forecast" style="width: 96%; max-height: 64%; object-fit: contain; display: block; margin: 1rem auto 0;" />
 
 ---
 layout: default

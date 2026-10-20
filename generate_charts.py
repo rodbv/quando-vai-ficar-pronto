@@ -36,6 +36,42 @@ RED = "#bf2eb2"  # violeta da marca, usado so no P95
 MAIN = "#0f0f0f"  # P85, preto
 MC_BAR = "#b7ff06"  # limão da marca, so como preenchimento
 
+# Os charts do deck em inglês saem com o mesmo seed e os mesmos dados, só com o
+# texto traduzido, em arquivos *.en.png. Um texto sem entrada aqui quebra o run em
+# inglês, para nenhum chart sair com português no deck em inglês.
+LANG = "pt"
+EN = {
+    "dias": "days",
+    "Dias": "Days",
+    "Densidade": "Density",
+    "Média": "Mean",
+    "Faixa central": "Central range",
+    "Mediana (P50)": "Median (P50)",
+    "itens": "items",
+    "← use este": "← use this",
+    "(só 15% chegam aqui)": "(only 15% get here)",
+    "Como nosso cérebro pensa em estimativas": "How our brain thinks about estimates",
+    "Tempo de ciclo real: distribuição assimétrica": "Real cycle time: a skewed distribution",
+    "Distribuição do Cycle Time": "Cycle time distribution",
+    "Número de tarefas (escala log)": "Number of tasks (log scale)",
+    "Tempo de Ciclo Scatterplot (dados reais de 2026)": "Cycle time scatterplot (real 2026 data)",
+    "Data de entrega": "Delivery date",
+    "Tempo de ciclo (dias)": "Cycle time (days)",
+    "Monte Carlo: quando entregamos {n} cards?": "Monte Carlo: when do we deliver {n} cards?",
+    "Frequência (10.000 simulações)": "Frequency (10,000 simulations)",
+    "Monte Carlo: quantos itens entregamos em {n} dias?": "Monte Carlo: how many items do we deliver in {n} days?",
+    "Itens entregues": "Items delivered",
+}
+
+
+def t(text: str) -> str:
+    return EN[text] if LANG == "en" else text
+
+
+def chart_path(name: str) -> Path:
+    path = OUTPUT_DIR / name
+    return path.with_suffix(".en" + path.suffix) if LANG == "en" else path
+
 
 def load_data(clean_cycle_time: bool = True) -> pd.DataFrame:
     df = pd.read_csv(
@@ -244,19 +280,19 @@ def fig_cycle_time_histogram(df: pd.DataFrame) -> None:
             color=color,
             linewidth=2,
             linestyle="--",
-            label=f"{label}: {val:.0f} dias",
+            label=f"{label}: {val:.0f} {t('dias')}",
         )
 
-    ax.set_title("Distribuição do Cycle Time", color=TEXT, fontsize=14, pad=12)
-    ax.set_xlabel("Dias", color=TEXT_MUTED)
-    ax.set_ylabel("Número de tarefas (escala log)", color=TEXT_MUTED)
+    ax.set_title(t("Distribuição do Cycle Time"), color=TEXT, fontsize=14, pad=12)
+    ax.set_xlabel(t("Dias"), color=TEXT_MUTED)
+    ax.set_ylabel(t("Número de tarefas (escala log)"), color=TEXT_MUTED)
     ax.tick_params(colors=TEXT_MUTED)
     ax.legend(fontsize=11, facecolor=SURFACE, labelcolor=TEXT, edgecolor=GRID)
     for spine in ax.spines.values():
         spine.set_color(GRID)
 
     fig.tight_layout()
-    out = OUTPUT_DIR / "cycle_time_histogram.png"
+    out = chart_path("cycle_time_histogram.png")
     fig.savefig(out, dpi=150, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print(f"✓ {out}")
@@ -295,21 +331,21 @@ def fig_normal_distribution_reference(
         color=MAIN,
         linewidth=2.2,
         linestyle="--",
-        label=f"Média: {mean_days:.0f} dias",
+        label=f"{t('Média')}: {mean_days:.0f} {t('dias')}",
     )
     ax.axvspan(
         one_sigma_low,
         one_sigma_high,
         color=GREEN,
         alpha=0.08,
-        label=f"Faixa central: {one_sigma_low:.0f}-{one_sigma_high:.0f} dias",
+        label=f"{t('Faixa central')}: {one_sigma_low:.0f}-{one_sigma_high:.0f} {t('dias')}",
     )
 
     ax.set_title(
-        "Como nosso cérebro pensa em estimativas", color=TEXT, fontsize=14, pad=12
+        t("Como nosso cérebro pensa em estimativas"), color=TEXT, fontsize=14, pad=12
     )
-    ax.set_xlabel("Dias", color=TEXT_MUTED)
-    ax.set_ylabel("Densidade", color=TEXT_MUTED)
+    ax.set_xlabel(t("Dias"), color=TEXT_MUTED)
+    ax.set_ylabel(t("Densidade"), color=TEXT_MUTED)
     ax.set_xlim(x_min, x_max)
     ax.set_xticks(np.arange(int(x_min), int(x_max) + 1, 2))
     ax.tick_params(colors=TEXT_MUTED)
@@ -329,7 +365,7 @@ def fig_normal_distribution_reference(
         spine.set_color(GRID)
 
     fig.tight_layout()
-    out = OUTPUT_DIR / "normal_distribution_curve.png"
+    out = chart_path("normal_distribution_curve.png")
     fig.savefig(out, dpi=150, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print(f"✓ {out}")
@@ -371,27 +407,27 @@ def fig_skewed_distribution_reference(
         color=GREEN,
         linewidth=2.2,
         linestyle="--",
-        label=f"Mediana (P50): {p50:.0f} dias",
+        label=f"{t('Mediana (P50)')}: {p50:.0f} {t('dias')}",
     )
     ax.axvline(
         p75,
         color=TEXT_MUTED,
         linewidth=1.8,
         linestyle=":",
-        label=f"P75: {p75:.0f} dias",
+        label=f"P75: {p75:.0f} {t('dias')}",
     )
     ax.axvline(
-        p85, color=MAIN, linewidth=2.0, linestyle="--", label=f"P85: {p85:.0f} dias"
+        p85, color=MAIN, linewidth=2.0, linestyle="--", label=f"P85: {p85:.0f} {t('dias')}"
     )
     ax.axvline(
-        p95, color=RED, linewidth=2.2, linestyle="-", label=f"P95: {p95:.0f} dias"
+        p95, color=RED, linewidth=2.2, linestyle="-", label=f"P95: {p95:.0f} {t('dias')}"
     )
 
     ax.set_title(
-        "Tempo de ciclo real: distribuição assimétrica", color=TEXT, fontsize=14, pad=12
+        t("Tempo de ciclo real: distribuição assimétrica"), color=TEXT, fontsize=14, pad=12
     )
-    ax.set_xlabel("Dias", color=TEXT_MUTED)
-    ax.set_ylabel("Densidade", color=TEXT_MUTED)
+    ax.set_xlabel(t("Dias"), color=TEXT_MUTED)
+    ax.set_ylabel(t("Densidade"), color=TEXT_MUTED)
     ax.set_xlim(0, x_max)
     ax.tick_params(colors=TEXT_MUTED)
     ax.grid(axis="y", color=GRID, linestyle=":", linewidth=0.9)
@@ -410,7 +446,7 @@ def fig_skewed_distribution_reference(
         spine.set_color(GRID)
 
     fig.tight_layout()
-    out = OUTPUT_DIR / "skewed_distribution_curve.png"
+    out = chart_path("skewed_distribution_curve.png")
     fig.savefig(out, dpi=150, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print(
@@ -926,8 +962,8 @@ def fig_cycle_time_scatterplot(df: pd.DataFrame) -> None:
     )
 
     for pct, color, label in [
-        (0.50, GREEN, f"P50: {ct.quantile(0.50):.0f} dias"),
-        (0.85, MAIN, f"P85: {ct.quantile(0.85):.0f} dias"),
+        (0.50, GREEN, f"P50: {ct.quantile(0.50):.0f} {t('dias')}"),
+        (0.85, MAIN, f"P85: {ct.quantile(0.85):.0f} {t('dias')}"),
     ]:
         val = ct.quantile(pct)
         ax.axhline(
@@ -935,13 +971,13 @@ def fig_cycle_time_scatterplot(df: pd.DataFrame) -> None:
         )
 
     ax.set_title(
-        "Tempo de Ciclo Scatterplot (dados reais de 2026)",
+        t("Tempo de Ciclo Scatterplot (dados reais de 2026)"),
         color=text_main,
         fontsize=14,
         pad=12,
     )
-    ax.set_xlabel("Data de entrega", color=text_muted)
-    ax.set_ylabel("Tempo de ciclo (dias)", color=text_muted)
+    ax.set_xlabel(t("Data de entrega"), color=text_muted)
+    ax.set_ylabel(t("Tempo de ciclo (dias)"), color=text_muted)
     ax.xaxis.set_major_formatter(mdates.DateFormatter("%b/%y"))
     ax.xaxis.set_major_locator(mdates.MonthLocator())
     ax.tick_params(colors=text_muted, axis="both")
@@ -957,7 +993,7 @@ def fig_cycle_time_scatterplot(df: pd.DataFrame) -> None:
         spine.set_color(grid)
 
     fig.tight_layout()
-    out = OUTPUT_DIR / "cycle_time_scatterplot.png"
+    out = chart_path("cycle_time_scatterplot.png")
     fig.savefig(out, dpi=150, bbox_inches="tight", facecolor=plot_bg)
     plt.close(fig)
     print(f"✓ {out}")
@@ -1031,7 +1067,7 @@ def fig_monte_carlo(
         p85,
         color=MAIN,
         linewidth=2.5,
-        label=f"P85: {p85:.0f} {unit_label}  ← use este",
+        label=f"P85: {p85:.0f} {unit_label}  {t('← use este')}",
     )
     ax.axvline(
         p95,
@@ -1042,13 +1078,13 @@ def fig_monte_carlo(
     )
 
     ax.set_title(
-        f"Monte Carlo: quando entregamos {n_items} cards?",
+        t("Monte Carlo: quando entregamos {n} cards?").format(n=n_items),
         color=TEXT,
         fontsize=14,
         pad=12,
     )
     ax.set_xlabel(unit_label.capitalize(), color=TEXT_MUTED)
-    ax.set_ylabel("Frequência (10.000 simulações)", color=TEXT_MUTED)
+    ax.set_ylabel(t("Frequência (10.000 simulações)"), color=TEXT_MUTED)
     ax.set_xlim(1, x_max)
     ax.xaxis.set_major_locator(mticker.MaxNLocator(integer=True))
     ax.tick_params(colors=TEXT_MUTED)
@@ -1057,7 +1093,7 @@ def fig_monte_carlo(
         spine.set_color(GRID)
 
     fig.tight_layout()
-    out = OUTPUT_DIR / output
+    out = chart_path(output)
     fig.savefig(out, dpi=150, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print(f"✓ {out}  (P50={p50:.0f} P85={p85:.0f} P95={p95:.0f} {unit_label})")
@@ -1523,31 +1559,31 @@ def fig_monte_carlo_itens(
         color=MAIN,
         linewidth=2.5,
         linestyle="--",
-        label=f"P15: {p15:.0f} itens  ← use este",
+        label=f"P15: {p15:.0f} {t('itens')}  {t('← use este')}",
     )
     ax.axvline(
         p50,
         color=GREEN,
         linewidth=2,
         linestyle="--",
-        label=f"P50: {p50:.0f} itens",
+        label=f"P50: {p50:.0f} {t('itens')}",
     )
     ax.axvline(
         p85,
         color=RED,
         linewidth=2,
         linestyle="--",
-        label=f"P85: {p85:.0f} itens  (só 15% chegam aqui)",
+        label=f"P85: {p85:.0f} {t('itens')}  {t('(só 15% chegam aqui)')}",
     )
 
     ax.set_title(
-        f"Monte Carlo: quantos itens entregamos em {prazo_dias} dias?",
+        t("Monte Carlo: quantos itens entregamos em {n} dias?").format(n=prazo_dias),
         color=TEXT,
         fontsize=14,
         pad=12,
     )
-    ax.set_xlabel("Itens entregues", color=TEXT_MUTED)
-    ax.set_ylabel("Frequência (10.000 simulações)", color=TEXT_MUTED)
+    ax.set_xlabel(t("Itens entregues"), color=TEXT_MUTED)
+    ax.set_ylabel(t("Frequência (10.000 simulações)"), color=TEXT_MUTED)
     ax.xaxis.set_major_locator(mticker.MaxNLocator(integer=True))
     ax.tick_params(colors=TEXT_MUTED)
     ax.legend(fontsize=11, facecolor=SURFACE, labelcolor=TEXT, edgecolor=GRID)
@@ -1555,7 +1591,7 @@ def fig_monte_carlo_itens(
         spine.set_color(GRID)
 
     fig.tight_layout()
-    out = OUTPUT_DIR / output
+    out = chart_path(output)
     fig.savefig(out, dpi=150, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print(f"✓ {out}  (P15={p15:.0f} P50={p50:.0f} P85={p85:.0f} itens)")
@@ -1615,6 +1651,26 @@ if __name__ == "__main__":
         trace_csv="data/monte_carlo_trace_daily_10k.csv",
         target_cards=50,
         output="02-monte-carlo-histograma-100-runs-daily.png",
+    )
+    fig_monte_carlo_itens(
+        throughput_values=np.array(throughput_daily_latest_16w),
+        prazo_dias=34,
+        output="monte_carlo_itens.png",
+    )
+
+    # O deck em inglês usa estes seis charts; a curva de cycle time, o throughput
+    # semanal e os GIFs ficam só em português.
+    LANG = "en"
+    fig_normal_distribution_reference(mean_days=10, median_days=10)
+    fig_skewed_distribution_reference(df)
+    fig_cycle_time_histogram(df)
+    fig_cycle_time_scatterplot(df)
+    fig_monte_carlo(
+        df,
+        n_items=50,
+        throughput_values=np.array(throughput_daily_latest_16w),
+        unit_label=t("dias"),
+        output="monte_carlo_resultado_daily.png",
     )
     fig_monte_carlo_itens(
         throughput_values=np.array(throughput_daily_latest_16w),
