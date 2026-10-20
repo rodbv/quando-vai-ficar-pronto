@@ -332,19 +332,19 @@ layout: default
 layout: default
 ---
 
-# Running 1 Monte Carlo simulation for 10 items
+# Running 1 Monte Carlo simulation for 50 items
 
-###  For 10 items, we pick random daily TP values from this history until we reach 10 items. One run looks like this:
+###  For 50 items, we pick random daily TP values from this history until we reach 50 items. One run looks like this:
 
 
 | Day | Items delivered | Remaining |
 |---|---|---|
-| 1 | 0 | 10 |
-| 2 | 1 | 9 |
-| 3 | 0 | 9 |
-| 4 | 2 | 7 |
-| 5 | 0 | 7 |
-| 6 | 1 | 6 |
+| 1 | 0 | 50 |
+| 2 | 1 | 49 |
+| 3 | 0 | 49 |
+| 4 | 2 | 47 |
+| 5 | 0 | 47 |
+| 6 | 1 | 46 |
 | ... | ... | ... |
 | 23 | 1 | 0 |
 
@@ -371,7 +371,7 @@ def simulate_delivery(num_items: int, history: list[int]) -> int:
 
     return days
 
-simulate_delivery(10, tp_history) # e.g. 23
+simulate_delivery(50, tp_history) # e.g. 23
 ```
 
 ---
@@ -383,8 +383,8 @@ layout: default
 ```python
 import numpy as np
 
-results = [simulate_delivery(10, tp_history) for _ in range(10_000)]
-# [8, 12, 9, 7, 15, 10, 11, 9, 14, 13, ..., 10]
+results = [simulate_delivery(50, tp_history) for _ in range(10_000)]
+# [23, 27, 21, 25, 30, 24, 22, 26, 28, 24, ..., 25]
 
 p50, p85, p95 = np.percentile(results, [50, 85, 95])
 
@@ -392,7 +392,7 @@ print(f"P50={p50:.0f}  P85={p85:.0f}  P95={p95:.0f} days")
 # P50=24  P85=30  P95=34 days
 ```
 
-So now we can say: we are 85% confident that we will deliver the 10 items in 30 days or less. We are 95% confident that we will deliver them in 34 days or less.
+So now we can say: we are 85% confident that we will deliver the 50 items in 30 days or less. We are 95% confident that we will deliver them in 34 days or less.
 
 No guessing and no estimation meeting. Only real data and a simulation.
 

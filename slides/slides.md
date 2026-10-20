@@ -329,19 +329,19 @@ layout: default
 layout: default
 ---
 
-# Rodando 1 simulação de Monte Carlo para 10 itens
+# Rodando 1 simulação de Monte Carlo para 50 itens
 
-###  Para 10 itens, vamos sortear dentre esses valores o TP diário até completar essa quantidade. Uma rodada seria assim:
+###  Para 50 itens, vamos sortear dentre esses valores o TP diário até completar essa quantidade. Uma rodada seria assim:
 
 
 | Dia | Itens entregues | Restantes |
 |---|---|---|
-| 1 | 0 | 10 |
-| 2 | 1 | 9 |
-| 3 | 0 | 9 |
-| 4 | 2 | 7 |
-| 5 | 0 | 7 |
-| 6 | 1 | 6 |
+| 1 | 0 | 50 |
+| 2 | 1 | 49 |
+| 3 | 0 | 49 |
+| 4 | 2 | 47 |
+| 5 | 0 | 47 |
+| 6 | 1 | 46 |
 | ... | ... | ... |
 | 23 | 1 | 0 |
 
@@ -368,7 +368,7 @@ def simula_entrega(num_itens: int, historico: list[int]) -> int:
 
     return dias
 
-simula_entrega(10, historico_tp) # ex: 23
+simula_entrega(50, historico_tp) # ex: 23
 ```
 
 ---
@@ -380,8 +380,8 @@ layout: default
 ```python
 import numpy as np
 
-resultados = [simula_entrega(10, historico_tp) for _ in range(10_000)]
-# [8, 12, 9, 7, 15, 10, 11, 9, 14, 13, ..., 10]
+resultados = [simula_entrega(50, historico_tp) for _ in range(10_000)]
+# [23, 27, 21, 25, 30, 24, 22, 26, 28, 24, ..., 25]
 
 p50, p85, p95 = np.percentile(resultados, [50, 85, 95])
 
@@ -389,7 +389,7 @@ print(f"P50={p50:.0f}  P85={p85:.0f}  P95={p95:.0f} dias")
 # P50=24  P85=30  P95=34 dias
 ```
 
-Ou seja, agora podemos dizer que temos 85% de confiança de entregar os 10 itens em 30 dias ou menos, e 95% de confiança de entregar em 34 dias ou menos.
+Ou seja, agora podemos dizer que temos 85% de confiança de entregar os 50 itens em 30 dias ou menos, e 95% de confiança de entregar em 34 dias ou menos.
 
 Sem chute, sem reunião de estimativa, só com dados reais e simulação.
 
