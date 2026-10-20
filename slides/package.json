@@ -5,7 +5,10 @@
   "scripts": {
     "dev": "slidev --open false",
     "build": "slidev build --base /quando-vai-ficar-pronto/",
-    "export": "slidev export"
+    "export": "slidev export",
+    "dev:en": "slidev slides.en.md --open false",
+    "build:en": "slidev build slides.en.md --base /quando-vai-ficar-pronto/en/ --out dist/en",
+    "export:en": "slidev export slides.en.md --output exports/when-will-it-be-done.pdf"
   },
   "dependencies": {
     "@slidev/cli": "^53.0.0",

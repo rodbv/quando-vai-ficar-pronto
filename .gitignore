@@ -16,6 +16,7 @@ slides/node_modules/
 slides/.slidev/
 slides/dist/
 slides/.output/
+slides/exports/
 npm-debug.log*
 yarn-error.log*
 package-lock.json

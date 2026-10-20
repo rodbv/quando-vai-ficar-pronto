@@ -218,6 +218,20 @@
 .pane-bl { background-position: 0% 100%; }
 .pane-br { background-position: 100% 100%; }
 
+/* Legenda traduzida ao lado do painel, para os decks em outra língua. */
+.cartoon-caption {
+  position: absolute;
+  right: 1.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 260px;
+  font-size: 1.25rem;
+  line-height: 1.4;
+  color: var(--text);
+}
+.cartoon-caption p { margin: 0 0 0.8em; }
+.cartoon-caption .cartoon-caption-title { font-family: var(--font-head); font-weight: 700; }
+
 /* ---------- gráfico ocupando o resto do slide ---------- */
 
 .slidev-layout.grafico { display: flex; flex-direction: column; }
