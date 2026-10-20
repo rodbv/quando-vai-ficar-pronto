@@ -153,7 +153,9 @@ layout: default
 
 ## Nosso cérebro (e otimismo) pensa em distribuição normal
 
-<img src="/normal_distribution_curve.png" alt="Curva normal de referência" style="width: 92%; max-height: 72%; object-fit: contain; display: block; margin: 1.2rem auto 0;" />
+<p style="margin: 0.4rem 0 0;">A gente imagina o prazo como algo simétrico: terminar antes parece tão provável quanto terminar depois.</p>
+
+<img src="/normal_distribution_curve.png" alt="Curva normal de referência" style="width: 92%; max-height: 64%; object-fit: contain; display: block; margin: 1.2rem auto 0;" />
 
 ---
 layout: default
@@ -163,7 +165,9 @@ layout: default
 
 ## É mais fácil aparecer alguma surpresa que **atrase** a entrega, do que uma que adiante.
 
-<img src="/skewed_distribution_curve.png" alt="Distribuição real de lead time com cauda longa" style="width: 92%; max-height: 72%; object-fit: contain; display: block; margin: 1.2rem auto 0;" />
+<p style="margin: 0.4rem 0 0;">Metade dos itens fica pronta em 4 dias, mas 1 em cada 20 leva 16 dias ou mais.</p>
+
+<img src="/skewed_distribution_curve.png" alt="Distribuição real de lead time com cauda longa" style="width: 92%; max-height: 64%; object-fit: contain; display: block; margin: 1.2rem auto 0;" />
 
 ---
 layout: default
@@ -242,6 +246,8 @@ class: full-height-img-slide
 ---
 
 # Deixa o Excel te ajudar
+
+<p style="margin: 0.4rem 0 0;">No Google Sheets ou no Excel, a fórmula <code>=ROUNDUP(PERCENTILE(C2:C21, 0.85))</code> na coluna Dias dá o SLE: 11 dias.</p>
 
 <img class="slide-full-img" src="/excel-p85.png" alt="Planilha com explicacao visual do percentil p85" />
 
@@ -403,7 +409,9 @@ class: full-height-img-slide
 
 ## Distribuição dos resultados com percentis de confiança
 
-<img src="/monte_carlo_resultado_daily.png" alt="Histograma das 10.000 simulações de Monte Carlo com linhas P50, P85 e P95" style="width: 96%; max-height: 72%; object-fit: contain; display: block; margin: 1rem auto 0;" />
+<p style="margin: 0.4rem 0 0;">Cada barra conta quantas simulações terminaram naquele número de dias. 85% delas terminaram em 30 dias ou menos, então 30 dias é a previsão.</p>
+
+<img src="/monte_carlo_resultado_daily.png" alt="Histograma das 10.000 simulações de Monte Carlo com linhas P50, P85 e P95" style="width: 96%; max-height: 62%; object-fit: contain; display: block; margin: 1rem auto 0;" />
 
 
 ---
@@ -485,6 +493,8 @@ class: full-height-img-slide
 
 # Visualize o trabalho
 
+<p style="margin: 0.4rem 0 0;">Um quadro mostra cada item em andamento e há quanto tempo ele está lá. Aqui cada cartão mostra a idade em dias, então o cartão de 9 dias chama a atenção antes de alguém perguntar por ele.</p>
+
 <img class="slide-full-img" src="/trello-kanban.png" alt="Quadro Kanban com colunas e cartões de trabalho" />
 
 ---
@@ -541,6 +551,10 @@ $$
 \Large\downarrow\!\text{Tempo de Ciclo} = \frac{\text{WIP}}{\uparrow\!\text{Taxa de Entrega (TP)}}
 $$
 
+Esse é o caminho intuitivo: se a gente termina os itens mais rápido, cada item leva menos tempo.
+
+Na prática, isso costuma virar pedir pro time "se esforçar mais", que está na lista do que **não** queremos.
+
 </div>
 <div style="text-align: center; padding-top: 0.5rem;">
   <img src="/johnlittle.png" alt="John Little" style="width: 240px; border-radius: 8px;" />
@@ -563,6 +577,10 @@ class: little-law-slide
 $$
 \Large\downarrow\!\text{Tempo de Ciclo} = \frac{\downarrow\!\text{WIP}}{\text{Taxa de Entrega (TP)}}
 $$
+
+Essa é a alavanca que o time controla: começar menos itens ao mesmo tempo.
+
+Com a mesma taxa de entrega, cada item espera menos e fica pronto antes. Ninguém precisa trabalhar mais.
 
 </div>
 <div style="text-align: center; padding-top: 0.5rem;">
